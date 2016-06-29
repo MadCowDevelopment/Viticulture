@@ -1,6 +1,9 @@
+using System.ComponentModel.Composition;
+
 namespace Viticulture.Logic.Cards.Parents
 {
-    public abstract class MamaCard
+    [InheritedExport(typeof(IMamaCard))]
+    public abstract class MamaCard : ParentCard, IMamaCard
     {
     }
 }

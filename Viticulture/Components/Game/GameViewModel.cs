@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.Composition;
 using Caliburn.Micro;
 using Viticulture.Logic;
+using Viticulture.Logic.State;
 using Viticulture.Services;
 
 namespace Viticulture.Components.Game
