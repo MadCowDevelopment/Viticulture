@@ -9,7 +9,7 @@ using Viticulture.Services;
 namespace Viticulture.Components.MainMenu
 {
     [Export(typeof(IMainMenuViewModel))]
-    public class MainMenuViewModel : Screen, IMainMenuViewModel
+    public class MainMenuViewModel : ViewModel, IMainMenuViewModel
     {
         private readonly INavigationService _navigationService;
         private readonly IMetroDialog _metroDialog;

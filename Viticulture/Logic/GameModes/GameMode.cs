@@ -1,4 +1,5 @@
 using System.ComponentModel.Composition;
+using Viticulture.Logic.State;
 
 namespace Viticulture.Logic.GameModes
 {
@@ -8,5 +9,7 @@ namespace Viticulture.Logic.GameModes
         public abstract string Name { get; }
 
         public abstract string Description { get; }
+
+        public abstract void Initialize(IGameState gameState);
     }
 }

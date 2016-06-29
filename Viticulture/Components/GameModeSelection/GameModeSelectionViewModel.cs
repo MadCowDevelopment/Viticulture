@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
-using Caliburn.Micro;
 using Viticulture.Components.Game;
 using Viticulture.Components.MainMenu;
 using Viticulture.Logic.GameModes;
@@ -10,7 +9,7 @@ using Viticulture.Services;
 namespace Viticulture.Components.GameModeSelection
 {
     [Export(typeof(IGameModeSelectionViewModel))]
-    public class GameModeSelectionViewModel : Screen, IGameModeSelectionViewModel
+    public class GameModeSelectionViewModel : ViewModel, IGameModeSelectionViewModel
     {
         private readonly INavigationService _navigationService;
 
@@ -36,7 +35,7 @@ namespace Viticulture.Components.GameModeSelection
 
         public void StartGame()
         {
-            _navigationService.NavigateTo<IGameViewModel>();
+            _navigationService.NavigateTo<IGameViewModel, IGameMode>(SelectedGameMode);
         }
     }
 }

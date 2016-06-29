@@ -94,17 +94,18 @@
       <DependentUpon>GameView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\Game\GameViewModel.cs" />
+    <Compile Include="Components\ViewModel.cs" />
+    <Compile Include="Logic\GameLogic.cs" />
+    <Compile Include="Logic\IGameLogic.cs" />
     <Compile Include="Components\Game\IGameViewModel.cs" />
     <Compile Include="Logic\Cards\Card.cs" />
     <Compile Include="Logic\Cards\ICard.cs" />
-    <Compile Include="Logic\Cards\Parents\IMamaCard.cs" />
-    <Compile Include="Logic\Cards\Parents\IPapaCard.cs" />
-    <Compile Include="Logic\Cards\Parents\IParentCard.cs" />
     <Compile Include="Logic\Cards\Parents\MamaCard.cs" />
     <Compile Include="Logic\Cards\Parents\PapaCard.cs" />
     <Compile Include="Logic\Cards\Parents\ParentCard.cs" />
     <Compile Include="Logic\Cards\Parents\Mamas\SampleMamaCard.cs" />
     <Compile Include="Logic\Cards\Parents\Papas\SamplePapaCard.cs" />
+    <Compile Include="Logic\Cards\Vines\VineCard.cs" />
     <Compile Include="Logic\GameModes\GameMode.cs" />
     <Compile Include="Logic\GameModes\IGameMode.cs" />
     <Compile Include="Components\GameModeSelection\IGameModeSelectionViewModel.cs" />
@@ -112,12 +113,15 @@
     <Compile Include="Logic\Pieces\GamePiece.cs" />
     <Compile Include="Logic\Pieces\Worker.cs" />
     <Compile Include="Logic\Pieces\Building.cs" />
+    <Compile Include="Logic\State\Deck.cs" />
     <Compile Include="Logic\State\GameState.cs" />
     <Compile Include="Logic\Pieces\Grande.cs" />
+    <Compile Include="Logic\State\Hand.cs" />
     <Compile Include="Logic\State\IGameState.cs" />
     <Compile Include="Logic\Pieces\Irigation.cs" />
     <Compile Include="Services\IMefContainer.cs" />
     <Compile Include="Services\INavigationService.cs" />
+    <Compile Include="Components\IViewModel.cs" />
     <Compile Include="Services\MefContainer.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Utils\ListExtensions.cs" />
@@ -198,7 +202,6 @@
   <ItemGroup>
     <Folder Include="Logic\Cards\Automa\" />
     <Folder Include="Logic\Cards\Orders\" />
-    <Folder Include="Logic\Cards\Vines\" />
     <Folder Include="Logic\Cards\Visitors\Summer\" />
     <Folder Include="Logic\Cards\Visitors\Winter\" />
   </ItemGroup>

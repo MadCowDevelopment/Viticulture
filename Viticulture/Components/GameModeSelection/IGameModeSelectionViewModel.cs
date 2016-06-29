@@ -1,12 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Caliburn.Micro;
-using Viticulture.Logic;
+﻿using System.Collections.Generic;
 using Viticulture.Logic.GameModes;
 
 namespace Viticulture.Components.GameModeSelection
 {
-    public interface IGameModeSelectionViewModel : IScreen
+    public interface IGameModeSelectionViewModel : IViewModel
     {
         IGameMode SelectedGameMode { get; set; }
 

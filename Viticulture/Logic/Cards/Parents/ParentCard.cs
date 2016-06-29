@@ -3,7 +3,7 @@ using Viticulture.Logic.State;
 
 namespace Viticulture.Logic.Cards.Parents
 {
-    public abstract class ParentCard : Card, IParentCard
+    public abstract class ParentCard : Card
     {
         public override string Text => string.Empty;
 

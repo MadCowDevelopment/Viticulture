@@ -1,3 +1,5 @@
+using Viticulture.Logic.State;
+
 namespace Viticulture.Logic.GameModes
 {
     public interface IGameMode
@@ -5,5 +7,6 @@ namespace Viticulture.Logic.GameModes
         string Name { get; }
 
         string Description { get; }
+        void Initialize(IGameState gameState);
     }
 }

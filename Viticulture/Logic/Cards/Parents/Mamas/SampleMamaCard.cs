@@ -6,9 +6,9 @@ namespace Viticulture.Logic.Cards.Parents.Mamas
     {
         public override string Name => "Mama Sample";
 
-        public override void Setup(IGameState gameState)
+        protected override void OnSetup(IGameState gameState)
         {
-            // TODO
+            gameState.VineDeck.DrawToHand();
         }
     }
 }
