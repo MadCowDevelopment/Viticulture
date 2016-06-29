@@ -96,6 +96,10 @@
     <Compile Include="Components\Game\GameViewModel.cs" />
     <Compile Include="Components\ViewModel.cs" />
     <Compile Include="Logic\GameLogic.cs" />
+    <Compile Include="Logic\GameModes\GameModeInitializer.cs" />
+    <Compile Include="Logic\GameModes\IGameModeInitializer.cs" />
+    <Compile Include="Logic\GameModes\INormalGameModeInitializer.cs" />
+    <Compile Include="Logic\GameModes\NormalGameModeInitializer.cs" />
     <Compile Include="Logic\IGameLogic.cs" />
     <Compile Include="Components\Game\IGameViewModel.cs" />
     <Compile Include="Logic\Cards\Card.cs" />
