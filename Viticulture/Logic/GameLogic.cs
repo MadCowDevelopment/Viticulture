@@ -5,6 +5,7 @@ using Viticulture.Logic.State;
 namespace Viticulture.Logic
 {
     [Export(typeof(IGameLogic))]
+    [PartCreationPolicy(CreationPolicy.NonShared)]
     public class GameLogic : IGameLogic
     {
         private readonly IGameState _gameState;
