@@ -111,9 +111,11 @@
     <Compile Include="Logic\GameModes\NormalGameMode.cs" />
     <Compile Include="Logic\Pieces\GamePiece.cs" />
     <Compile Include="Logic\Pieces\Worker.cs" />
+    <Compile Include="Logic\Pieces\Building.cs" />
     <Compile Include="Logic\State\GameState.cs" />
     <Compile Include="Logic\Pieces\Grande.cs" />
     <Compile Include="Logic\State\IGameState.cs" />
+    <Compile Include="Logic\Pieces\Irigation.cs" />
     <Compile Include="Services\IMefContainer.cs" />
     <Compile Include="Services\INavigationService.cs" />
     <Compile Include="Services\MefContainer.cs" />
