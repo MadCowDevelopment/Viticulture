@@ -8,13 +8,14 @@ using System.Linq;
 using System.Reflection;
 using System.Windows;
 using Caliburn.Micro;
+using Viticulture.Services;
 
 namespace Viticulture
 {
     public class MefBootstrapper : BootstrapperBase
     {
-        private CompositionContainer _container;
-
+        private IMefContainer _container;
+        
         static MefBootstrapper()
         {
             LogManager.GetLog = type => new DebugLogger(type);
@@ -27,12 +28,7 @@ namespace Viticulture
 
         protected override void Configure()
         {
-            var catalog =
-                new AggregateCatalog(
-                    new AssemblyCatalog(Assembly.GetExecutingAssembly()),
-                    new DirectoryCatalog("."));
-
-            _container = new CompositionContainer(catalog);
+            _container = new MefContainer();
 
             var batch = new CompositionBatch();
 
@@ -78,3 +74,4 @@ namespace Viticulture
 
     }
 }
+

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using MahApps.Metro.Controls.Dialogs;
 
-namespace Viticulture
+namespace Viticulture.Services
 {
     public interface IMetroDialog
     {
