@@ -95,6 +95,7 @@
     </Compile>
     <Compile Include="Components\Game\GameViewModel.cs" />
     <Compile Include="Components\ViewModel.cs" />
+    <Compile Include="Logic\Cards\Vines\PinotVineCard.cs" />
     <Compile Include="Logic\GameLogic.cs" />
     <Compile Include="Logic\GameModes\GameModeInitializer.cs" />
     <Compile Include="Logic\GameModes\IGameModeInitializer.cs" />
