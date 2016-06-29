@@ -95,10 +95,15 @@
     </Compile>
     <Compile Include="Components\Game\GameViewModel.cs" />
     <Compile Include="Components\Game\IGameViewModel.cs" />
+    <Compile Include="Logic\Cards\Card.cs" />
+    <Compile Include="Logic\Cards\Parents\MamaCard.cs" />
+    <Compile Include="Logic\Cards\Parents\PapaCard.cs" />
+    <Compile Include="Logic\Cards\Parents\ParentCard.cs" />
     <Compile Include="Logic\GameModes\GameMode.cs" />
     <Compile Include="Logic\GameModes\IGameMode.cs" />
     <Compile Include="Components\GameModeSelection\IGameModeSelectionViewModel.cs" />
     <Compile Include="Logic\GameModes\NormalGameMode.cs" />
+    <Compile Include="Logic\GameState.cs" />
     <Compile Include="Services\IMefContainer.cs" />
     <Compile Include="Services\INavigationService.cs" />
     <Compile Include="Services\MefContainer.cs" />
@@ -179,7 +184,10 @@
     <Resource Include="FodyWeavers.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Logic\Cards\" />
+    <Folder Include="Logic\Cards\Orders\" />
+    <Folder Include="Logic\Cards\Vines\" />
+    <Folder Include="Logic\Cards\Visitors\Summer\" />
+    <Folder Include="Logic\Cards\Visitors\Winter\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.1.29.2\build\dotnet\Fody.targets" Condition="Exists('..\packages\Fody.1.29.2\build\dotnet\Fody.targets')" />
