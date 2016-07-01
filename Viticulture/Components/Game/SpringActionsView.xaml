@@ -1,0 +1,20 @@
+﻿<UserControl 
+  x:Class="Viticulture.Components.Game.SpringActionsView"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+  xmlns:local="clr-namespace:Viticulture.Components.Game"
+  xmlns:cal="http://www.caliburnproject.org"
+  mc:Ignorable="d" 
+  d:DesignHeight="300" d:DesignWidth="300">
+  <Grid>
+    <ItemsControl x:Name="Benefits">
+      <ItemsControl.ItemTemplate>
+        <DataTemplate>
+          <Button Margin="60 4 60 4" FontSize="16" cal:Message.Attach="SelectBenefit($dataContext)" Content="{Binding Name}"/>
+        </DataTemplate>
+      </ItemsControl.ItemTemplate>
+    </ItemsControl>
+  </Grid>
+</UserControl>

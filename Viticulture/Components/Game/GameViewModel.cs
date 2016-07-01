@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.Composition;
+﻿using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using Viticulture.Logic;
 using Viticulture.Logic.GameModes;
 using Viticulture.Services;
@@ -11,6 +12,7 @@ namespace Viticulture.Components.Game
     {
         private readonly INavigationService _navigationService;
         private readonly IGameLogic _gameLogic;
+        private List<IViewModel> _tabs;
 
         [ImportingConstructor]
         public GameViewModel(INavigationService navigationService, IGameLogic gameLogic)
@@ -22,6 +24,11 @@ namespace Viticulture.Components.Game
         public override void Initialize(IGameMode initObject)
         {
             _gameLogic.Initialize(initObject);
+        }
+
+        public List<IViewModel> Tabs
+        {
+            get { return _tabs ?? (_tabs = new List<IViewModel> {Actions, Visitors}); }
         }
 
         [Import]

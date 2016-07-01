@@ -9,7 +9,7 @@ namespace Viticulture.Logic.Cards.Vines
 
         public abstract bool RequiresIrigation { get; }
 
-        public abstract bool RequiresTODO { get; }
+        public abstract bool RequiresTrellis { get; }
 
         public abstract int RedValue { get; }
 

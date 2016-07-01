@@ -100,6 +100,10 @@
     <Compile Include="Components\Game\BuildingsViewModel.cs" />
     <Compile Include="Components\Game\CellarViewModel.cs" />
     <Compile Include="Components\Game\CrushpadViewModel.cs" />
+    <Compile Include="Components\Game\FallActionsView.xaml.cs">
+      <DependentUpon>FallActionsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Game\FallActionsViewModel.cs" />
     <Compile Include="Components\Game\GameView.xaml.cs">
       <DependentUpon>GameView.xaml</DependentUpon>
     </Compile>
@@ -114,9 +118,13 @@
     </Compile>
     <Compile Include="Components\Game\ICellarViewModel.cs" />
     <Compile Include="Components\Game\ICrushpadViewModel.cs" />
+    <Compile Include="Components\Game\IFallActionsViewModel.cs" />
     <Compile Include="Components\Game\IPlayerStatusViewModel.cs" />
     <Compile Include="Components\Game\ISelectionViewModel.cs" />
+    <Compile Include="Components\Game\ISpringActionsViewModel.cs" />
+    <Compile Include="Components\Game\ISummerActionsViewModel.cs" />
     <Compile Include="Components\Game\IVisitorsViewModel.cs" />
+    <Compile Include="Components\Game\IWinterActionsViewModel.cs" />
     <Compile Include="Components\Game\PlayerStatusView.xaml.cs">
       <DependentUpon>PlayerStatusView.xaml</DependentUpon>
     </Compile>
@@ -125,12 +133,27 @@
       <DependentUpon>SelectionView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\Game\SelectionViewModel.cs" />
+    <Compile Include="Components\Game\SpringActionsView.xaml.cs">
+      <DependentUpon>SpringActionsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Game\SpringActionsViewModel.cs" />
+    <Compile Include="Components\Game\SummerActionsView.xaml.cs">
+      <DependentUpon>SummerActionsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Game\SummerActionsViewModel.cs" />
     <Compile Include="Components\Game\VisitorsView.xaml.cs">
       <DependentUpon>VisitorsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\Game\VisitorsViewModel.cs" />
+    <Compile Include="Components\Game\WinterActionsView.xaml.cs">
+      <DependentUpon>WinterActionsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Game\WinterActionsViewModel.cs" />
     <Compile Include="Components\ViewModel.cs" />
+    <Compile Include="Logic\Cards\Orders\OrderCard.cs" />
+    <Compile Include="Logic\Cards\Orders\SampleOrderCard.cs" />
     <Compile Include="Logic\Cards\Vines\PinotVineCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\VisitorCard.cs" />
     <Compile Include="Logic\GameLogic.cs" />
     <Compile Include="Logic\GameModes\GameModeInitializer.cs" />
     <Compile Include="Logic\GameModes\IGameModeInitializer.cs" />
@@ -159,6 +182,7 @@
     <Compile Include="Logic\State\Hand.cs" />
     <Compile Include="Logic\State\IGameState.cs" />
     <Compile Include="Logic\Pieces\Irigation.cs" />
+    <Compile Include="Logic\State\Season.cs" />
     <Compile Include="Services\CustomMetroDialog.xaml.cs">
       <DependentUpon>CustomMetroDialog.xaml</DependentUpon>
     </Compile>
@@ -168,6 +192,7 @@
     <Compile Include="Services\MefContainer.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Utils\ListExtensions.cs" />
+    <Compile Include="Utils\MemberNameHelper.cs" />
     <Compile Include="Utils\RNG.cs" />
     <Page Include="AppView.xaml">
       <SubType>Designer</SubType>
@@ -196,6 +221,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Components\Game\FallActionsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Components\Game\GameView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -216,7 +245,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Components\Game\SpringActionsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\Game\SummerActionsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Components\Game\VisitorsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\Game\WinterActionsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -280,7 +321,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Logic\Cards\Automa\" />
-    <Folder Include="Logic\Cards\Orders\" />
     <Folder Include="Logic\Cards\Visitors\Summer\" />
     <Folder Include="Logic\Cards\Visitors\Winter\" />
   </ItemGroup>

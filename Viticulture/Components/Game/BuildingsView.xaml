@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Viticulture.Components.Game"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
+    <Grid Background="Aquamarine">
             
     </Grid>
 </UserControl>

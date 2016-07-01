@@ -19,15 +19,15 @@
         <ColumnDefinition Width="2*"/>
         <ColumnDefinition Width="*"/>
       </Grid.ColumnDefinitions>
-      <controls:MetroAnimatedTabControl Grid.Column="0">
-        <controls:MetroAnimatedTabControl.Items>
+      <controls:MetroAnimatedTabControl Grid.Column="0" x:Name="Tabs">
+        <!--<controls:MetroAnimatedTabControl.Items>
           <controls:MetroTabItem Header="Actions">
-            <ContentControl x:Name="Actions"/>
+            <ContentControl Content="{Binding Actions}"/>
           </controls:MetroTabItem>
           <controls:MetroTabItem Header="Visitor Cards">
-            <ContentControl x:Name="Visitors"/>
+            <ContentControl Content="{Binding Visitors}"/>
           </controls:MetroTabItem>
-        </controls:MetroAnimatedTabControl.Items>
+        </controls:MetroAnimatedTabControl.Items>-->
       </controls:MetroAnimatedTabControl>
       <ContentControl Grid.Column="1" x:Name="Buildings"/>
     </Grid>
