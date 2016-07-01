@@ -189,8 +189,11 @@
     <Compile Include="Services\IMefContainer.cs" />
     <Compile Include="Services\INavigationService.cs" />
     <Compile Include="Components\IViewModel.cs" />
+    <Compile Include="Services\IPlayerSelection.cs" />
     <Compile Include="Services\MefContainer.cs" />
     <Compile Include="Services\NavigationService.cs" />
+    <Compile Include="Services\PlayerSelection.cs" />
+    <Compile Include="Services\Selection.cs" />
     <Compile Include="Utils\ListExtensions.cs" />
     <Compile Include="Utils\MemberNameHelper.cs" />
     <Compile Include="Utils\RNG.cs" />

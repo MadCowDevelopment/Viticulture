@@ -6,5 +6,6 @@
         int Workers { get; }
         int Round { get; }
         int Bonus { get; }
+        int VictoryPoints { get; }
     }
 }

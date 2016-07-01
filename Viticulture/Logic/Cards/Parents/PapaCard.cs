@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.Composition;
-using Viticulture.Logic.Cards.Parents.Papas;
 using Viticulture.Logic.State;
+using Viticulture.Services;
 
 namespace Viticulture.Logic.Cards.Parents
 {
@@ -10,10 +10,10 @@ namespace Viticulture.Logic.Cards.Parents
         [Import]
         private IPlayerSelection PlayerSelection { get; set; }
 
-        public sealed override void Setup(IGameState gameState)
+        public sealed override async void Setup(IGameState gameState)
         {
             gameState.Grande.IsBought = true;
-            var selection = PlayerSelection.Select("Papa card", "Please select one benefit of your papa card", Option1, Option2);
+            var selection = await PlayerSelection.Select("Papa card", "Please select one benefit of your papa card", Option1, Option2);
             OnSetup(gameState, selection);
         }
 

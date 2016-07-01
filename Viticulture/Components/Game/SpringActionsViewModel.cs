@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
-using Viticulture.Logic.Cards.Parents.Papas;
 using Viticulture.Logic.State;
+using Viticulture.Services;
 
 namespace Viticulture.Components.Game
 {
@@ -9,19 +9,17 @@ namespace Viticulture.Components.Game
     public class SpringActionsViewModel : ViewModel, ISpringActionsViewModel
     {
         private readonly IGameState _gameState;
-        private readonly IPlayerSelection _playerSelection;
         private readonly List<Benefit> _benefits = new List<Benefit>();
 
         [ImportingConstructor]
         public SpringActionsViewModel(IGameState gameState, IPlayerSelection playerSelection)
         {
             _gameState = gameState;
-            _playerSelection = playerSelection;
             _benefits.Add(new NoneBenefit());
             _benefits.Add(new VineBenefit());
             _benefits.Add(new OrderBenefit());
             _benefits.Add(new LiraBenefit());
-            _benefits.Add(new VisitorBenefit(_playerSelection));
+            _benefits.Add(new VisitorBenefit(playerSelection));
             _benefits.Add(new VictoryPointBenefit());
             _benefits.Add(new WorkerBenefit());
         }
@@ -67,9 +65,9 @@ namespace Viticulture.Components.Game
 
         public override string Name => "Summer or winter visitor";
 
-        public override void OnApply(IGameState gameState)
+        public override async void OnApply(IGameState gameState)
         {
-            var selection = _playerSelection.Select("Benefit", "Which visitor card do you want?", "Summer", "Winter");
+            var selection = await _playerSelection.Select("Benefit", "Which visitor card do you want?", "Summer", "Winter");
 
             if (selection == Selection.Option1) gameState.SummerVisitorDeck.DrawToHand();
             else gameState.WinterVisitorDeck.DrawToHand();
