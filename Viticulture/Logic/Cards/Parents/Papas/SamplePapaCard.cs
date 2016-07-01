@@ -1,6 +1,5 @@
 using System.ComponentModel.Composition;
-using System.Threading.Tasks;
-using MahApps.Metro.Controls.Dialogs;
+using Viticulture.Components.Game;
 using Viticulture.Logic.State;
 using Viticulture.Services;
 
@@ -23,27 +22,34 @@ namespace Viticulture.Logic.Cards.Parents.Papas
 
     public interface IPlayerSelection
     {
-        Task<Selection> Select(string title, string message, string option1, string option2);
+        Selection Select(string title, string message, string option1, string option2);
     }
 
     [Export(typeof(IPlayerSelection))]
     public class PlayerSelection : IPlayerSelection
     {
         private readonly IMetroDialog _metroDialog;
+        private readonly IMefContainer _mefContainer;
 
         [ImportingConstructor]
-        public PlayerSelection(IMetroDialog metroDialog)
+        public PlayerSelection(IMetroDialog metroDialog, IMefContainer mefContainer)
         {
             _metroDialog = metroDialog;
+            _mefContainer = mefContainer;
         }
 
-        public async Task<Selection> Select(string title, string message, string option1, string option2)
+        public Selection Select(string title, string message, string option1, string option2)
         {
-            return await _metroDialog.ShowMessage(title, message, MessageDialogStyle.AffirmativeAndNegative,
-                new MetroDialogSettings {AffirmativeButtonText = option1, NegativeButtonText = option2}) ==
-                   MessageDialogResult.Affirmative
-                ? Selection.Option1
-                : Selection.Option2;
+            
+            var selectionViewModel = _mefContainer.GetExportedValue<ISelectionViewModel>();
+
+            selectionViewModel.Title = title;
+            selectionViewModel.Message = message;
+            selectionViewModel.Option1 = option1;
+            selectionViewModel.Option2 = option2;
+
+            _metroDialog.ShowDialog(selectionViewModel);
+            return selectionViewModel.SelectedOption;
         }
     }
 

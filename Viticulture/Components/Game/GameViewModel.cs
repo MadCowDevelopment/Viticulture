@@ -23,5 +23,23 @@ namespace Viticulture.Components.Game
         {
             _gameLogic.Initialize(initObject);
         }
+
+        [Import]
+        public IPlayerStatusViewModel PlayerStatus { get; private set; }
+
+        [Import]
+        public IActionsViewModel Actions { get; private set; }
+
+        [Import]
+        public IVisitorsViewModel Visitors { get; private set; }
+
+        [Import]
+        public IBuildingsViewModel Buildings { get; private set; }
+
+        [Import]
+        public ICrushpadViewModel Crushpad { get; private set; }
+
+        [Import]
+        public ICellarViewModel Cellar { get; private set; }
     }
 }

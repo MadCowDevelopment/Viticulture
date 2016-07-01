@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="Viticulture.Components.Game.SelectionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:cal="http://www.caliburnproject.org"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <TextBlock Text="{Binding Title}" Margin="4" FontSize="18" HorizontalAlignment="Center"/>
+    
+    <ScrollViewer Grid.Row="1"
+                  Focusable="False"
+                  FocusVisualStyle="{x:Null}"
+                  HorizontalScrollBarVisibility="Disabled"
+                  VerticalScrollBarVisibility="Auto">
+      <TextBlock Margin="0 5 0 0" Text="{Binding Message}" FontSize="16" TextWrapping="Wrap" HorizontalAlignment="Center"/>
+    </ScrollViewer>
+
+    <StackPanel Grid.Row="2"
+                Height="85"
+                HorizontalAlignment="Center"
+                Orientation="Horizontal">
+      <Button cal:Message.Attach="SelectOption1"
+        Height="35"
+        MinWidth="80"
+        Margin="0 0 5 0" FontSize="16"
+        Content="{Binding Option1}"/>
+      <Button cal:Message.Attach="SelectOption2"
+        Height="35"
+        MinWidth="80"
+        Margin="5 0 5 0" FontSize="16"
+        Content="{Binding Option2}" />
+    </StackPanel>
+  </Grid>
+</UserControl>
+

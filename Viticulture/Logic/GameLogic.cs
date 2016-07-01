@@ -18,6 +18,7 @@ namespace Viticulture.Logic
 
         public void Initialize(IGameMode gameMode)
         {
+            _gameState.Reset();
             gameMode.Initialize(_gameState);
         }
     }

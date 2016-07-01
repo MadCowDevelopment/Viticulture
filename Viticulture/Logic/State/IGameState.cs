@@ -14,5 +14,8 @@ namespace Viticulture.Logic.State
         Deck VineDeck { get; }
 
         Hand Hand { get; }
+        int RemainingBonusActions { get; set; }
+        int Round { get; set; }
+        void Reset();
     }
 }

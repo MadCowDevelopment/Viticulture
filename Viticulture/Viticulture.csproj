@@ -90,10 +90,45 @@
       <DependentUpon>GameModeSelectionView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\GameModeSelection\GameModeSelectionViewModel.cs" />
+    <Compile Include="Components\Game\ActionsView.xaml.cs">
+      <DependentUpon>ActionsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Game\ActionsViewModel.cs" />
+    <Compile Include="Components\Game\BuildingsView.xaml.cs">
+      <DependentUpon>BuildingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Game\BuildingsViewModel.cs" />
+    <Compile Include="Components\Game\CellarViewModel.cs" />
+    <Compile Include="Components\Game\CrushpadViewModel.cs" />
     <Compile Include="Components\Game\GameView.xaml.cs">
       <DependentUpon>GameView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\Game\GameViewModel.cs" />
+    <Compile Include="Components\Game\IActionsViewModel.cs" />
+    <Compile Include="Components\Game\IBuildingsViewModel.cs" />
+    <Compile Include="Components\Game\CellarView.xaml.cs">
+      <DependentUpon>CellarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Game\CrushpadView.xaml.cs">
+      <DependentUpon>CrushpadView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Game\ICellarViewModel.cs" />
+    <Compile Include="Components\Game\ICrushpadViewModel.cs" />
+    <Compile Include="Components\Game\IPlayerStatusViewModel.cs" />
+    <Compile Include="Components\Game\ISelectionViewModel.cs" />
+    <Compile Include="Components\Game\IVisitorsViewModel.cs" />
+    <Compile Include="Components\Game\PlayerStatusView.xaml.cs">
+      <DependentUpon>PlayerStatusView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Game\PlayerStatusViewModel.cs" />
+    <Compile Include="Components\Game\SelectionView.xaml.cs">
+      <DependentUpon>SelectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Game\SelectionViewModel.cs" />
+    <Compile Include="Components\Game\VisitorsView.xaml.cs">
+      <DependentUpon>VisitorsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Game\VisitorsViewModel.cs" />
     <Compile Include="Components\ViewModel.cs" />
     <Compile Include="Logic\Cards\Vines\PinotVineCard.cs" />
     <Compile Include="Logic\GameLogic.cs" />
@@ -124,6 +159,9 @@
     <Compile Include="Logic\State\Hand.cs" />
     <Compile Include="Logic\State\IGameState.cs" />
     <Compile Include="Logic\Pieces\Irigation.cs" />
+    <Compile Include="Services\CustomMetroDialog.xaml.cs">
+      <DependentUpon>CustomMetroDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Services\IMefContainer.cs" />
     <Compile Include="Services\INavigationService.cs" />
     <Compile Include="Components\IViewModel.cs" />
@@ -150,7 +188,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Components\Game\ActionsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\Game\BuildingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Components\Game\GameView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\Game\CellarView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\Game\CrushpadView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\Game\PlayerStatusView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\Game\SelectionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\Game\VisitorsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -158,9 +224,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GlobalStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Icons.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Services\CustomMetroDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
