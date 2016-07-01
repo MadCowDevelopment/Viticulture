@@ -120,7 +120,6 @@
     <Compile Include="Components\Game\ICrushpadViewModel.cs" />
     <Compile Include="Components\Game\IFallActionsViewModel.cs" />
     <Compile Include="Components\Game\IPlayerStatusViewModel.cs" />
-    <Compile Include="Components\Game\ISelectionViewModel.cs" />
     <Compile Include="Components\Game\ISpringActionsViewModel.cs" />
     <Compile Include="Components\Game\ISummerActionsViewModel.cs" />
     <Compile Include="Components\Game\IVisitorsViewModel.cs" />
@@ -129,10 +128,6 @@
       <DependentUpon>PlayerStatusView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\Game\PlayerStatusViewModel.cs" />
-    <Compile Include="Components\Game\SelectionView.xaml.cs">
-      <DependentUpon>SelectionView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Components\Game\SelectionViewModel.cs" />
     <Compile Include="Components\Game\SpringActionsView.xaml.cs">
       <DependentUpon>SpringActionsView.xaml</DependentUpon>
     </Compile>
@@ -241,10 +236,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Components\Game\PlayerStatusView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Components\Game\SelectionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
