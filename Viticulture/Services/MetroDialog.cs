@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.Composition;
+﻿using System;
+using System.ComponentModel.Composition;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -11,13 +12,11 @@ namespace Viticulture.Services
     [Export(typeof(IMetroDialog))]
     public class MetroDialog : IMetroDialog
     {
-        private readonly IMefContainer _mefContainer;
         private BaseMetroDialog _currentlyShownDialog;
 
         [ImportingConstructor]
-        public MetroDialog(IMefContainer mefContainer)
+        public MetroDialog()
         {
-            _mefContainer = mefContainer;
         }
 
         private MetroWindow MetroWindow => Application.Current.MainWindow as MetroWindow;
