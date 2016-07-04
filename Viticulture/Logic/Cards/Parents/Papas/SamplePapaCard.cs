@@ -1,7 +1,6 @@
 using System.ComponentModel.Composition;
 using System.Threading.Tasks;
 using MahApps.Metro.Controls.Dialogs;
-using Viticulture.Components.Game;
 using Viticulture.Logic.State;
 using Viticulture.Services;
 

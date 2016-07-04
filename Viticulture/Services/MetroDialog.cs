@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using Caliburn.Micro;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
+using Viticulture.Screens;
 
 namespace Viticulture.Services
 {
@@ -38,8 +39,25 @@ namespace Viticulture.Services
             var dialog = new CustomMetroDialog();
             dialog.MainContent.Content = view;
             _currentlyShownDialog = dialog;
-
+            
             return MetroWindow.ShowMetroDialogAsync(dialog);
+        }
+
+        public async Task ShowDialog(IDialogViewModel viewModel)
+        {
+            var view = ViewLocator.LocateForModel(viewModel, null, null) as UserControl;
+            view.Loaded += (sender, args) =>
+            {
+                ViewModelBinder.Bind(viewModel, view, null);
+            };
+
+            var dialog = new CustomMetroDialog();
+            dialog.MainContent.Content = view;
+            _currentlyShownDialog = dialog;
+
+            await MetroWindow.ShowMetroDialogAsync(dialog);
+            await viewModel.Task;
+            await MetroWindow.HideMetroDialogAsync(dialog);
         }
 
         public async Task CloseDialog()
@@ -48,5 +66,11 @@ namespace Viticulture.Services
 
             await MetroWindow.HideMetroDialogAsync(_currentlyShownDialog);
         }
+    }
+
+    public interface IDialogViewModel : IViewModel
+    {
+        event EventHandler Closed;
+        Task Task { get; }
     }
 }

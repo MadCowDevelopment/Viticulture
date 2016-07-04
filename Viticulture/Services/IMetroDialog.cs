@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Caliburn.Micro;
 using MahApps.Metro.Controls.Dialogs;
-using Viticulture.Components.Game;
 
 namespace Viticulture.Services
 {
@@ -11,6 +10,8 @@ namespace Viticulture.Services
             MessageDialogStyle style = MessageDialogStyle.Affirmative, MetroDialogSettings settings = null);
 
         Task ShowDialog<T>(T screen) where T : IScreen;
+
+        Task ShowDialog(IDialogViewModel viewModel);
 
         Task CloseDialog();
     }

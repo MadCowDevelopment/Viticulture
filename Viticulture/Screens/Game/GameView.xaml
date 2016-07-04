@@ -1,0 +1,47 @@
+﻿<UserControl 
+  x:Class="Viticulture.Screens.Game.GameView"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+  xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+  mc:Ignorable="d" 
+  d:DesignHeight="300" d:DesignWidth="300">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+
+    <Grid Grid.Row="0">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="2*"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <controls:MetroAnimatedTabControl Grid.Column="0" x:Name="Tabs">
+        <!--<controls:MetroAnimatedTabControl.Items>
+          <controls:MetroTabItem Header="Actions">
+            <ContentControl Content="{Binding Actions}"/>
+          </controls:MetroTabItem>
+          <controls:MetroTabItem Header="Visitor Cards">
+            <ContentControl Content="{Binding Visitors}"/>
+          </controls:MetroTabItem>
+        </controls:MetroAnimatedTabControl.Items>-->
+      </controls:MetroAnimatedTabControl>
+      <ContentControl Grid.Column="1" x:Name="Buildings"/>
+    </Grid>
+
+    <Grid Grid.Row="1">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <ContentControl Grid.Column="0" x:Name="Crushpad"/>
+      <ContentControl Grid.Column="1" x:Name="Cellar"/>
+    </Grid>
+
+    <ContentControl Grid.Row="2" x:Name="PlayerStatus"/>
+
+  </Grid>
+</UserControl>

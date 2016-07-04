@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.Composition;
 using Caliburn.Micro;
-using Viticulture.Components.MainMenu;
+using Viticulture.Screens.MainMenu;
 
 namespace Viticulture
 {
