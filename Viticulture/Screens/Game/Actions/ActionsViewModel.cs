@@ -2,7 +2,6 @@ using System;
 using System.ComponentModel.Composition;
 using Caliburn.Micro;
 using Viticulture.Logic.State;
-using Viticulture.Screens.Game.Actions.Fall;
 using Viticulture.Screens.Game.Actions.Spring;
 using Viticulture.Screens.Game.Actions.Summer;
 using Viticulture.Screens.Game.Actions.Winter;
@@ -16,7 +15,6 @@ namespace Viticulture.Screens.Game.Actions
     {
         private readonly ISpringActionsViewModel _springActionsViewModel;
         private readonly ISummerActionsViewModel _summerActionsViewModel;
-        private readonly IFallActionsViewModel _fallActionsViewModel;
         private readonly IWinterActionsViewModel _winterActionsViewModel;
 
         [ImportingConstructor]
@@ -24,7 +22,6 @@ namespace Viticulture.Screens.Game.Actions
             IEventAggregator eventAggregator,
             ISpringActionsViewModel springActionsViewModel,
             ISummerActionsViewModel summerActionsViewModel,
-            IFallActionsViewModel fallActionsViewModel,
             IWinterActionsViewModel winterActionsViewModel)
         {
             DisplayName = "Actions";
@@ -32,10 +29,9 @@ namespace Viticulture.Screens.Game.Actions
             eventAggregator.Subscribe(this);
             _springActionsViewModel = springActionsViewModel;
             _summerActionsViewModel = summerActionsViewModel;
-            _fallActionsViewModel = fallActionsViewModel;
             _winterActionsViewModel = winterActionsViewModel;
 
-            CurrentSeason = Season.Fall.ToString();
+            CurrentSeason = Season.Spring.ToString();
             CurrentActions = _springActionsViewModel;
         }
 
@@ -60,12 +56,10 @@ namespace Viticulture.Screens.Game.Actions
                     return _springActionsViewModel;
                 case Season.Summer:
                     return _summerActionsViewModel;
-                case Season.Fall:
-                    return _fallActionsViewModel;
                 case Season.Winter:
                     return _winterActionsViewModel;
                 default:
-                    throw new InvalidOperationException("Season not supported.");
+                    return CurrentActions;
             }
         }
     }

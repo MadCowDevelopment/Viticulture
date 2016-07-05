@@ -77,15 +77,15 @@ namespace Viticulture.Logic.State
             WinterVisitorDeck = new Deck<VisitorCard>(Hand, _visitorCards.Where(p => p.Season == Season.Winter));
             AutomaDeck = new Deck<AutomaCard>(Hand, _automaCards);
 
-            Irigation = new Irigation();
+            Irigation = new Irigation(_eventAggregator);
 
-            Grande = new Grande();
-            NeutralWorker = new Worker();
+            Grande = new Grande(_eventAggregator);
+            NeutralWorker = new Worker(_eventAggregator);
 
             _workers = new List<Worker>();
             for (var i = 0; i < 5; i++)
             {
-                _workers.Add(new Worker());
+                _workers.Add(new Worker(_eventAggregator));
             }
         }
     }
@@ -100,5 +100,20 @@ namespace Viticulture.Logic.State
 
         public GameState GameState { get; }
         public string PropertyName { get; }
+    }
+
+    public static class GameStateExtensions
+    {
+        public static Worker GetFirstAvailableWorker(this IGameState gameState)
+        {
+            if (gameState.NeutralWorker.IsBought && !gameState.NeutralWorker.HasBeenUsed)
+                return gameState.NeutralWorker;
+            if (gameState.Workers.Any(p => p.IsBought && !p.HasBeenUsed))
+                return gameState.Workers.First(p => p.IsBought && !p.HasBeenUsed);
+            if (gameState.Grande.IsBought && !gameState.Grande.HasBeenUsed)
+                return gameState.Grande;
+
+            return null;
+        }
     }
 }

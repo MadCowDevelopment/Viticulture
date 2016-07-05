@@ -11,8 +11,8 @@ namespace Viticulture.Logic.Cards.Automa
         public override string Name => string.Empty;
         public override string Text => string.Empty;
 
-        public abstract List<PlayerAction> BlockedSummerActions { get; }
+        public abstract List<BonusAction> BlockedSummerActions { get; }
 
-        public abstract List<PlayerAction> BlockedWinterActions { get; }
+        public abstract List<BonusAction> BlockedWinterActions { get; }
     }
 }

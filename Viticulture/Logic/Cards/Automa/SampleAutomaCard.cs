@@ -11,11 +11,11 @@ namespace Viticulture.Logic.Cards.Automa
         [ImportingConstructor]
         public SampleAutomaCard(GiveTourAction giveTourAction, PlaySummerVisitorAction playSummerVisitorAction, HarvestFieldAction harvestFieldAction)
         {
-            BlockedSummerActions = new List<PlayerAction> { giveTourAction, playSummerVisitorAction };
-            BlockedWinterActions = new List<PlayerAction> { harvestFieldAction };
+            BlockedSummerActions = new List<BonusAction> { giveTourAction, playSummerVisitorAction };
+            BlockedWinterActions = new List<BonusAction> { harvestFieldAction };
         }
 
-        public override List<PlayerAction> BlockedSummerActions { get; }
-        public override List<PlayerAction> BlockedWinterActions { get; }
+        public override List<BonusAction> BlockedSummerActions { get; }
+        public override List<BonusAction> BlockedWinterActions { get; }
     }
 }

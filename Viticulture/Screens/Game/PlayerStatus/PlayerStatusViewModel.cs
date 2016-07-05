@@ -1,13 +1,14 @@
 ﻿using System.ComponentModel.Composition;
 using System.Linq;
 using Caliburn.Micro;
+using Viticulture.Logic.Pieces;
 using Viticulture.Logic.State;
 
 namespace Viticulture.Screens.Game.PlayerStatus
 {
     [Export(typeof(IPlayerStatusViewModel))]
     [PartCreationPolicy(CreationPolicy.NonShared)]
-    public class PlayerStatusViewModel : ViewModel, IPlayerStatusViewModel, IHandle<GameStateChanged>
+    public class PlayerStatusViewModel : ViewModel, IPlayerStatusViewModel, IHandle<GameStateChanged>, IHandle<GamePieceChanged>
     {
         private readonly IGameState _gameState;
 
@@ -37,6 +38,11 @@ namespace Viticulture.Screens.Game.PlayerStatus
         }
 
         public void Handle(GameStateChanged message)
+        {
+            Refresh();
+        }
+
+        public void Handle(GamePieceChanged message)
         {
             Refresh();
         }
