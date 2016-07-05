@@ -2,6 +2,7 @@
 using System.ComponentModel.Composition;
 using System.Linq;
 using Caliburn.Micro;
+using Viticulture.Logic.Cards.Automa;
 using Viticulture.Logic.Cards.Orders;
 using Viticulture.Logic.Cards.Vines;
 using Viticulture.Logic.Cards.Visitors;
@@ -13,6 +14,7 @@ namespace Viticulture.Logic.State
     public class GameState : PropertyChangedBase, IGameState
     {
         private readonly IEventAggregator _eventAggregator;
+        private readonly IEnumerable<AutomaCard> _automaCards;
         private readonly List<VisitorCard> _visitorCards;
         private readonly List<OrderCard> _orderCards;
         private readonly List<VineCard> _vineCards;
@@ -24,9 +26,11 @@ namespace Viticulture.Logic.State
             IEventAggregator eventAggregator,
             [ImportMany] IEnumerable<VineCard> vineCards,
             [ImportMany] IEnumerable<OrderCard> orderCards,
-            [ImportMany] IEnumerable<VisitorCard> visitorCards)
+            [ImportMany] IEnumerable<VisitorCard> visitorCards,
+            [ImportMany] IEnumerable<AutomaCard> automaCards)
         {
             _eventAggregator = eventAggregator;
+            _automaCards = automaCards;
 
             _vineCards = vineCards.ToList();
             _orderCards = orderCards.ToList();
@@ -44,18 +48,19 @@ namespace Viticulture.Logic.State
         public int Money { get; set; }
         public Irigation Irigation { get; private set; }
         public IEnumerable<Worker> Workers => _workers;
-        public Deck VineDeck { get; private set; }
-        public Deck SummerVisitorDeck { get; private set; }
+        public Deck<VineCard> VineDeck { get; private set; }
+        public Deck<VisitorCard> SummerVisitorDeck { get; private set; }
+        public Deck<VisitorCard> WinterVisitorDeck { get; private set; }
+        public Deck<OrderCard> OrderDeck { get; private set; }
+        public Deck<AutomaCard> AutomaDeck { get; private set; }
         public Hand Hand { get; private set; }
         public int RemainingBonusActions { get; set; }
         public int Round { get; set; }
         public Season Season { get; set; }
         public int VictoryPoints { get; set; }
 
-        public Deck OrderDeck { get; private set; }
-        public Deck WinterVisitorDeck { get; private set; }
-
         public Worker NeutralWorker { get; private set; }
+        public AutomaCard AutomaCard { get; set; }
 
         public void Reset()
         {
@@ -66,10 +71,11 @@ namespace Viticulture.Logic.State
 
             Hand = new Hand();
 
-            VineDeck = new Deck(Hand, _vineCards);
-            OrderDeck = new Deck(Hand, _orderCards);
-            SummerVisitorDeck = new Deck(Hand, _visitorCards.Where(p => p.Season == Season.Summer));
-            WinterVisitorDeck = new Deck(Hand, _visitorCards.Where(p => p.Season == Season.Winter));
+            VineDeck = new Deck<VineCard>(Hand, _vineCards);
+            OrderDeck = new Deck<OrderCard>(Hand, _orderCards);
+            SummerVisitorDeck = new Deck<VisitorCard>(Hand, _visitorCards.Where(p => p.Season == Season.Summer));
+            WinterVisitorDeck = new Deck<VisitorCard>(Hand, _visitorCards.Where(p => p.Season == Season.Winter));
+            AutomaDeck = new Deck<AutomaCard>(Hand, _automaCards);
 
             Irigation = new Irigation();
 

@@ -86,6 +86,23 @@
       <DependentUpon>AppView.xaml</DependentUpon>
     </Compile>
     <Compile Include="AppViewModel.cs" />
+    <Compile Include="Logic\Actions\Summer\BuildStructureAction.cs" />
+    <Compile Include="Logic\Actions\Summer\DrawVineAction.cs" />
+    <Compile Include="Logic\Actions\Summer\GiveTourAction.cs" />
+    <Compile Include="Logic\Actions\ISummerAction.cs" />
+    <Compile Include="Logic\Actions\IWinterAction.cs" />
+    <Compile Include="Logic\Actions\PlayerAction.cs" />
+    <Compile Include="Logic\Actions\Summer\PlantVineAction.cs" />
+    <Compile Include="Logic\Actions\Summer\PlaySummerVisitorAction.cs" />
+    <Compile Include="Logic\Actions\Summer\SellGrapeOrFieldAction.cs" />
+    <Compile Include="Logic\Actions\Winter\DrawOrderAction.cs" />
+    <Compile Include="Logic\Actions\Winter\FillOrderAction.cs" />
+    <Compile Include="Logic\Actions\Winter\HarvestFieldAction.cs" />
+    <Compile Include="Logic\Actions\Winter\MakeWineAction.cs" />
+    <Compile Include="Logic\Actions\Winter\PlayWinterVisitorAction.cs" />
+    <Compile Include="Logic\Actions\Winter\TrainWorkerAction.cs" />
+    <Compile Include="Logic\Cards\Automa\AutomaCard.cs" />
+    <Compile Include="Logic\Cards\Automa\SampleAutomaCard.cs" />
     <Compile Include="Screens\GameModeSelection\GameModeSelectionView.xaml.cs">
       <DependentUpon>GameModeSelectionView.xaml</DependentUpon>
     </Compile>
@@ -315,7 +332,6 @@
     <Resource Include="FodyWeavers.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Logic\Cards\Automa\" />
     <Folder Include="Logic\Cards\Visitors\Summer\" />
     <Folder Include="Logic\Cards\Visitors\Winter\" />
   </ItemGroup>

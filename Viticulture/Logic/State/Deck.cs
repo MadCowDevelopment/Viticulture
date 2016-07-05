@@ -5,38 +5,45 @@ using Viticulture.Utils;
 
 namespace Viticulture.Logic.State
 {
-    public class Deck
+    public class Deck<T> where T: Card
     {
         private readonly Hand _hand;
-        private readonly List<Card> _cards;
-        private readonly List<Card> _discard;
+        private readonly List<T> _cards;
+        private readonly List<T> _discard;
 
-        public Deck(Hand hand, IEnumerable<Card> cards)
+        public Deck(Hand hand, IEnumerable<T> cards)
         {
             _hand = hand;
-            _cards = new List<Card>(cards);
-            _discard = new List<Card>();
+            _cards = new List<T>(cards);
+            _discard = new List<T>();
 
             _cards.Shuffle();
         }
 
-        private IEnumerable<Card> Cards => _cards;
+        private IEnumerable<T> Cards => _cards;
 
         public void DrawToHand()
         {
             _hand.AddCard(Draw());
         }
 
-        public Card Draw()
+        public T Draw()
         {
-            if (_cards.Any())
+            if (!_cards.Any())
             {
                 _cards.AddRange(_discard);
                 _discard.Clear();
                 _cards.Shuffle();
             }
 
-            return _cards.LastOrDefault();
+            var card = _cards.LastOrDefault();
+            _cards.Remove(card);
+            return card;
+        }
+
+        public void Discard(T card)
+        {
+            _discard.Add(card);
         }
     }
 }

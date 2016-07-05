@@ -1,12 +1,14 @@
 using System.ComponentModel.Composition;
+using Caliburn.Micro;
 using Viticulture.Logic.GameModes;
 using Viticulture.Logic.State;
+using Viticulture.Utils;
 
 namespace Viticulture.Logic
 {
     [Export(typeof(IGameLogic))]
     [PartCreationPolicy(CreationPolicy.NonShared)]
-    public class GameLogic : IGameLogic
+    public class GameLogic : IGameLogic, IHandle<GameStateChanged>
     {
         private readonly IGameState _gameState;
 
@@ -20,6 +22,23 @@ namespace Viticulture.Logic
         {
             _gameState.Reset();
             gameMode.Initialize(_gameState);
+        }
+
+        public void Handle(GameStateChanged message)
+        {
+            if (message.PropertyName == _gameState.GetMemberName(p => p.Season))
+            {
+                HandleSeasonChange();
+            }
+        }
+
+        private void HandleSeasonChange()
+        {
+            if (_gameState.Season == Season.Summer)
+            {
+                if (_gameState.AutomaCard != null) _gameState.AutomaDeck.Discard(_gameState.AutomaCard);
+                _gameState.AutomaCard = _gameState.AutomaDeck.Draw();
+            }
         }
     }
 }
