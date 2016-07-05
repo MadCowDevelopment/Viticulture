@@ -8,18 +8,18 @@ namespace Viticulture.Logic.Actions.Summer
     {
         public override string Text => "Plant 1 vine";
         public override string BonusText => "+1 vine";
+
+        [ImportingConstructor]
+        public PlantVineAction(IEventAggregator eventAggregator) : base(eventAggregator)
+        {
+        }
+
         public override bool OnExecute()
         {
             return true;
         }
 
         protected override void OnExecuteBonus()
-        {
-            
-        }
-
-        [ImportingConstructor]
-        public PlantVineAction(IEventAggregator eventAggregator) : base(eventAggregator)
         {
         }
     }

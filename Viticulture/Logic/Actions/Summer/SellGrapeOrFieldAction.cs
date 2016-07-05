@@ -8,6 +8,12 @@ namespace Viticulture.Logic.Actions.Summer
     {
         public override string Text => "Sell 1 grape or sell/buy 1 field";
         public override string BonusText => "+1 VP";
+
+        [ImportingConstructor]
+        public SellGrapeOrFieldAction(IEventAggregator eventAggregator) : base(eventAggregator)
+        {
+        }
+
         public override bool OnExecute()
         {
             return true;
@@ -15,12 +21,7 @@ namespace Viticulture.Logic.Actions.Summer
 
         protected override void OnExecuteBonus()
         {
-            
-        }
-
-        [ImportingConstructor]
-        public SellGrapeOrFieldAction(IEventAggregator eventAggregator) : base(eventAggregator)
-        {
+            GameState.VictoryPoints++;
         }
     }
 }

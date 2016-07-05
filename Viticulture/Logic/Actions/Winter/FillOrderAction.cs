@@ -9,6 +9,11 @@ namespace Viticulture.Logic.Actions.Winter
         public override string Text => "Fill 1 order";
         public override string BonusText => "+1 VP";
 
+        [ImportingConstructor]
+        public FillOrderAction(IEventAggregator eventAggregator) : base(eventAggregator)
+        {
+        }
+
         public override bool OnExecute()
         {
             return true;
@@ -16,12 +21,7 @@ namespace Viticulture.Logic.Actions.Winter
 
         protected override void OnExecuteBonus()
         {
-            
-        }
-
-        [ImportingConstructor]
-        public FillOrderAction(IEventAggregator eventAggregator) : base(eventAggregator)
-        {
+            GameState.VictoryPoints++;
         }
     }
 }

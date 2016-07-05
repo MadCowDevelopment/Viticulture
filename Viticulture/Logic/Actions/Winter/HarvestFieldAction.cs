@@ -9,18 +9,17 @@ namespace Viticulture.Logic.Actions.Winter
         public override string Text => "Harvest 1 field";
         public override string BonusText => "+1 field";
 
+        [ImportingConstructor]
+        public HarvestFieldAction(IEventAggregator eventAggregator) : base(eventAggregator)
+        {
+        }
+
         public override bool OnExecute()
         {
             return true;
         }
 
         protected override void OnExecuteBonus()
-        {
-            
-        }
-
-        [ImportingConstructor]
-        public HarvestFieldAction(IEventAggregator eventAggregator) : base(eventAggregator)
         {
         }
     }

@@ -9,19 +9,20 @@ namespace Viticulture.Logic.Actions.Summer
         public override string Text => "Give tour to gain 2 lira";
         public override string BonusText => "+1 lira";
 
+        [ImportingConstructor]
+        public GiveTourAction(IEventAggregator eventAggregator) : base(eventAggregator)
+        {
+        }
+
         public override bool OnExecute()
         {
+            GameState.Money += 2;
             return true;
         }
 
         protected override void OnExecuteBonus()
         {
-            
-        }
-
-        [ImportingConstructor]
-        public GiveTourAction(IEventAggregator eventAggregator) : base(eventAggregator)
-        {
+            GameState.Money++;
         }
     }
 }

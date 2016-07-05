@@ -9,6 +9,11 @@ namespace Viticulture.Logic.Actions.Summer
         public override string Text => "Play summer visitor";
         public override string BonusText => "+1 visitor";
 
+        [ImportingConstructor]
+        public PlaySummerVisitorAction(IEventAggregator eventAggregator) : base(eventAggregator)
+        {
+        }
+
         public override bool OnExecute()
         {
             return true;
@@ -17,11 +22,6 @@ namespace Viticulture.Logic.Actions.Summer
         protected override void OnExecuteBonus()
         {
             
-        }
-
-        [ImportingConstructor]
-        public PlaySummerVisitorAction(IEventAggregator eventAggregator) : base(eventAggregator)
-        {
         }
     }
 }

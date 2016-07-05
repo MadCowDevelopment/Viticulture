@@ -8,6 +8,12 @@ namespace Viticulture.Logic.Actions.Summer
     {
         public override string Text => "Build 1 structure";
         public override string BonusText => "+1 lira";
+
+        [ImportingConstructor]
+        public BuildStructureAction(IEventAggregator eventAggregator) : base(eventAggregator)
+        {
+        }
+
         public override bool OnExecute()
         {
             return true;
@@ -15,12 +21,7 @@ namespace Viticulture.Logic.Actions.Summer
 
         protected override void OnExecuteBonus()
         {
-            
-        }
-
-        [ImportingConstructor]
-        public BuildStructureAction(IEventAggregator eventAggregator) : base(eventAggregator)
-        {
+            GameState.Money++;
         }
     }
 }

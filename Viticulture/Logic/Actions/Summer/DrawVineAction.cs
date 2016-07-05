@@ -9,19 +9,20 @@ namespace Viticulture.Logic.Actions.Summer
         public override string Text => "Draw a vine card";
         public override string BonusText => "+1 vine";
 
+        [ImportingConstructor]
+        public DrawVineAction(IEventAggregator eventAggregator) : base(eventAggregator)
+        {
+        }
+
         public override bool OnExecute()
         {
+            GameState.VineDeck.DrawToHand();
             return true;
         }
 
         protected override void OnExecuteBonus()
         {
-            
-        }
-
-        [ImportingConstructor]
-        public DrawVineAction(IEventAggregator eventAggregator) : base(eventAggregator)
-        {
+            GameState.VineDeck.DrawToHand();   
         }
     }
 }

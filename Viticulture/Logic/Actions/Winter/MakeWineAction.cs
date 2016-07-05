@@ -9,6 +9,11 @@ namespace Viticulture.Logic.Actions.Winter
         public override string Text => "Make up to 2 wine tokens";
         public override string BonusText => "+1 wine";
 
+        [ImportingConstructor]
+        public MakeWineAction(IEventAggregator eventAggregator) : base(eventAggregator)
+        {
+        }
+
         public override bool OnExecute()
         {
             return true;
@@ -17,11 +22,6 @@ namespace Viticulture.Logic.Actions.Winter
         protected override void OnExecuteBonus()
         {
             
-        }
-
-        [ImportingConstructor]
-        public MakeWineAction(IEventAggregator eventAggregator) : base(eventAggregator)
-        {
         }
     }
 }
