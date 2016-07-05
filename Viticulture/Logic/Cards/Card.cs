@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Viticulture.Logic.State;
 
 namespace Viticulture.Logic.Cards
 {
@@ -11,5 +7,12 @@ namespace Viticulture.Logic.Cards
         public abstract string Name { get; }
 
         public abstract string Text { get; }
+
+        public IDeck Deck { get; set; }
+
+        public void Discard()
+        {
+            Deck.Discard(this);
+        }
     }
 }

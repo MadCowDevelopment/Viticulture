@@ -29,6 +29,8 @@ namespace Viticulture.Logic.State
         int VictoryPoints { get; set; }
         Worker NeutralWorker { get; }
         AutomaCard AutomaCard { get; set; }
+        int NumberOfRounds { get; set; }
+        int ResidualMoney { get; set; }
         void Reset();
     }
 }

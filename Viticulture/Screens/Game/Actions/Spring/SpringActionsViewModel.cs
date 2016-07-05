@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.Composition;
+using Viticulture.Logic;
 using Viticulture.Logic.State;
 using Viticulture.Services;
 
@@ -8,12 +10,14 @@ namespace Viticulture.Screens.Game.Actions.Spring
     [Export(typeof(ISpringActionsViewModel))]
     public class SpringActionsViewModel : ViewModel, ISpringActionsViewModel
     {
+        private readonly IGameLogic _gameLogic;
         private readonly IGameState _gameState;
-        private readonly List<Benefit> _benefits = new List<Benefit>();
+        private readonly ObservableCollection<Benefit> _benefits = new ObservableCollection<Benefit>();
 
         [ImportingConstructor]
-        public SpringActionsViewModel(IGameState gameState, IPlayerSelection playerSelection)
+        public SpringActionsViewModel(IGameLogic gameLogic, IGameState gameState, IPlayerSelection playerSelection)
         {
+            _gameLogic = gameLogic;
             _gameState = gameState;
             _benefits.Add(new NoneBenefit());
             _benefits.Add(new VineBenefit());
@@ -29,8 +33,9 @@ namespace Viticulture.Screens.Game.Actions.Spring
         public void SelectBenefit(Benefit benefit)
         {
             benefit.Apply(_gameState);
-            _gameState.Season = Season.Summer;
             _benefits.Remove(benefit);
+            _gameLogic.EndSeason();
+            Refresh();
         }
     }
 

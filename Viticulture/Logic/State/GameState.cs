@@ -61,11 +61,15 @@ namespace Viticulture.Logic.State
 
         public Worker NeutralWorker { get; private set; }
         public AutomaCard AutomaCard { get; set; }
+        public int NumberOfRounds { get; set; }
+        public int ResidualMoney { get; set; }
 
         public void Reset()
         {
             VictoryPoints = 0;
             Money = 0;
+            NumberOfRounds = 0;
+            ResidualMoney = 0;
             RemainingBonusActions = 0;
             Round = 1;
 

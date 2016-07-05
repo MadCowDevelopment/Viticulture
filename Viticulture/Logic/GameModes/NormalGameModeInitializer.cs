@@ -27,6 +27,8 @@ namespace Viticulture.Logic.GameModes
 
             papaCard.Setup(gameState);
             mamaCard.Setup(gameState);
+
+            gameState.NumberOfRounds = 7;
         }
     }
 }

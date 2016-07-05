@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using Caliburn.Micro;
+using Viticulture.Logic.Actions;
 using Viticulture.Logic.GameModes;
 using Viticulture.Logic.State;
 using Viticulture.Services;
@@ -8,18 +10,22 @@ using Viticulture.Utils;
 namespace Viticulture.Logic
 {
     [Export(typeof(IGameLogic))]
-    [PartCreationPolicy(CreationPolicy.NonShared)]
-    public class GameLogic : IGameLogic, IHandle<GameStateChanged>
+    public class GameLogic : IGameLogic
     {
+        private readonly IEventAggregator _eventAggregator;
         private readonly IGameState _gameState;
         private readonly IPlayerSelection _playerSelection;
+        private readonly IEnumerable<PlayerAction> _actions;
 
         [ImportingConstructor]
-        public GameLogic(IEventAggregator eventAggregator, IGameState gameState, IPlayerSelection playerSelection)
+        public GameLogic(IEventAggregator eventAggregator, IGameState gameState, IPlayerSelection playerSelection,
+            [ImportMany] IEnumerable<PlayerAction> actions)
         {
-            eventAggregator.Subscribe(this);
+            _eventAggregator = eventAggregator;
+            _eventAggregator.Subscribe(this);
             _gameState = gameState;
             _playerSelection = playerSelection;
+            _actions = actions;
         }
 
         public void Initialize(IGameMode gameMode)
@@ -28,30 +34,61 @@ namespace Viticulture.Logic
             gameMode.Initialize(_gameState);
         }
 
-        public void Handle(GameStateChanged message)
+        public async void EndSeason()
         {
-            if (message.PropertyName == _gameState.GetMemberName(p => p.Season))
+            if (_gameState.Season == Season.Spring)
             {
-                HandleSeasonChange();
-            }
-        }
-
-        private async void HandleSeasonChange()
-        {
-            if (_gameState.Season == Season.Summer)
-            {
-                if (_gameState.AutomaCard != null) _gameState.AutomaDeck.Discard(_gameState.AutomaCard);
+                _gameState.AutomaCard?.Discard();
                 _gameState.AutomaCard = _gameState.AutomaDeck.Draw();
                 _gameState.AutomaCard.BlockedSummerActions.ForEach(p => p.HasBeenUsed = true);
-                _gameState.AutomaCard.BlockedWinterActions.ForEach(p => p.HasBeenUsed = true);
+                _gameState.Season++;
             }
-            else if (_gameState.Season == Season.Fall)
+            else if (_gameState.Season == Season.Summer)
             {
                 var result = await _playerSelection.Select("Fall", "Choose a visitor card", "summer", "winter");
                 if (result == Selection.Option1) _gameState.SummerVisitorDeck.DrawToHand();
                 else _gameState.WinterVisitorDeck.DrawToHand();
-                _gameState.Season = Season.Winter;
+
+                _gameState.Season++;
+
+                _gameState.AutomaCard?.Discard();
+                _gameState.AutomaCard = _gameState.AutomaDeck.Draw();
+                _gameState.AutomaCard.BlockedWinterActions.ForEach(p => p.HasBeenUsed = true);
+                _gameState.Season++;
             }
+            else if (_gameState.Season == Season.Winter)
+            {
+                EndRound();
+            }
+        }
+
+        private void EndRound()
+        {
+            if (CheckGameOver())
+            {
+                _eventAggregator.PublishOnCurrentThread(new GameOverMessage(_gameState));
+                return;
+            }
+
+            _actions.ForEach(p => p.HasBeenUsed = false);
+            _gameState.Season = Season.Spring;
+            _gameState.Round++;
+            _gameState.Money += _gameState.ResidualMoney;
+        }
+
+        private bool CheckGameOver()
+        {
+            return _gameState.Round == _gameState.NumberOfRounds;
+        }
+    }
+
+    public class GameOverMessage
+    {
+        public IGameState GameState { get; private set; }
+
+        public GameOverMessage(IGameState gameState)
+        {
+            GameState = gameState;
         }
     }
 }

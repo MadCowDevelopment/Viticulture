@@ -1,20 +1,20 @@
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
+using Viticulture.Logic;
 using Viticulture.Logic.Actions;
-using Viticulture.Logic.State;
 
 namespace Viticulture.Screens.Game.Actions.Summer
 {
     [Export(typeof(ISummerActionsViewModel))]
     public class SummerActionsViewModel : ViewModel, ISummerActionsViewModel
     {
-        private readonly IGameState _gameState;
+        private readonly IGameLogic _gameLogic;
 
         [ImportingConstructor]
-        public SummerActionsViewModel([ImportMany]IEnumerable<PlayerAction> actions, IGameState gameState)
+        public SummerActionsViewModel([ImportMany]IEnumerable<PlayerAction> actions, IGameLogic gameLogic)
         {
-            _gameState = gameState;
+            _gameLogic = gameLogic;
             Actions = actions.Where(p => p is ISummerAction).ToList();
         }
 
@@ -22,7 +22,7 @@ namespace Viticulture.Screens.Game.Actions.Summer
 
         public void EndTurn()
         {
-            _gameState.Season++;
+            _gameLogic.EndSeason();
         }
     }
 }

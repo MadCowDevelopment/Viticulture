@@ -5,7 +5,7 @@ using Viticulture.Utils;
 
 namespace Viticulture.Logic.State
 {
-    public class Deck<T> where T: Card
+    public class Deck<T> : IDeck where T: Card
     {
         private readonly Hand _hand;
         private readonly List<T> _cards;
@@ -15,6 +15,7 @@ namespace Viticulture.Logic.State
         {
             _hand = hand;
             _cards = new List<T>(cards);
+            _cards.ForEach(p => p.Deck = this);
             _discard = new List<T>();
 
             _cards.Shuffle();
@@ -41,9 +42,14 @@ namespace Viticulture.Logic.State
             return card;
         }
 
-        public void Discard(T card)
+        public void Discard(Card card)
         {
-            _discard.Add(card);
+            _discard.Add(card as T);
         }
+    }
+
+    public interface IDeck
+    {
+        void Discard(Card card);
     }
 }
