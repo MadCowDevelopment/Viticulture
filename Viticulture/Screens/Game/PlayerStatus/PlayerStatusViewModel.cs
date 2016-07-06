@@ -24,9 +24,12 @@ namespace Viticulture.Screens.Game.PlayerStatus
 
         public int Bonus => _gameState.RemainingBonusActions;
         public int VictoryPoints => _gameState.VictoryPoints;
+        public int Residual => _gameState.ResidualMoney;
+        public int Grande => _gameState.Grande.HasBeenUsed ? 0 : 1;
         public int Lira => _gameState.Money;
         public int Round => _gameState.Round;
 
+        
         public int Workers
         {
             get

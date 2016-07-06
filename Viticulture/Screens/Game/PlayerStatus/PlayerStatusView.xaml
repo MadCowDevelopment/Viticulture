@@ -18,6 +18,10 @@
       <ColumnDefinition Width="*"/>
       <ColumnDefinition Width="*"/>
       <ColumnDefinition Width="*"/>
+      <ColumnDefinition Width="*"/>
+      <ColumnDefinition Width="*"/>
+      <ColumnDefinition Width="*"/>
+      <ColumnDefinition Width="*"/>
     </Grid.ColumnDefinitions>
     
     <TextBlock Grid.Column="0" Text="Lira:" FontSize="16" HorizontalAlignment="Right"/>
@@ -26,14 +30,20 @@
     <TextBlock Grid.Column="2" Text="Workers:" FontSize="16" HorizontalAlignment="Right"/>
     <TextBlock Grid.Column="3" Margin="4 0 0 0" Text="{Binding Workers}" FontSize="16" HorizontalAlignment="Left"/>
 
-    <TextBlock Grid.Column="4" Text="VP:" FontSize="16" HorizontalAlignment="Right"/>
-    <TextBlock Grid.Column="5" Margin="4 0 0 0" Text="{Binding VictoryPoints}" FontSize="16" HorizontalAlignment="Left"/>
+    <TextBlock Grid.Column="4" Text="Grande:" FontSize="16" HorizontalAlignment="Right"/>
+    <TextBlock Grid.Column="5" Margin="4 0 0 0" Text="{Binding Grande}" FontSize="16" HorizontalAlignment="Left"/>
 
-    <TextBlock Grid.Column="6" Text="Round:" FontSize="16" HorizontalAlignment="Right"/>
-    <TextBlock Grid.Column="7" Margin="4 0 0 0" Text="{Binding Round}" FontSize="16" HorizontalAlignment="Left"/>
+    <TextBlock Grid.Column="6" Text="VP:" FontSize="16" HorizontalAlignment="Right"/>
+    <TextBlock Grid.Column="7" Margin="4 0 0 0" Text="{Binding VictoryPoints}" FontSize="16" HorizontalAlignment="Left"/>
+
+    <TextBlock Grid.Column="8" Text="Round:" FontSize="16" HorizontalAlignment="Right"/>
+    <TextBlock Grid.Column="9" Margin="4 0 0 0" Text="{Binding Round}" FontSize="16" HorizontalAlignment="Left"/>
               
-    <TextBlock Grid.Column="8" Text="Bonus:" FontSize="16" HorizontalAlignment="Right"/>
-    <TextBlock Grid.Column="9" Margin="4 0 0 0"  Text="{Binding Bonus}" FontSize="16" HorizontalAlignment="Left"/>
+    <TextBlock Grid.Column="10" Text="Bonus:" FontSize="16" HorizontalAlignment="Right"/>
+    <TextBlock Grid.Column="11" Margin="4 0 0 0"  Text="{Binding Bonus}" FontSize="16" HorizontalAlignment="Left"/>
+
+    <TextBlock Grid.Column="12" Text="Residual:" FontSize="16" HorizontalAlignment="Right"/>
+    <TextBlock Grid.Column="13" Margin="4 0 0 0" Text="{Binding Residual}" FontSize="16" HorizontalAlignment="Left"/>
 
   </Grid>
 </UserControl>

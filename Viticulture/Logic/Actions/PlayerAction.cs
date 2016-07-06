@@ -38,8 +38,16 @@ namespace Viticulture.Logic.Actions
             var result = await OnExecute();
             if (!result) return;
 
-            if (HasBeenUsed) GameState.Grande.HasBeenUsed = true;
-            else GameState.GetFirstAvailableWorker().HasBeenUsed = true;
+            if (IsUnlimited)
+            {
+                var worker = GameState.GetFirstAvailableWorker();
+                worker.HasBeenUsed = true;
+            }
+            else
+            {
+                if (HasBeenUsed) GameState.Grande.HasBeenUsed = true;
+                else GameState.GetFirstAvailableWorker().HasBeenUsed = true;
+            }
 
             HasBeenUsed = true;
 

@@ -7,5 +7,7 @@
         int Round { get; }
         int Bonus { get; }
         int VictoryPoints { get; }
+        int Residual { get; }
+        int Grande { get; }
     }
 }
