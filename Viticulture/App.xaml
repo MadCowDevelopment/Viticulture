@@ -8,6 +8,7 @@
         
         <ResourceDictionary>
           <local:MefBootstrapper x:Key="bootstrapper" />
+          <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
         </ResourceDictionary>
         
         <!-- MahApps.Metro resource dictionaries. Make sure that all file names are Case Sensitive! -->

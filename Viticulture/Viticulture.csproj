@@ -134,6 +134,11 @@
     <Compile Include="Screens\Game\Buildings\BuildingsViewModel.cs" />
     <Compile Include="Screens\Game\Cellar\CellarViewModel.cs" />
     <Compile Include="Screens\Game\Crushpad\CrushpadViewModel.cs" />
+    <Compile Include="Screens\Game\Fields\FieldsView.xaml.cs">
+      <DependentUpon>FieldsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\Game\Fields\FieldsViewModel.cs" />
+    <Compile Include="Screens\Game\Fields\IFieldsViewModel.cs" />
     <Compile Include="Screens\Game\GameView.xaml.cs">
       <DependentUpon>GameView.xaml</DependentUpon>
     </Compile>
@@ -250,6 +255,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Screens\Game\Buildings\BuildingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Screens\Game\Fields\FieldsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

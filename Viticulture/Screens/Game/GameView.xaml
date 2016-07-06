@@ -19,17 +19,13 @@
         <ColumnDefinition Width="2*"/>
         <ColumnDefinition Width="*"/>
       </Grid.ColumnDefinitions>
-      <controls:MetroAnimatedTabControl Grid.Column="0" x:Name="Tabs">
-        <!--<controls:MetroAnimatedTabControl.Items>
-          <controls:MetroTabItem Header="Actions">
-            <ContentControl Content="{Binding Actions}"/>
-          </controls:MetroTabItem>
-          <controls:MetroTabItem Header="Visitor Cards">
-            <ContentControl Content="{Binding Visitors}"/>
-          </controls:MetroTabItem>
-        </controls:MetroAnimatedTabControl.Items>-->
-      </controls:MetroAnimatedTabControl>
-      <ContentControl Grid.Column="1" x:Name="Buildings"/>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="Auto"/>
+      </Grid.RowDefinitions>
+      <controls:MetroAnimatedTabControl Grid.Column="0" Grid.RowSpan="2" x:Name="Tabs"/>
+      <ContentControl Grid.Column="1" Grid.Row="0" x:Name="Buildings"/>
+      <ContentControl Grid.Column="1" Grid.Row="1" x:Name="Fields" Margin="4"/>
     </Grid>
 
     <Grid Grid.Row="1">

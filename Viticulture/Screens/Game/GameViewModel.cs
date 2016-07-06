@@ -6,9 +6,9 @@ using Viticulture.Screens.Game.Actions;
 using Viticulture.Screens.Game.Buildings;
 using Viticulture.Screens.Game.Cellar;
 using Viticulture.Screens.Game.Crushpad;
+using Viticulture.Screens.Game.Fields;
 using Viticulture.Screens.Game.Hand;
 using Viticulture.Screens.Game.PlayerStatus;
-using Viticulture.Services;
 
 namespace Viticulture.Screens.Game
 {
@@ -16,14 +16,12 @@ namespace Viticulture.Screens.Game
     [PartCreationPolicy(CreationPolicy.NonShared)]
     public class GameViewModel : ViewModel<IGameMode>, IGameViewModel
     {
-        private readonly INavigationService _navigationService;
         private readonly IGameLogic _gameLogic;
         private List<IViewModel> _tabs;
 
         [ImportingConstructor]
-        public GameViewModel(INavigationService navigationService, IGameLogic gameLogic)
+        public GameViewModel(IGameLogic gameLogic)
         {
-            _navigationService = navigationService;
             _gameLogic = gameLogic;
         }
 
@@ -54,5 +52,8 @@ namespace Viticulture.Screens.Game
 
         [Import]
         public ICellarViewModel Cellar { get; private set; }
+
+        [Import]
+        public IFieldsViewModel Fields { get; private set; }
     }
 }
