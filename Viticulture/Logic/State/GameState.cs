@@ -61,6 +61,12 @@ namespace Viticulture.Logic.State
         public Deck<VisitorCard> WinterVisitorDeck { get; private set; }
         public Deck<OrderCard> OrderDeck { get; private set; }
         public Deck<AutomaCard> AutomaDeck { get; private set; }
+
+        public Field Field1 { get; private set; }
+        public Field Field2 { get; private set; }
+        public Field Field3 { get; private set; }
+        public IEnumerable<Field> Fields => new List<Field> { Field1, Field2, Field3 };
+
         public Hand Hand { get; private set; }
         public int RemainingBonusActions { get; set; }
         public int Round { get; set; }
@@ -73,7 +79,7 @@ namespace Viticulture.Logic.State
         public int ResidualMoney { get; set; }
 
         public IEnumerable<GamePiece> Pieces
-            => _workers.Concat(Buildings.OfType<GamePiece>()).Concat(new List<GamePiece> {Grande});
+            => _workers.Concat(Buildings.OfType<GamePiece>()).Concat(new List<GamePiece> { Grande });
 
         public IEnumerable<Building> Buildings => new List<Building>
         {
@@ -100,18 +106,22 @@ namespace Viticulture.Logic.State
 
             VineDeck = new Deck<VineCard>(Hand, _vineCards);
             OrderDeck = new Deck<OrderCard>(Hand, _orderCards);
+            AutomaDeck = new Deck<AutomaCard>(Hand, _automaCards);
             SummerVisitorDeck = new Deck<VisitorCard>(Hand, _visitorCards.Where(p => p.Season == Season.Summer));
             WinterVisitorDeck = new Deck<VisitorCard>(Hand, _visitorCards.Where(p => p.Season == Season.Winter));
-            AutomaDeck = new Deck<AutomaCard>(Hand, _automaCards);
 
-            Trellis = new Trellis(_eventAggregator);
-            Irigation = new Irigation(_eventAggregator);
             Yoke = new Yoke(_eventAggregator);
-            TastingRoom = new TastingRoom(_eventAggregator);
+            Trellis = new Trellis(_eventAggregator);
             Cottage = new Cottage(_eventAggregator);
             Windmill = new Windmill(_eventAggregator);
-            MediumCellar = new MediumCellar(_eventAggregator);
+            Irigation = new Irigation(_eventAggregator);
             LargeCellar = new LargeCellar(_eventAggregator);
+            TastingRoom = new TastingRoom(_eventAggregator);
+            MediumCellar = new MediumCellar(_eventAggregator);
+
+            Field1 = new Field(_eventAggregator, 5);
+            Field2 = new Field(_eventAggregator, 6);
+            Field3 = new Field(_eventAggregator, 7);
 
             Grande = new Grande(_eventAggregator);
             NeutralWorker = new Worker(_eventAggregator);

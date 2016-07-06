@@ -113,6 +113,7 @@
     <Compile Include="Logic\Pieces\Buildings\Trellis.cs" />
     <Compile Include="Logic\Pieces\Buildings\Windmill.cs" />
     <Compile Include="Logic\Pieces\Buildings\Yoke.cs" />
+    <Compile Include="Logic\Pieces\Field.cs" />
     <Compile Include="Screens\GameModeSelection\GameModeSelectionView.xaml.cs">
       <DependentUpon>GameModeSelectionView.xaml</DependentUpon>
     </Compile>

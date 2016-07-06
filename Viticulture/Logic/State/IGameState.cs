@@ -32,7 +32,13 @@ namespace Viticulture.Logic.State
         Deck<VisitorCard> SummerVisitorDeck { get; }
         Deck<AutomaCard> AutomaDeck { get; }
 
+        Field Field1 { get; }
+        Field Field2 { get; }
+        Field Field3 { get; }
+        IEnumerable<Field> Fields { get; }
+
         Hand Hand { get; }
+
         int RemainingBonusActions { get; set; }
         int Round { get; set; }
         Season Season { get; set; }
