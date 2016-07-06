@@ -8,8 +8,8 @@ namespace Viticulture.Logic.State
     public class Deck<T> : IDeck where T: Card
     {
         private readonly Hand _hand;
-        private readonly List<T> _cards;
-        private readonly List<T> _discard;
+        private List<T> _cards;
+        private List<T> _discard;
 
         public Deck(Hand hand, IEnumerable<T> cards)
         {
@@ -20,6 +20,8 @@ namespace Viticulture.Logic.State
 
             _cards.Shuffle();
         }
+
+        private Deck() { }
 
         private IEnumerable<T> Cards => _cards;
 
@@ -45,6 +47,29 @@ namespace Viticulture.Logic.State
         public void Discard(Card card)
         {
             _discard.Add(card as T);
+        }
+
+        public Deck<T> Clone()
+        {
+            var clone = new Deck<T>();
+            clone._cards = _cards.Select(c => c.Clone()).OfType<T>().ToList();
+            clone._discard = _discard.Select(c => c.Clone()).OfType<T>().ToList();
+            return clone;
+        }
+
+        public void SetFromClone(Deck<T> clone, IEnumerable<Entity> entities)
+        {
+            _cards = new List<T>();
+            foreach (var card in clone._cards)
+            {
+                _cards.Add(entities.OfType<T>().First(p => p.Id == card.Id));
+            }
+
+            _discard = new List<T>();
+            foreach (var card in clone._discard)
+            {
+                _discard.Add(entities.OfType<T>().First(p => p.Id == card.Id));
+            }
         }
     }
 

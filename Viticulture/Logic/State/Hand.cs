@@ -6,9 +6,9 @@ using Viticulture.Utils;
 
 namespace Viticulture.Logic.State
 {
-    public class Hand
+    public sealed class Hand : Entity
     {
-        private readonly List<Card> _cards = new List<Card>();
+        private List<Card> _cards = new List<Card>();
 
         private IEnumerable<Card> Cards => _cards;
         public IEnumerable<VineCard> Vines => Cards.OfType<VineCard>();
@@ -21,6 +21,24 @@ namespace Viticulture.Logic.State
         public void RemoveCard(Card card)
         {
             _cards.Remove(card);
+        }
+
+        protected override void OnClone(Entity instance)
+        {
+            base.OnClone(instance);
+            var hand = instance as Hand;
+            hand._cards = _cards.Select(c => c.Clone()).OfType<Card>().ToList();
+        }
+
+        protected override void OnSetFromClone(Entity entity, IEnumerable<Entity> references)
+        {
+            base.OnSetFromClone(entity, references);
+            var clone = entity as Hand;
+            _cards = new List<Card>();
+            foreach (var card in clone.Cards)
+            {
+                _cards.Add(references.OfType<Card>().First(p => p.Id == card.Id));
+            }
         }
     }
 }

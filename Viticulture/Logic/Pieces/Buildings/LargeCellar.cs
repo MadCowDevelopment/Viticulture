@@ -8,6 +8,10 @@ namespace Viticulture.Logic.Pieces.Buildings
         {
         }
 
+        public LargeCellar()
+        {
+        }
+
         public override int Cost => 6;
         public override string Name => "Large cellar";
     }

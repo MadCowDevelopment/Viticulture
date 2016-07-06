@@ -8,6 +8,8 @@ namespace Viticulture.Logic.Pieces.Buildings
         {
         }
 
+        protected Building() { }
+
         public abstract int Cost { get; }
 
         public abstract string Name { get; }

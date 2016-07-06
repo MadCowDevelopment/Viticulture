@@ -140,14 +140,94 @@ namespace Viticulture.Logic.State
         public GameState Clone()
         {
             var gameState = new GameState();
-            // TODO: Implement cloning stuff
+            gameState.VictoryPoints = VictoryPoints;
+            gameState.Money = Money;
+            gameState.NumberOfRounds = NumberOfRounds;
+            gameState.ResidualMoney = ResidualMoney;
+            gameState.RemainingBonusActions = RemainingBonusActions;
+            gameState.Round = Round;
+
+            gameState.Hand = Hand.Clone() as Hand;
+
+            gameState.VineDeck = VineDeck.Clone();
+            gameState.OrderDeck = OrderDeck.Clone();
+            gameState.AutomaDeck = AutomaDeck.Clone();
+            gameState.SummerVisitorDeck = SummerVisitorDeck.Clone();
+            gameState.WinterVisitorDeck = WinterVisitorDeck.Clone();
+
+            gameState.Yoke = Yoke.Clone() as Yoke;
+            gameState.Trellis = Trellis.Clone() as Trellis;
+            gameState.Cottage = Cottage.Clone() as Cottage;
+            gameState.Windmill = Windmill.Clone() as Windmill;
+            gameState.Irigation = Irigation.Clone() as Irigation;
+            gameState.LargeCellar = LargeCellar.Clone() as LargeCellar;
+            gameState.TastingRoom = TastingRoom.Clone() as TastingRoom;
+            gameState.MediumCellar = MediumCellar.Clone() as MediumCellar;
+
+            gameState.Field1 = Field1.Clone() as Field;
+            gameState.Field2 = Field2.Clone() as Field;
+            gameState.Field3 = Field3.Clone() as Field;
+
+            gameState.Grande = Grande.Clone() as Grande;
+            gameState.NeutralWorker = NeutralWorker.Clone() as Worker;
+
+            gameState._workers = new List<Worker>();
+            for (var i = 0; i < 5; i++)
+            {
+                gameState._workers.Add(_workers[i].Clone() as Worker);
+            }
+
             return gameState;
         }
 
         public void SetFromClone(GameState clone)
         {
-            
+            VictoryPoints = clone.VictoryPoints;
+            Money = clone.Money;
+            NumberOfRounds = clone.NumberOfRounds;
+            ResidualMoney = clone.ResidualMoney;
+            RemainingBonusActions = clone.RemainingBonusActions;
+            Round = clone.Round;
+
+            Hand.SetFromClone(clone.Hand, Entities);
+
+            VineDeck.SetFromClone(clone.VineDeck, Entities);
+            OrderDeck.SetFromClone(clone.OrderDeck, Entities);
+            AutomaDeck.SetFromClone(clone.AutomaDeck, Entities);
+            SummerVisitorDeck.SetFromClone(clone.SummerVisitorDeck, Entities);
+            WinterVisitorDeck.SetFromClone(clone.WinterVisitorDeck, Entities);
+
+            Yoke.SetFromClone(clone.Yoke, Entities);
+            Trellis.SetFromClone(clone.Trellis, Entities);
+            Cottage.SetFromClone(clone.Cottage, Entities);
+            Windmill.SetFromClone(clone.Windmill, Entities);
+            Irigation.SetFromClone(clone.Irigation, Entities);
+            LargeCellar.SetFromClone(clone.LargeCellar, Entities);
+            TastingRoom.SetFromClone(clone.TastingRoom, Entities);
+            MediumCellar.SetFromClone(clone.MediumCellar, Entities);
+
+            Field1.SetFromClone(clone.Field1, Entities);
+            Field2.SetFromClone(clone.Field2, Entities);
+            Field3.SetFromClone(clone.Field3, Entities);
+
+            Grande.SetFromClone(clone.Grande, Entities);
+            NeutralWorker.SetFromClone(clone.NeutralWorker, Entities);
+
+            for (var i = 0; i < 5; i++)
+            {
+                _workers[i].SetFromClone(clone.Workers.ElementAt(i), Entities);
+            }
         }
+
+        private IEnumerable<Entity> Entities
+            =>
+                _automaCards.OfType<Entity>()
+                    .Concat(_orderCards)
+                    .Concat(_vineCards)
+                    .Concat(_visitorCards)
+                    .Concat(_workers)
+                    .Concat(Fields)
+                    .Concat(Buildings);
     }
 
     public class GameStateChanged

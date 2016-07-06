@@ -8,6 +8,10 @@ namespace Viticulture.Logic.Pieces.Buildings
         {
         }
 
+        public Trellis()
+        {
+        }
+
         public override int Cost => 2;
         public override string Name => "Trellis";
     }

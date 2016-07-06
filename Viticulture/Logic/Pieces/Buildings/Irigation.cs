@@ -8,6 +8,10 @@ namespace Viticulture.Logic.Pieces.Buildings
         {
         }
 
+        public Irigation()
+        {
+        }
+
         public override int Cost => 3;
         public override string Name => "Irigation";
     }

@@ -8,6 +8,10 @@ namespace Viticulture.Logic.Pieces.Buildings
         {
         }
 
+        public Windmill()
+        {
+        }
+
         public override int Cost => 5;
         public override string Name => "Windmill";
     }

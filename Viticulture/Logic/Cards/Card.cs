@@ -2,7 +2,7 @@
 
 namespace Viticulture.Logic.Cards
 {
-    public abstract class Card
+    public abstract class Card : Entity
     {
         public abstract string Name { get; }
 

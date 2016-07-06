@@ -7,5 +7,7 @@ namespace Viticulture.Logic.Pieces
         public Worker(IEventAggregator aggregator) : base(aggregator)
         {
         }
+
+        public Worker() { }
     }
 }

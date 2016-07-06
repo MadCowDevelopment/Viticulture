@@ -105,6 +105,7 @@
     <Compile Include="Logic\Actions\Winter\TrainWorkerAction.cs" />
     <Compile Include="Logic\Cards\Automa\AutomaCard.cs" />
     <Compile Include="Logic\Cards\Automa\SampleAutomaCard.cs" />
+    <Compile Include="Logic\Entity.cs" />
     <Compile Include="Logic\Cards\Vines\CabernetSauvignonCard.cs" />
     <Compile Include="Logic\Pieces\Buildings\Cottage.cs" />
     <Compile Include="Logic\Pieces\Buildings\LargeCellar.cs" />

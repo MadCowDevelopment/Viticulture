@@ -7,5 +7,9 @@ namespace Viticulture.Logic.Pieces
         public Grande(IEventAggregator aggregator) : base(aggregator)
         {
         }
+
+        public Grande()
+        {
+        }
     }
 }

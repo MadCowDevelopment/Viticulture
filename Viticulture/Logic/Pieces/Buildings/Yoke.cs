@@ -8,6 +8,10 @@ namespace Viticulture.Logic.Pieces.Buildings
         {
         }
 
+        public Yoke()
+        {
+        }
+
         public override int Cost => 2;
         public override string Name => "Yoke";
     }

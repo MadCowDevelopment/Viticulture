@@ -5,9 +5,9 @@ using Viticulture.Logic.Cards.Vines;
 
 namespace Viticulture.Logic.Pieces
 {
-    public class Field : GamePiece
+    public sealed class Field : GamePiece
     {
-        private readonly List<VineCard> _vines;
+        private List<VineCard> _vines;
 
         public Field(IEventAggregator aggregator, int value) : base(aggregator)
         {
@@ -15,6 +15,8 @@ namespace Viticulture.Logic.Pieces
             IsBought = true;
             _vines = new List<VineCard>();
         }
+
+        public Field() { }
 
         public int Value { get; private set; }
 
@@ -34,6 +36,24 @@ namespace Viticulture.Logic.Pieces
         public void UprootVine(VineCard vine)
         {
             _vines.Remove(vine);
+        }
+
+        protected override void OnClone(Entity entity)
+        {
+            base.OnClone(entity);
+            var clone = entity as Field;
+            clone._vines = _vines.Select(v => v.Clone()).OfType<VineCard>().ToList();
+        }
+
+        protected override void OnSetFromClone(Entity entity, IEnumerable<Entity> references)
+        {
+            base.OnSetFromClone(entity, references);
+            var clone = entity as Field;
+            _vines = new List<VineCard>();
+            foreach (var vineCard in clone.Vines)
+            {
+                _vines.Add(references.OfType<VineCard>().First(p => p.Id == vineCard.Id));
+            }
         }
     }
 }
