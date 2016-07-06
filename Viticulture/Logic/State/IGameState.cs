@@ -6,6 +6,7 @@ using Viticulture.Logic.Cards.Orders;
 using Viticulture.Logic.Cards.Vines;
 using Viticulture.Logic.Cards.Visitors;
 using Viticulture.Logic.Pieces;
+using Viticulture.Logic.Pieces.Buildings;
 
 namespace Viticulture.Logic.State
 {
@@ -13,7 +14,16 @@ namespace Viticulture.Logic.State
     {
         Grande Grande { get; }
         int Money { get; set; }
+
+        Trellis Trellis { get; }
         Irigation Irigation { get; }
+        Yoke Yoke { get; }
+        TastingRoom TastingRoom { get; }
+        Cottage Cottage { get; }
+        Windmill Windmill { get; }
+        MediumCellar MediumCellar { get; }
+        LargeCellar LargeCellar { get; }
+
 
         IEnumerable<Worker> Workers { get; }
         Deck<VineCard> VineDeck { get; }
@@ -31,6 +41,7 @@ namespace Viticulture.Logic.State
         AutomaCard AutomaCard { get; set; }
         int NumberOfRounds { get; set; }
         int ResidualMoney { get; set; }
+        IEnumerable<GamePiece> Pieces { get; }
         void Reset();
     }
 }

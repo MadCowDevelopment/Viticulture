@@ -19,7 +19,13 @@ namespace Viticulture.Logic.Pieces
         }
 
         public bool IsBought { get; set; }
+
         public bool HasBeenUsed { get; set; }
+
+        public virtual void Reset()
+        {
+            HasBeenUsed = false;
+        }
     }
 
     public class GamePieceChanged

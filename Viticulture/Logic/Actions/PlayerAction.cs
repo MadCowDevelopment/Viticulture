@@ -12,7 +12,7 @@ namespace Viticulture.Logic.Actions
         private readonly IEventAggregator _eventAggregator;
 
         [ImportingConstructor]
-        public PlayerAction(IEventAggregator eventAggregator)
+        protected PlayerAction(IEventAggregator eventAggregator)
         {
             _eventAggregator = eventAggregator;
             _eventAggregator.Subscribe(this);
@@ -67,6 +67,11 @@ namespace Viticulture.Logic.Actions
         public void Handle(GamePieceChanged message)
         {
             Refresh();
+        }
+
+        public void Reset()
+        {
+            HasBeenUsed = false;
         }
     }
 }

@@ -105,6 +105,14 @@
     <Compile Include="Logic\Actions\Winter\TrainWorkerAction.cs" />
     <Compile Include="Logic\Cards\Automa\AutomaCard.cs" />
     <Compile Include="Logic\Cards\Automa\SampleAutomaCard.cs" />
+    <Compile Include="Logic\Cards\Vines\CabernetSauvignonCard.cs" />
+    <Compile Include="Logic\Pieces\Buildings\Cottage.cs" />
+    <Compile Include="Logic\Pieces\Buildings\LargeCellar.cs" />
+    <Compile Include="Logic\Pieces\Buildings\MediumCellar.cs" />
+    <Compile Include="Logic\Pieces\Buildings\TastingRoom.cs" />
+    <Compile Include="Logic\Pieces\Buildings\Trellis.cs" />
+    <Compile Include="Logic\Pieces\Buildings\Windmill.cs" />
+    <Compile Include="Logic\Pieces\Buildings\Yoke.cs" />
     <Compile Include="Screens\GameModeSelection\GameModeSelectionView.xaml.cs">
       <DependentUpon>GameModeSelectionView.xaml</DependentUpon>
     </Compile>
@@ -185,13 +193,13 @@
     <Compile Include="Logic\GameModes\NormalGameMode.cs" />
     <Compile Include="Logic\Pieces\GamePiece.cs" />
     <Compile Include="Logic\Pieces\Worker.cs" />
-    <Compile Include="Logic\Pieces\Building.cs" />
+    <Compile Include="Logic\Pieces\Buildings\Building.cs" />
     <Compile Include="Logic\State\Deck.cs" />
     <Compile Include="Logic\State\GameState.cs" />
     <Compile Include="Logic\Pieces\Grande.cs" />
     <Compile Include="Logic\State\Hand.cs" />
     <Compile Include="Logic\State\IGameState.cs" />
-    <Compile Include="Logic\Pieces\Irigation.cs" />
+    <Compile Include="Logic\Pieces\Buildings\Irigation.cs" />
     <Compile Include="Logic\State\Season.cs" />
     <Compile Include="Services\CustomMetroDialog.xaml.cs">
       <DependentUpon>CustomMetroDialog.xaml</DependentUpon>

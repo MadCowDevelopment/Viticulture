@@ -70,10 +70,11 @@ namespace Viticulture.Logic
                 return;
             }
 
-            _actions.ForEach(p => p.HasBeenUsed = false);
+            _actions.ForEach(p => p.Reset());
             _gameState.Season = Season.Spring;
             _gameState.Round++;
             _gameState.Money += _gameState.ResidualMoney;
+            _gameState.Pieces.ForEach(p => p.Reset());
         }
 
         private bool CheckGameOver()
