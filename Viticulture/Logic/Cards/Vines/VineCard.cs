@@ -14,5 +14,7 @@ namespace Viticulture.Logic.Cards.Vines
         public abstract int RedValue { get; }
 
         public abstract int WhiteValue { get; }
+
+        public string DisplayText => $"{Name} {RedValue}/{WhiteValue}";
     }
 }

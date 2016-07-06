@@ -38,6 +38,11 @@ namespace Viticulture.Logic.Actions
             var result = await OnExecute();
             if (!result) return;
 
+            AfterExecute();
+        }
+
+        protected void AfterExecute()
+        {
             if (IsUnlimited)
             {
                 var worker = GameState.GetFirstAvailableWorker();

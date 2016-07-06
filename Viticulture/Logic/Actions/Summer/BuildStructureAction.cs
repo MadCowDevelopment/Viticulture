@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.Composition;
 using System.Threading.Tasks;
 using Caliburn.Micro;
@@ -21,6 +22,8 @@ namespace Viticulture.Logic.Actions.Summer
             _mefContainer = mefContainer;
         }
 
+        public int BuildingBonus { get; set; }
+
         public override async Task<bool> OnExecute()
         {
             return await SelectBuilding();
@@ -29,12 +32,18 @@ namespace Viticulture.Logic.Actions.Summer
         private async Task<bool> SelectBuilding()
         {
             var dialogViewModel = _mefContainer.GetExportedValue<IBuildStructureViewModel>();
-            return await _metroDialog.ShowDialog(dialogViewModel);
+            dialogViewModel.BuildingBonus = BuildingBonus;
+            var selectedBuilding =  await _metroDialog.ShowDialog(dialogViewModel);
+            if (selectedBuilding == null) return false;
+            selectedBuilding.IsBought = true;
+            GameState.Money -= Math.Max(selectedBuilding.Cost - BuildingBonus, 0);
+            return true;
         }
 
-        protected override void OnExecuteBonus()
+        protected override Task<bool> OnExecuteBonus()
         {
             GameState.Money++;
+            return Task.FromResult(true);
         }
     }
 }

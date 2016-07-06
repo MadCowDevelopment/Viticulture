@@ -40,6 +40,10 @@ namespace Viticulture.Logic.State
             PropertyChanged += StateChanged;
         }
 
+        private GameState()
+        {
+        }
+
         private void StateChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             _eventAggregator.PublishOnCurrentThread(new GameStateChanged(this, e.PropertyName));
@@ -131,6 +135,18 @@ namespace Viticulture.Logic.State
             {
                 _workers.Add(new Worker(_eventAggregator));
             }
+        }
+
+        public GameState Clone()
+        {
+            var gameState = new GameState();
+            // TODO: Implement cloning stuff
+            return gameState;
+        }
+
+        public void SetFromClone(GameState clone)
+        {
+            
         }
     }
 

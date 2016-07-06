@@ -20,9 +20,10 @@ namespace Viticulture.Logic.Actions.Winter
             return Task.FromResult(true);
         }
 
-        protected override void OnExecuteBonus()
+        protected override Task<bool> OnExecuteBonus()
         {
             GameState.VictoryPoints++;
+            return Task.FromResult(true);
         }
     }
 }

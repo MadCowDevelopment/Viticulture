@@ -10,18 +10,16 @@ namespace Viticulture.Screens.Game.Actions.Summer.BuildStructure
 {
     [Export(typeof(IBuildStructureViewModel))]
     [PartCreationPolicy(CreationPolicy.NonShared)]
-    public class BuildStructureViewModel : DialogViewModel<bool>, IBuildStructureViewModel
+    public class BuildStructureViewModel : DialogViewModel<Building>, IBuildStructureViewModel
     {
         private readonly IGameState _gameState;
-        private readonly IMetroDialog _metroDialog;
         private readonly List<Building> _structures;
 
         [ImportingConstructor]
-        public BuildStructureViewModel(IGameState gameState, IMetroDialog metroDialog)
+        public BuildStructureViewModel(IGameState gameState)
         {
             _gameState = gameState;
-            _metroDialog = metroDialog;
-            _structures = gameState.Buildings.Where(p => !p.IsBought).ToList();
+            _structures = _gameState.Buildings.Where(p => !p.IsBought).ToList();
         }
 
         public IEnumerable<Building> Structures => _structures;
@@ -30,21 +28,17 @@ namespace Viticulture.Screens.Game.Actions.Summer.BuildStructure
 
         public void Buy(Building building)
         {
-            if (_gameState.Money + BuildingBonus >= building.Cost)
-            {
-                building.IsBought = true;
-                _gameState.Money -= Math.Max(building.Cost - BuildingBonus, 0);
-                Close(true);
-            }
-            else
-            {
-                _metroDialog.ShowMessage("Build structure", "You cannot afford to build that structure.");
-            }
+            Close(building);
+        }
+
+        public bool CanBuy(Building building)
+        {
+            return building.Cost <= _gameState.Money + BuildingBonus;
         }
 
         public void Cancel()
         {
-            Close(false);
+            Close(null);
         }
     }
 }

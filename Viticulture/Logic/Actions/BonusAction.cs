@@ -1,10 +1,14 @@
 ﻿using System.ComponentModel.Composition;
+using System.Threading.Tasks;
 using Caliburn.Micro;
+using Viticulture.Logic.State;
 
 namespace Viticulture.Logic.Actions
 {
     public abstract class BonusAction : PlayerAction
     {
+        private GameState _gameStateClone;
+
         [ImportingConstructor]
         protected BonusAction(IEventAggregator eventAggregator) : base(eventAggregator)
         {
@@ -14,14 +18,27 @@ namespace Viticulture.Logic.Actions
 
         public bool CanExecuteWithBonus => CanExecute && GameState.RemainingBonusActions > 0;
 
-        public void ExecuteWithBonus()
+        public async void ExecuteWithBonus()
         {
-            Execute();
-            OnExecuteBonus();
+            _gameStateClone = GameState.Clone();
+
+            var result = await OnExecute();
+            if (!result) return;
+
+            
+            result = await OnExecuteBonus();
+            if (!result)
+            {
+                GameState.SetFromClone(_gameStateClone);
+                return;
+            }
+
+            AfterExecute();
+
             GameState.RemainingBonusActions--;
         }
 
-        protected abstract void OnExecuteBonus();
+        protected abstract Task<bool> OnExecuteBonus();
 
         public override void Refresh()
         {

@@ -50,5 +50,7 @@ namespace Viticulture.Logic.State
         IEnumerable<GamePiece> Pieces { get; }
         IEnumerable<Building> Buildings { get; }
         void Reset();
+        GameState Clone();
+        void SetFromClone(GameState clone);
     }
 }

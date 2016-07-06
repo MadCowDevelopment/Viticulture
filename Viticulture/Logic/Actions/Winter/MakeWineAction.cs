@@ -20,9 +20,9 @@ namespace Viticulture.Logic.Actions.Winter
             return Task.FromResult(true);
         }
 
-        protected override void OnExecuteBonus()
+        protected override Task<bool> OnExecuteBonus()
         {
-            
+            return Task.FromResult(true);
         }
     }
 }

@@ -128,6 +128,16 @@
     </Compile>
     <Compile Include="Screens\Game\Actions\Summer\BuildStructure\BuildStructureViewModel.cs" />
     <Compile Include="Screens\Game\Actions\Summer\BuildStructure\IBuildStructureViewModel.cs" />
+    <Compile Include="Screens\Game\Actions\Summer\PlantVine\FieldSelectionView.xaml.cs">
+      <DependentUpon>FieldSelectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\Game\Actions\Summer\PlantVine\FieldSelectionViewModelModel.cs" />
+    <Compile Include="Screens\Game\Actions\Summer\PlantVine\IFieldSelectionViewModel.cs" />
+    <Compile Include="Screens\Game\Actions\Summer\PlantVine\IVineSelectionViewModel.cs" />
+    <Compile Include="Screens\Game\Actions\Summer\PlantVine\VineSelectionView.xaml.cs">
+      <DependentUpon>VineSelectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\Game\Actions\Summer\PlantVine\VineSelectionViewModel.cs" />
     <Compile Include="Screens\Game\Buildings\BuildingsView.xaml.cs">
       <DependentUpon>BuildingsView.xaml</DependentUpon>
     </Compile>
@@ -251,6 +261,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Screens\Game\Actions\Summer\BuildStructure\BuildStructureView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Screens\Game\Actions\Summer\PlantVine\FieldSelectionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Screens\Game\Actions\Summer\PlantVine\VineSelectionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
