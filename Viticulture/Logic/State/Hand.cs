@@ -10,7 +10,7 @@ namespace Viticulture.Logic.State
     {
         private List<Card> _cards = new List<Card>();
 
-        private IEnumerable<Card> Cards => _cards;
+        public IEnumerable<Card> Cards => _cards;
         public IEnumerable<VineCard> Vines => Cards.OfType<VineCard>();
 
         public void AddCard(Card card)

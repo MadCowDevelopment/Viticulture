@@ -164,6 +164,7 @@
     </Compile>
     <Compile Include="Screens\Game\Cellar\ICellarViewModel.cs" />
     <Compile Include="Screens\Game\Crushpad\ICrushpadViewModel.cs" />
+    <Compile Include="Screens\Game\Hand\CardTemplateSelector.cs" />
     <Compile Include="Screens\Game\PlayerStatus\IPlayerStatusViewModel.cs" />
     <Compile Include="Screens\Game\Actions\Spring\ISpringActionsViewModel.cs" />
     <Compile Include="Screens\Game\Actions\Summer\ISummerActionsViewModel.cs" />

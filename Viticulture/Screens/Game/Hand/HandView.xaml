@@ -1,11 +1,94 @@
-﻿<UserControl x:Class="Viticulture.Screens.Game.Hand.HandView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            <TextBlock>Visitors</TextBlock>
-    </Grid>
+﻿<UserControl 
+  x:Class="Viticulture.Screens.Game.Hand.HandView"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:vines="clr-namespace:Viticulture.Logic.Cards.Vines"
+  xmlns:orders="clr-namespace:Viticulture.Logic.Cards.Orders"
+  xmlns:visitors="clr-namespace:Viticulture.Logic.Cards.Visitors"
+  xmlns:state="clr-namespace:Viticulture.Logic.State"
+  xmlns:hand="clr-namespace:Viticulture.Screens.Game.Hand"
+  mc:Ignorable="d" 
+  d:DesignHeight="300" d:DesignWidth="300">
+  <UserControl.Resources>
+
+    <DataTemplate x:Key="VineTemplate" DataType="vines:VineCard">
+      <Border BorderBrush="Black" BorderThickness="4" CornerRadius="10" Height="120" Width="180" Margin="4">
+        <Border BorderBrush="Green" BorderThickness="4" CornerRadius="6">
+          <Grid>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="*"/>
+              <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*"/>
+              <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.ColumnSpan="2" Text="{Binding Name}" FontSize="16" HorizontalAlignment="Center"/>
+            <Border Grid.Row="1" Grid.Column="0" Background="PaleVioletRed" Width="30" Height="30" CornerRadius="15" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
+              <TextBlock Text="{Binding RedValue}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+            </Border>
+            <Border Grid.Row="1" Grid.Column="1" Background="NavajoWhite" Width="30" Height="30" CornerRadius="15" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4">
+              <TextBlock Text="{Binding WhiteValue}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+            </Border>
+            <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" Text="Trellis" Visibility="{Binding RequiresTrellis, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            <TextBlock Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Text="Irigation" Visibility="{Binding RequiresIrigation, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+          </Grid>
+        </Border>
+      </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="OrderTemplate" DataType="orders:OrderCard">
+      <Border BorderBrush="Black" BorderThickness="4" CornerRadius="10" Height="120" Width="180" Margin="4">
+        <Border BorderBrush="Purple" BorderThickness="4" CornerRadius="6">
+          <Grid>
+          </Grid>
+        </Border>
+      </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="VisitorTemplate" DataType="visitors:VisitorCard">
+      <Border BorderBrush="Black" BorderThickness="4" CornerRadius="10" Height="120" Width="180" Margin="4">
+        <Border BorderBrush="Gold" BorderThickness="4" CornerRadius="6">
+          <Border.Style>
+            <Style TargetType="Border">
+              <Style.Triggers>
+                <DataTrigger Binding="{Binding Season}" Value="{x:Static state:Season.Winter}">
+                  <Setter Property="BorderBrush" Value="Blue"/>
+                </DataTrigger>
+              </Style.Triggers>
+            </Style>
+          </Border.Style>
+          <Grid>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="{Binding Name}" FontSize="16" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Text="{Binding Text}" TextWrapping="Wrap" FontSize="15" HorizontalAlignment="Center"/>
+          </Grid>
+        </Border>
+      </Border>
+    </DataTemplate>
+
+    <hand:CardTemplateSelector 
+      x:Key="CardTemplateSelector" 
+      VineTemplate="{StaticResource VineTemplate}"
+      OrderTemplate="{StaticResource OrderTemplate}"
+      VisitorTemplate="{StaticResource VisitorTemplate}"/>
+
+  </UserControl.Resources>
+
+  <Grid>
+    <ItemsControl ItemsSource="{Binding Cards}" ItemTemplateSelector="{StaticResource CardTemplateSelector}">
+      <ItemsControl.ItemsPanel>
+        <ItemsPanelTemplate>
+          <WrapPanel/>
+        </ItemsPanelTemplate>
+      </ItemsControl.ItemsPanel>
+    </ItemsControl>
+  </Grid>
+  
 </UserControl>
