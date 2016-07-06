@@ -10,7 +10,7 @@ namespace Viticulture.Screens.Game.Actions.Summer.BuildStructure
 {
     [Export(typeof(IBuildStructureViewModel))]
     [PartCreationPolicy(CreationPolicy.NonShared)]
-    public class BuildStructureViewModel : DialogViewModel, IBuildStructureViewModel
+    public class BuildStructureViewModel : DialogViewModel<bool>, IBuildStructureViewModel
     {
         private readonly IGameState _gameState;
         private readonly IMetroDialog _metroDialog;
@@ -34,7 +34,7 @@ namespace Viticulture.Screens.Game.Actions.Summer.BuildStructure
             {
                 building.IsBought = true;
                 _gameState.Money -= Math.Max(building.Cost - BuildingBonus, 0);
-                Close();
+                Close(true);
             }
             else
             {
@@ -44,7 +44,7 @@ namespace Viticulture.Screens.Game.Actions.Summer.BuildStructure
 
         public void Cancel()
         {
-            Close();
+            Close(false);
         }
     }
 }

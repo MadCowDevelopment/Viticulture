@@ -23,14 +23,13 @@ namespace Viticulture.Logic.Actions.Summer
 
         public override async Task<bool> OnExecute()
         {
-            await SelectBuilding();
-            return true;
+            return await SelectBuilding();
         }
 
-        private async Task SelectBuilding()
+        private async Task<bool> SelectBuilding()
         {
             var dialogViewModel = _mefContainer.GetExportedValue<IBuildStructureViewModel>();
-            await _metroDialog.ShowDialog(dialogViewModel);
+            return await _metroDialog.ShowDialog(dialogViewModel);
         }
 
         protected override void OnExecuteBonus()

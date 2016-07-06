@@ -2,7 +2,7 @@
 
 namespace Viticulture.Screens.Game.Actions.Summer.BuildStructure
 {
-    public interface IBuildStructureViewModel : IDialogViewModel
+    public interface IBuildStructureViewModel : IDialogViewModel<bool>
     {
     }
 }
