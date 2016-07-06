@@ -1,11 +1,15 @@
 ﻿using System.ComponentModel.Composition;
 using Caliburn.Micro;
-using Viticulture.Logic.State;
 
 namespace Viticulture.Logic.Actions
 {
-    public abstract class BonusAction : PlayerAction, IHandle<GameStateChanged>
+    public abstract class BonusAction : PlayerAction
     {
+        [ImportingConstructor]
+        protected BonusAction(IEventAggregator eventAggregator) : base(eventAggregator)
+        {
+        }
+
         public abstract string BonusText { get; }
 
         public bool CanExecuteWithBonus => CanExecute && GameState.RemainingBonusActions > 0;
@@ -23,11 +27,6 @@ namespace Viticulture.Logic.Actions
         {
             base.Refresh();
             NotifyOfPropertyChange(() => CanExecuteWithBonus);
-        }
-
-        [ImportingConstructor]
-        public BonusAction(IEventAggregator eventAggregator) : base(eventAggregator)
-        {
         }
     }
 }
