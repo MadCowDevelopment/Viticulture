@@ -73,19 +73,19 @@ namespace Viticulture.Logic.State
         public int ResidualMoney { get; set; }
 
         public IEnumerable<GamePiece> Pieces
-            =>
-                _workers.Concat(new List<GamePiece>
-                {
-                    Grande,
-                    Trellis,
-                    Irigation,
-                    Yoke,
-                    Windmill,
-                    Cottage,
-                    MediumCellar,
-                    LargeCellar,
-                    TastingRoom
-                });
+            => _workers.Concat(Buildings.OfType<GamePiece>()).Concat(new List<GamePiece> {Grande});
+
+        public IEnumerable<Building> Buildings => new List<Building>
+        {
+            Trellis,
+            Irigation,
+            Yoke,
+            Windmill,
+            Cottage,
+            MediumCellar,
+            LargeCellar,
+            TastingRoom
+        };
 
         public void Reset()
         {

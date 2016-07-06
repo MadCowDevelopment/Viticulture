@@ -1,4 +1,5 @@
 using System.ComponentModel.Composition;
+using System.Threading.Tasks;
 using Caliburn.Micro;
 
 namespace Viticulture.Logic.Actions
@@ -8,9 +9,9 @@ namespace Viticulture.Logic.Actions
         protected override bool IsUnlimited => true;
 
         public override string Text => "Gain 1 lira";
-        public override bool OnExecute()
+        public override Task<bool> OnExecute()
         {
-            return true;
+            return Task.FromResult(true);
         }
 
         [ImportingConstructor]

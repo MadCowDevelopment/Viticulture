@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.Composition;
+using System.Threading.Tasks;
 using Caliburn.Micro;
 using Viticulture.Logic.Pieces;
 using Viticulture.Logic.State;
@@ -32,9 +33,10 @@ namespace Viticulture.Logic.Actions
             Refresh();
         }
 
-        public void Execute()
+        public async void Execute()
         {
-            if (!OnExecute()) return;
+            var result = await OnExecute();
+            if (!result) return;
 
             if (HasBeenUsed) GameState.Grande.HasBeenUsed = true;
             else GameState.GetFirstAvailableWorker().HasBeenUsed = true;
@@ -44,7 +46,7 @@ namespace Viticulture.Logic.Actions
             NotifyOfPropertyChange(() => CanExecute);
         }
 
-        public abstract bool OnExecute();
+        public abstract Task<bool> OnExecute();
 
         public bool CanExecute
         {

@@ -1,5 +1,6 @@
 using System.ComponentModel.Composition;
 using System.Linq;
+using System.Threading.Tasks;
 using Caliburn.Micro;
 
 namespace Viticulture.Logic.Actions.Winter
@@ -16,11 +17,11 @@ namespace Viticulture.Logic.Actions.Winter
         {
         }
 
-        public override bool OnExecute()
+        public override Task<bool> OnExecute()
         {
             GameState.Workers.First(p => !p.IsBought).IsBought = true;
             GameState.Money -= 4;
-            return true;
+            return Task.FromResult(true);
         }
 
         protected override void OnExecuteBonus()

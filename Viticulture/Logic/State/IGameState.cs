@@ -42,6 +42,7 @@ namespace Viticulture.Logic.State
         int NumberOfRounds { get; set; }
         int ResidualMoney { get; set; }
         IEnumerable<GamePiece> Pieces { get; }
+        IEnumerable<Building> Buildings { get; }
         void Reset();
     }
 }

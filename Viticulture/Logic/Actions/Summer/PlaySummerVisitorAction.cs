@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.Composition;
+using System.Threading.Tasks;
 using Caliburn.Micro;
 
 namespace Viticulture.Logic.Actions.Summer
@@ -14,9 +15,9 @@ namespace Viticulture.Logic.Actions.Summer
         {
         }
 
-        public override bool OnExecute()
+        public override Task<bool> OnExecute()
         {
-            return true;
+            return Task.FromResult(true);
         }
 
         protected override void OnExecuteBonus()

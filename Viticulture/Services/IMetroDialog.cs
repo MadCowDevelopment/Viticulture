@@ -9,7 +9,7 @@ namespace Viticulture.Services
         Task<MessageDialogResult> ShowMessage(string title, string message,
             MessageDialogStyle style = MessageDialogStyle.Affirmative, MetroDialogSettings settings = null);
 
-        Task ShowDialog<T>(T screen) where T : IScreen;
+        //Task ShowDialog<T>(T screen) where T : IScreen;
 
         Task ShowDialog(IDialogViewModel viewModel);
 

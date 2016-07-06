@@ -28,20 +28,20 @@ namespace Viticulture.Services
             return await MetroWindow.ShowMessageAsync(title, message, style, settings);
         }
 
-        public Task ShowDialog<T>(T screen) where T : IScreen
-        {
-            var view = ViewLocator.LocateForModel(screen, null, null) as UserControl;
-            view.Loaded += (sender, args) =>
-            {
-                ViewModelBinder.Bind(screen, view, null);
-            };
+        //public Task ShowDialog<T>(T screen) where T : IScreen
+        //{
+        //    var view = ViewLocator.LocateForModel(screen, null, null) as UserControl;
+        //    view.Loaded += (sender, args) =>
+        //    {
+        //        ViewModelBinder.Bind(screen, view, null);
+        //    };
 
-            var dialog = new CustomMetroDialog();
-            dialog.MainContent.Content = view;
-            _currentlyShownDialog = dialog;
+        //    var dialog = new CustomMetroDialog();
+        //    dialog.MainContent.Content = view;
+        //    _currentlyShownDialog = dialog;
             
-            return MetroWindow.ShowMetroDialogAsync(dialog);
-        }
+        //    return MetroWindow.ShowMetroDialogAsync(dialog);
+        //}
 
         public async Task ShowDialog(IDialogViewModel viewModel)
         {

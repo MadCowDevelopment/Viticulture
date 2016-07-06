@@ -122,6 +122,11 @@
     </Compile>
     <Compile Include="Screens\Game\Actions\ActionsViewModel.cs" />
     <Compile Include="Screens\Game\Actions\Summer\ActionTemplateSelector.cs" />
+    <Compile Include="Screens\Game\Actions\Summer\BuildStructure\BuildStructureView.xaml.cs">
+      <DependentUpon>BuildStructureView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\Game\Actions\Summer\BuildStructure\BuildStructureViewModel.cs" />
+    <Compile Include="Screens\Game\Actions\Summer\BuildStructure\IBuildStructureViewModel.cs" />
     <Compile Include="Screens\Game\Buildings\BuildingsView.xaml.cs">
       <DependentUpon>BuildingsView.xaml</DependentUpon>
     </Compile>
@@ -236,6 +241,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Screens\Game\Actions\ActionsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Screens\Game\Actions\Summer\BuildStructure\BuildStructureView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
