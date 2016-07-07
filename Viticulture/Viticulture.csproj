@@ -115,6 +115,8 @@
     <Compile Include="Logic\Pieces\Buildings\Windmill.cs" />
     <Compile Include="Logic\Pieces\Buildings\Yoke.cs" />
     <Compile Include="Logic\Pieces\Field.cs" />
+    <Compile Include="Logic\Pieces\Grape.cs" />
+    <Compile Include="Logic\Pieces\GrapeColor.cs" />
     <Compile Include="Screens\GameModeSelection\GameModeSelectionView.xaml.cs">
       <DependentUpon>GameModeSelectionView.xaml</DependentUpon>
     </Compile>
@@ -239,6 +241,7 @@
     <Compile Include="Utils\ListExtensions.cs" />
     <Compile Include="Utils\MemberNameHelper.cs" />
     <Compile Include="Utils\RNG.cs" />
+    <Compile Include="Utils\TestConverter.cs" />
     <Page Include="AppView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -22,6 +22,10 @@ namespace Viticulture.Logic.State
 
         private List<Worker> _workers;
 
+        private List<Grape> _redGrapes;
+
+        private List<Grape> _whiteGrapes;
+
         [ImportingConstructor]
         public GameState(
             IEventAggregator eventAggregator,
@@ -70,6 +74,8 @@ namespace Viticulture.Logic.State
         public Field Field2 { get; private set; }
         public Field Field3 { get; private set; }
         public IEnumerable<Field> Fields => new List<Field> { Field1, Field2, Field3 };
+        public IEnumerable<Grape> RedGrapes => _redGrapes;
+        public IEnumerable<Grape> WhiteGrapes => _whiteGrapes;
 
         public Hand Hand { get; private set; }
         public int RemainingBonusActions { get; set; }
@@ -135,6 +141,9 @@ namespace Viticulture.Logic.State
             {
                 _workers.Add(new Worker(_eventAggregator));
             }
+
+            InitializeGrapes(out _redGrapes, GrapeColor.Red);
+            InitializeGrapes(out _whiteGrapes, GrapeColor.White);
         }
 
         public GameState Clone()
@@ -177,6 +186,18 @@ namespace Viticulture.Logic.State
                 gameState._workers.Add(_workers[i].Clone() as Worker);
             }
 
+            gameState._redGrapes = new List<Grape>();
+            foreach (var redGrape in _redGrapes)
+            {
+                gameState._redGrapes.Add(redGrape.Clone() as Grape);
+            }
+
+            gameState._whiteGrapes = new List<Grape>();
+            foreach (var whiteGrape in _whiteGrapes)
+            {
+                gameState._whiteGrapes.Add(whiteGrape.Clone() as Grape);
+            }
+
             return gameState;
         }
 
@@ -217,6 +238,16 @@ namespace Viticulture.Logic.State
             {
                 _workers[i].SetFromClone(clone.Workers.ElementAt(i), Entities);
             }
+
+            for (int i = 0; i < 9; i++)
+            {
+                _redGrapes[i].SetFromClone(clone._redGrapes[i], Entities);
+            }
+
+            for (int i = 0; i < 9; i++)
+            {
+                _whiteGrapes[i].SetFromClone(clone._whiteGrapes[i], Entities);
+            }
         }
 
         private IEnumerable<Entity> Entities
@@ -228,6 +259,15 @@ namespace Viticulture.Logic.State
                     .Concat(_workers)
                     .Concat(Fields)
                     .Concat(Buildings);
+
+        private void InitializeGrapes(out List<Grape> grapes, GrapeColor color)
+        {
+            grapes = new List<Grape>();
+            for (int i = 1; i <= 9; i++)
+            {
+                grapes.Add(new Grape(_eventAggregator, i, color));
+            }
+        }
     }
 
     public class GameStateChanged

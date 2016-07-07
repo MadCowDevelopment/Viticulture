@@ -33,7 +33,7 @@
         <ColumnDefinition Width="*"/>
         <ColumnDefinition Width="*"/>
       </Grid.ColumnDefinitions>
-      <ContentControl Grid.Column="0" x:Name="Crushpad"/>
+      <ContentControl Grid.Column="0" x:Name="Crushpad" HorizontalAlignment="Center"/>
       <ContentControl Grid.Column="1" x:Name="Cellar"/>
     </Grid>
 

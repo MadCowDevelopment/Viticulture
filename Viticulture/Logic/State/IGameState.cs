@@ -37,6 +37,9 @@ namespace Viticulture.Logic.State
         Field Field3 { get; }
         IEnumerable<Field> Fields { get; }
 
+        IEnumerable<Grape> RedGrapes { get; }
+        IEnumerable<Grape> WhiteGrapes { get; }
+
         Hand Hand { get; }
 
         int RemainingBonusActions { get; set; }
