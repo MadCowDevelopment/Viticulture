@@ -37,6 +37,11 @@ namespace Viticulture.Logic.State
         Field Field3 { get; }
         IEnumerable<Field> Fields { get; }
 
+        IEnumerable<Wine> RedWines { get; }
+        IEnumerable<Wine> WhiteWines { get; }
+        IEnumerable<Wine> BlushWines { get; }
+        IEnumerable<Wine> SparklingWines { get; }
+
         IEnumerable<Grape> RedGrapes { get; }
         IEnumerable<Grape> WhiteGrapes { get; }
 

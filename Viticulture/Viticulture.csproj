@@ -117,6 +117,8 @@
     <Compile Include="Logic\Pieces\Field.cs" />
     <Compile Include="Logic\Pieces\Grape.cs" />
     <Compile Include="Logic\Pieces\GrapeColor.cs" />
+    <Compile Include="Logic\Pieces\Wine.cs" />
+    <Compile Include="Logic\Pieces\WineType.cs" />
     <Compile Include="Screens\GameModeSelection\GameModeSelectionView.xaml.cs">
       <DependentUpon>GameModeSelectionView.xaml</DependentUpon>
     </Compile>
@@ -160,8 +162,13 @@
     <Compile Include="Screens\Game\Actions\Winter\HarvestField\FieldSelectionView.xaml.cs">
       <DependentUpon>FieldSelectionView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Screens\Game\Actions\Winter\HarvestField\FieldSelectionViewModelModel.cs" />
+    <Compile Include="Screens\Game\Actions\Winter\HarvestField\FieldSelectionViewModel.cs" />
     <Compile Include="Screens\Game\Actions\Winter\HarvestField\IFieldSelectionViewModel.cs" />
+    <Compile Include="Screens\Game\Actions\Winter\MakeWine\GrapesSelectionView.xaml.cs">
+      <DependentUpon>GrapesSelectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\Game\Actions\Winter\MakeWine\GrapesSelectionViewModel.cs" />
+    <Compile Include="Screens\Game\Actions\Winter\MakeWine\IGrapesSelectionViewModel.cs" />
     <Compile Include="Screens\Game\Buildings\BuildingsView.xaml.cs">
       <DependentUpon>BuildingsView.xaml</DependentUpon>
     </Compile>
@@ -311,6 +318,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Screens\Game\Actions\Winter\HarvestField\FieldSelectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Screens\Game\Actions\Winter\MakeWine\GrapesSelectionView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

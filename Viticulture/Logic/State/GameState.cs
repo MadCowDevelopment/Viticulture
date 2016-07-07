@@ -25,6 +25,10 @@ namespace Viticulture.Logic.State
         private List<Grape> _redGrapes;
 
         private List<Grape> _whiteGrapes;
+        private List<Wine> _redWines;
+        private List<Wine> _whiteWines;
+        private List<Wine> _blushWines;
+        private List<Wine> _sparklingWines;
 
         [ImportingConstructor]
         public GameState(
@@ -74,6 +78,10 @@ namespace Viticulture.Logic.State
         public Field Field2 { get; private set; }
         public Field Field3 { get; private set; }
         public IEnumerable<Field> Fields => new List<Field> { Field1, Field2, Field3 };
+        public IEnumerable<Wine> RedWines => _redWines;
+        public IEnumerable<Wine> WhiteWines => _whiteWines;
+        public IEnumerable<Wine> BlushWines => _blushWines;
+        public IEnumerable<Wine> SparklingWines => _sparklingWines;
         public IEnumerable<Grape> RedGrapes => _redGrapes;
         public IEnumerable<Grape> WhiteGrapes => _whiteGrapes;
 
@@ -144,6 +152,20 @@ namespace Viticulture.Logic.State
 
             InitializeGrapes(out _redGrapes, GrapeColor.Red);
             InitializeGrapes(out _whiteGrapes, GrapeColor.White);
+
+            InitializeWines(out _redWines, WineType.Red, 9);
+            InitializeWines(out _whiteWines, WineType.White, 9);
+            InitializeWines(out _blushWines, WineType.Blush, 6);
+            InitializeWines(out _sparklingWines, WineType.Sparkling, 3);
+        }
+
+        private void InitializeWines(out List<Wine> wines, WineType type, int number)
+        {
+            wines = new List<Wine>();
+            for (int i = 9 - number; i < 9; i++)
+            {
+                wines.Add(new Wine(_eventAggregator, i + 1, type));
+            }
         }
 
         public GameState Clone()
@@ -198,6 +220,30 @@ namespace Viticulture.Logic.State
                 gameState._whiteGrapes.Add(whiteGrape.Clone() as Grape);
             }
 
+            gameState._redWines = new List<Wine>();
+            foreach (var redWine in _redWines)
+            {
+                gameState._redWines.Add(redWine.Clone() as Wine);
+            }
+
+            gameState._whiteWines = new List<Wine>();
+            foreach (var whiteWine in _whiteWines)
+            {
+                gameState._whiteWines.Add(whiteWine.Clone() as Wine);
+            }
+
+            gameState._blushWines = new List<Wine>();
+            foreach (var blushWine in _blushWines)
+            {
+                gameState._blushWines.Add(blushWine.Clone() as Wine);
+            }
+
+            gameState._sparklingWines = new List<Wine>();
+            foreach (var sparklingWine in _sparklingWines)
+            {
+                gameState._sparklingWines.Add(sparklingWine.Clone() as Wine);
+            }
+
             return gameState;
         }
 
@@ -248,6 +294,24 @@ namespace Viticulture.Logic.State
             {
                 _whiteGrapes[i].SetFromClone(clone._whiteGrapes[i], Entities);
             }
+
+            for (int i = 0; i < 9; i++)
+            {
+                _redWines[i].SetFromClone(clone._redWines[i], Entities);
+            }
+
+            for (int i = 0; i < 9; i++)
+            {
+                _whiteWines[i].SetFromClone(clone._whiteWines[i], Entities);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                _blushWines[i].SetFromClone(clone._blushWines[i], Entities);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                _sparklingWines[i].SetFromClone(clone._sparklingWines[i], Entities);
+            }
         }
 
         private IEnumerable<Entity> Entities
@@ -294,6 +358,23 @@ namespace Viticulture.Logic.State
                 return gameState.Grande;
 
             return null;
+        }
+
+        public static IEnumerable<Wine> GetCellarByWineType(this IGameState gameState, WineType type)
+        {
+            switch (type)
+            {
+                case WineType.Red:
+                    return gameState.RedWines;
+                case WineType.White:
+                    return gameState.WhiteWines;
+                case WineType.Blush:
+                    return gameState.BlushWines;
+                case WineType.Sparkling:
+                    return gameState.SparklingWines;
+                default:
+                    return Enumerable.Empty<Wine>();
+            }
         }
     }
 }
