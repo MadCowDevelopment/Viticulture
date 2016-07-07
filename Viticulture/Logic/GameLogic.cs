@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
+using System.Linq;
 using Caliburn.Micro;
 using Viticulture.Logic.Actions;
 using Viticulture.Logic.GameModes;
+using Viticulture.Logic.Pieces;
 using Viticulture.Logic.State;
 using Viticulture.Services;
 using Viticulture.Utils;
@@ -75,6 +77,21 @@ namespace Viticulture.Logic
             _gameState.Round++;
             _gameState.Money += _gameState.ResidualMoney;
             _gameState.Pieces.ForEach(p => p.Reset());
+            AgeGrapes(_gameState.RedGrapes.ToList());
+            AgeGrapes(_gameState.WhiteGrapes.ToList());
+        }
+
+        private void AgeGrapes(List<Grape> grapes)
+        {
+            for (var i = grapes.Count -1; i >= 0; i--)
+            {
+                if(i == grapes.Count) continue;
+                if (!grapes[i].IsBought) continue;
+                if (grapes[i + 1].IsBought) continue;
+
+                grapes[i].IsBought = false;
+                grapes[i + 1].IsBought = true;
+            }
         }
 
         private bool CheckGameOver()

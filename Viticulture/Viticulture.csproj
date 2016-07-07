@@ -157,6 +157,11 @@
     <Compile Include="Screens\Game\Actions\Summer\SellGrapeOrField\GrapeViewModel.cs" />
     <Compile Include="Screens\Game\Actions\Summer\SellGrapeOrField\ISellFieldSelectionViewModel.cs" />
     <Compile Include="Screens\Game\Actions\Summer\SellGrapeOrField\IGrapesSelectionViewModel.cs" />
+    <Compile Include="Screens\Game\Actions\Winter\HarvestField\FieldSelectionView.xaml.cs">
+      <DependentUpon>FieldSelectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\Game\Actions\Winter\HarvestField\FieldSelectionViewModelModel.cs" />
+    <Compile Include="Screens\Game\Actions\Winter\HarvestField\IFieldSelectionViewModel.cs" />
     <Compile Include="Screens\Game\Buildings\BuildingsView.xaml.cs">
       <DependentUpon>BuildingsView.xaml</DependentUpon>
     </Compile>
@@ -304,6 +309,10 @@
     <Page Include="Screens\Game\Actions\Summer\SellGrapeOrField\GrapesSelectionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Screens\Game\Actions\Winter\HarvestField\FieldSelectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Screens\Game\Buildings\BuildingsView.xaml">
       <SubType>Designer</SubType>

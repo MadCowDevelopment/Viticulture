@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.Composition;
-using System.Linq;
 using Viticulture.Logic.Pieces.Buildings;
 using Viticulture.Logic.State;
 using Viticulture.Services;
@@ -19,7 +17,12 @@ namespace Viticulture.Screens.Game.Actions.Summer.BuildStructure
         public BuildStructureViewModel(IGameState gameState)
         {
             _gameState = gameState;
-            _structures = _gameState.Buildings.Where(p => !p.IsBought).ToList();
+            _structures = new List<Building>();
+            foreach (var building in _gameState.Buildings)
+            {
+                if (building is LargeCellar && !_gameState.MediumCellar.IsBought) continue;
+                _structures.Add(building);
+            }
         }
 
         public IEnumerable<Building> Structures => _structures;
