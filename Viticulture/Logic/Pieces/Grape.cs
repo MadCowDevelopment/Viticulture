@@ -8,6 +8,8 @@ namespace Viticulture.Logic.Pieces
         public int Value { get; private set; }
         public GrapeColor GrapeColor { get; private set; }
 
+        public int SellValue => Value <= 3 ? 1 : (Value <= 6 ? 2 : 3);
+
         public Grape(IEventAggregator eventAggregator, int value, GrapeColor grapeColor) : base(eventAggregator)
         {
             Value = value;

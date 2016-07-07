@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="Viticulture.Screens.Game.Actions.Summer.SellGrapeOrField.GrapesSelectionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:cal="http://www.caliburnproject.org"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    <TextBlock FontSize="20" Grid.Row="0" Text="Select grapes"/>
+    <TextBlock FontSize="16" Grid.Row="1" Text="Select the grapes you want to sell"/>
+    <Grid Grid.Row="2">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="Auto"/>
+      </Grid.ColumnDefinitions>
+      <ItemsControl Grid.Column="0" x:Name="RedGrapes">
+        <ItemsControl.ItemsPanel>
+          <ItemsPanelTemplate>
+            <StackPanel Orientation="Horizontal"/>
+          </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <ToggleButton Margin="4" FontSize="16" MinWidth="40" Content="{Binding Value, StringFormat=Value: {0}}"/>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+      <Button Grid.Column="1" Margin="20 4 4 4" FontSize="16" cal:Message.Attach="Done()" Content="Done"/>
+    </Grid>
+    <Grid Grid.Row="3">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="Auto"/>
+      </Grid.ColumnDefinitions>
+      <ItemsControl Grid.Column="0" x:Name="WhiteGrapes">
+        <ItemsControl.ItemsPanel>
+          <ItemsPanelTemplate>
+            <StackPanel Orientation="Horizontal"/>
+          </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <ToggleButton Margin="4" FontSize="16" MinWidth="40" Content="{Binding Value, StringFormat=Value: {0}}"/>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+      <Button Grid.Column="1" Margin="20 4 4 4" FontSize="16" cal:Message.Attach="Cancel()" Content="Cancel"/>
+    </Grid>
+  </Grid>
+</UserControl>

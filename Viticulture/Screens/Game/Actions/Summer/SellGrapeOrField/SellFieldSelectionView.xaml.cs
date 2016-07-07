@@ -1,11 +1,11 @@
-﻿namespace Viticulture.Screens.Game.Actions.Summer.PlantVine
+﻿namespace Viticulture.Screens.Game.Actions.Summer.SellGrapeOrField
 {
     /// <summary>
     /// Interaction logic for SellFieldSelectionView.xaml
     /// </summary>
-    public partial class FieldSelectionView
+    public partial class SellFieldSelectionView
     {
-        public FieldSelectionView()
+        public SellFieldSelectionView()
         {
             InitializeComponent();
         }
