@@ -17,10 +17,12 @@
     <TextBlock FontSize="16" Grid.Row="1" Text="Select the grapes you want to sell"/>
     <Grid Grid.Row="2">
       <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="50"/>
         <ColumnDefinition Width="*"/>
         <ColumnDefinition Width="Auto"/>
       </Grid.ColumnDefinitions>
-      <ItemsControl Grid.Column="0" x:Name="RedGrapes">
+      <TextBlock Grid.Column="0" Text="Red:" FontSize="16" VerticalAlignment="Center"/>
+      <ItemsControl Grid.Column="1" x:Name="RedGrapes">
         <ItemsControl.ItemsPanel>
           <ItemsPanelTemplate>
             <StackPanel Orientation="Horizontal"/>
@@ -32,14 +34,16 @@
           </DataTemplate>
         </ItemsControl.ItemTemplate>
       </ItemsControl>
-      <Button Grid.Column="1" Margin="20 4 4 4" FontSize="16" cal:Message.Attach="Done()" Content="Done"/>
+      <Button Grid.Column="2" Margin="20 4 4 4" FontSize="16" cal:Message.Attach="Done()" Content="Done"/>
     </Grid>
     <Grid Grid.Row="3">
       <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="50"/>
         <ColumnDefinition Width="*"/>
         <ColumnDefinition Width="Auto"/>
       </Grid.ColumnDefinitions>
-      <ItemsControl Grid.Column="0" x:Name="WhiteGrapes">
+      <TextBlock Grid.Column="0" Text="White:" FontSize="16" VerticalAlignment="Center"/>
+      <ItemsControl Grid.Column="1" x:Name="WhiteGrapes">
         <ItemsControl.ItemsPanel>
           <ItemsPanelTemplate>
             <StackPanel Orientation="Horizontal"/>
@@ -51,7 +55,7 @@
           </DataTemplate>
         </ItemsControl.ItemTemplate>
       </ItemsControl>
-      <Button Grid.Column="1" Margin="20 4 4 4" FontSize="16" cal:Message.Attach="Cancel()" Content="Cancel"/>
+      <Button Grid.Column="2" Margin="20 4 4 4" FontSize="16" cal:Message.Attach="Cancel()" Content="Cancel"/>
     </Grid>
   </Grid>
 </UserControl>

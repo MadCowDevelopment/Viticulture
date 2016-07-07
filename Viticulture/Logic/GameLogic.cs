@@ -83,9 +83,9 @@ namespace Viticulture.Logic
 
         private void AgeGrapes(List<Grape> grapes)
         {
-            for (var i = grapes.Count -1; i >= 0; i--)
+            for (var i = grapes.Count - 1; i >= 0; i--)
             {
-                if(i == grapes.Count) continue;
+                if (i == grapes.Count) continue;
                 if (!grapes[i].IsBought) continue;
                 if (grapes[i + 1].IsBought) continue;
 

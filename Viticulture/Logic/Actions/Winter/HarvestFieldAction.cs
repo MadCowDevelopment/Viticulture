@@ -44,8 +44,6 @@ namespace Viticulture.Logic.Actions.Winter
         private void AddToCrushpad(int vineValue, IEnumerable<Grape> grapes)
         {
             if (vineValue == 0) return;
-            if (vineValue > 3 && !GameState.MediumCellar.IsBought) vineValue = 3;
-            if (vineValue > 6 && !GameState.LargeCellar.IsBought) vineValue = 6;
 
             var firstFreeGrape =
                 grapes.OrderByDescending(p => p.Value).FirstOrDefault(p => p.Value <= vineValue && !p.IsBought);
