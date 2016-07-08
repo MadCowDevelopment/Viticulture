@@ -23,7 +23,7 @@ namespace Viticulture.Logic.State
 
         private Deck() { }
 
-        private IEnumerable<T> Cards => _cards;
+        public IEnumerable<T> Cards => _cards;
 
         public void DrawToHand()
         {

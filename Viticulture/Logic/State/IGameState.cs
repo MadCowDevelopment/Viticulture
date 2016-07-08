@@ -57,6 +57,7 @@ namespace Viticulture.Logic.State
         int ResidualMoney { get; set; }
         IEnumerable<GamePiece> Pieces { get; }
         IEnumerable<Building> Buildings { get; }
+        IEnumerable<Wine> Wines { get; }
         void Reset();
         GameState Clone();
         void SetFromClone(GameState clone);

@@ -111,6 +111,8 @@ namespace Viticulture.Logic.State
             TastingRoom
         };
 
+        public IEnumerable<Wine> Wines => RedWines.Union(WhiteWines).Union(BlushWines).Union(SparklingWines);
+
         public void Reset()
         {
             VictoryPoints = 0;

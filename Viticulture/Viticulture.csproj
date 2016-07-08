@@ -159,6 +159,16 @@
     <Compile Include="Screens\Game\Actions\Summer\SellGrapeOrField\GrapeViewModel.cs" />
     <Compile Include="Screens\Game\Actions\Summer\SellGrapeOrField\ISellFieldSelectionViewModel.cs" />
     <Compile Include="Screens\Game\Actions\Summer\SellGrapeOrField\IGrapesSelectionViewModel.cs" />
+    <Compile Include="Screens\Game\Actions\Winter\FillOrder\IWineSelectionViewModel.cs" />
+    <Compile Include="Screens\Game\Actions\Winter\FillOrder\OrderSelectionView.xaml.cs">
+      <DependentUpon>OrderSelectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\Game\Actions\Winter\FillOrder\OrderSelectionViewModel.cs" />
+    <Compile Include="Screens\Game\Actions\Winter\FillOrder\IOrderSelectionViewModel.cs" />
+    <Compile Include="Screens\Game\Actions\Winter\FillOrder\WineSelectionView.xaml.cs">
+      <DependentUpon>WineSelectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\Game\Actions\Winter\FillOrder\WineSelectionViewModel.cs" />
     <Compile Include="Screens\Game\Actions\Winter\HarvestField\FieldSelectionView.xaml.cs">
       <DependentUpon>FieldSelectionView.xaml</DependentUpon>
     </Compile>
@@ -314,6 +324,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Screens\Game\Actions\Summer\SellGrapeOrField\GrapesSelectionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Screens\Game\Actions\Winter\FillOrder\OrderSelectionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Screens\Game\Actions\Winter\FillOrder\WineSelectionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
