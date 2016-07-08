@@ -13,6 +13,6 @@ namespace Viticulture.Screens.Game.Actions.Summer.SellGrapeOrField
         }
 
         public int Value => Grape.Value;
-        public bool IsSelected { get; set; }
+        public bool IsChecked { get; set; }
     }
 }

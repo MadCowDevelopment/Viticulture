@@ -54,6 +54,7 @@ namespace Viticulture.Logic.Actions.Winter
             }
 
             firstAvailableSpotInCellar.IsBought = true;
+            selectedGrapes.ForEach(p => p.IsBought = false);
         
             return true;
         }

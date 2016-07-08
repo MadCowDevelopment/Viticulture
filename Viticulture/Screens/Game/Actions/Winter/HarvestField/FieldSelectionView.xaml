@@ -32,7 +32,7 @@
           </DataTemplate>
         </ItemsControl.ItemTemplate>
       </ItemsControl>
-      <Button Grid.Column="1" Margin="20 4 4 4" FontSize="16" cal:Message.Attach="Cancel()" Content="Cancel"/>
+      <Button Grid.Column="1" Margin="20 4 4 4" FontSize="16" cal:Message.Attach="Cancel()" Content="Cancel" MinWidth="80"/>
     </Grid>
   </Grid>
 </UserControl>

@@ -27,7 +27,7 @@ namespace Viticulture.Screens.Game.Actions.Summer.SellGrapeOrField
         public IEnumerable<GrapeViewModel> WhiteGrapes { get; }
 
         private IEnumerable<Grape> SelectedGrapes
-            => RedGrapes.Union(WhiteGrapes).Where(p => p.IsSelected).Select(p => p.Grape);
+            => RedGrapes.Union(WhiteGrapes).Where(p => p.IsChecked).Select(p => p.Grape);
 
         public void Done()
         {

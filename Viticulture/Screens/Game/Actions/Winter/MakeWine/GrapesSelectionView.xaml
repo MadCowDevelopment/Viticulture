@@ -28,13 +28,8 @@
             <StackPanel Orientation="Horizontal"/>
           </ItemsPanelTemplate>
         </ItemsControl.ItemsPanel>
-        <ItemsControl.ItemTemplate>
-          <DataTemplate>
-            <ToggleButton Margin="4" FontSize="16" MinWidth="40" Content="{Binding Value, StringFormat=Value: {0}}"/>
-          </DataTemplate>
-        </ItemsControl.ItemTemplate>
       </ItemsControl>
-      <Button Grid.Column="2" Margin="20 4 4 4" FontSize="16" cal:Message.Attach="Done()" Content="Done"/>
+      <Button Grid.Column="2" Margin="20 4 4 4" FontSize="16" cal:Message.Attach="Done()" Content="Done" MinWidth="80"/>
     </Grid>
     <Grid Grid.Row="3">
       <Grid.ColumnDefinitions>
@@ -49,13 +44,8 @@
             <StackPanel Orientation="Horizontal"/>
           </ItemsPanelTemplate>
         </ItemsControl.ItemsPanel>
-        <ItemsControl.ItemTemplate>
-          <DataTemplate>
-            <ToggleButton Margin="4" FontSize="16" MinWidth="40" Content="{Binding Value, StringFormat=Value: {0}}"/>
-          </DataTemplate>
-        </ItemsControl.ItemTemplate>
       </ItemsControl>
-      <Button Grid.Column="2" Margin="20 4 4 4" FontSize="16" cal:Message.Attach="Cancel()" Content="Cancel"/>
+      <Button Grid.Column="2" Margin="20 4 4 4" FontSize="16" cal:Message.Attach="Cancel()" Content="Cancel" MinWidth="80"/>
     </Grid>
   </Grid>
 </UserControl>

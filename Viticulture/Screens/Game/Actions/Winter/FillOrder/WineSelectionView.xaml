@@ -28,11 +28,11 @@
         </ItemsControl.ItemsPanel>
         <ItemsControl.ItemTemplate>
           <DataTemplate>
-            <ToggleButton Margin="4" FontSize="16" cal:Message.Attach="Select($dataContext)" Content="{Binding DisplayText}"/>
+            <ToggleButton IsChecked="{Binding IsSelected}" Margin="4" FontSize="16" cal:Message.Attach="Select($dataContext)" Content="{Binding DisplayText}"/>
           </DataTemplate>
         </ItemsControl.ItemTemplate>
       </ItemsControl>
-      <Button Grid.Column="1" Margin="20 4 4 4" FontSize="16" cal:Message.Attach="Cancel()" Content="Cancel"/>
+      <Button Grid.Column="1" Margin="20 4 4 4" FontSize="16" cal:Message.Attach="Cancel()" Content="Cancel" MinWidth="80"/>
     </Grid>
   </Grid>
 </UserControl>
