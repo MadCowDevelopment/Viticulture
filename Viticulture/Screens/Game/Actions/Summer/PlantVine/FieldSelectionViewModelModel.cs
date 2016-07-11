@@ -30,7 +30,7 @@ namespace Viticulture.Screens.Game.Actions.Summer.PlantVine
 
         public bool CanSelect(Field field)
         {
-            return field.Value >= field.RedVines + field.WhiteVines + VineToPlant.RedValue + VineToPlant.WhiteValue;
+            return field.CanPlant(VineToPlant);
         }
 
         public void Cancel()

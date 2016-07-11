@@ -40,10 +40,12 @@ namespace Viticulture.Logic.State
         public override string Description => string.Empty;
 
         public IEnumerable<VisitorCard> WinterVisitors
-            => Cards.OfType<VisitorCard>().Where(p => p.Season == Season.Winter);
+            => VisitorCards.Where(p => p.Season == Season.Winter);
 
         public IEnumerable<VisitorCard> SummerVisitors
-            => Cards.OfType<VisitorCard>().Where(p => p.Season == Season.Summer);
+            => VisitorCards.Where(p => p.Season == Season.Summer);
+
+        public IEnumerable<VisitorCard> VisitorCards => Cards.OfType<VisitorCard>();
 
         protected override void OnSetFromClone(Entity entity, IEnumerable<Entity> references)
         {

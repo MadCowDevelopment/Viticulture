@@ -60,5 +60,10 @@ namespace Viticulture.Logic.Pieces
                 _vines.Add(references.OfType<VineCard>().First(p => p.Id == vineCard.Id));
             }
         }
+
+        public bool CanPlant(VineCard vineToPlant)
+        {
+            return Value >= RedVines + WhiteVines + vineToPlant.RedValue + vineToPlant.WhiteValue;
+        }
     }
 }

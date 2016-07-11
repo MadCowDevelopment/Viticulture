@@ -10,6 +10,7 @@ namespace Viticulture.Services
         Task<Selection> Select(string title, string message, string option1, string option2);
 
         Task<T> Select<T>(string title, string message, IEnumerable<T> selections) where T : Entity;
+
         Task<IEnumerable<Option>>  SelectMany(IEnumerable<Option> options, int requiredSelections);
     }
 }

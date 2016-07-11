@@ -1,8 +1,8 @@
 using Caliburn.Micro;
 
-namespace Viticulture.Logic.Pieces.Buildings
+namespace Viticulture.Logic.Pieces.Structures
 {
-    public class Trellis : Building
+    public class Trellis : Structure
     {
         public Trellis(IEventAggregator aggregator) : base(aggregator)
         {

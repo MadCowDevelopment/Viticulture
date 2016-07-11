@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Caliburn.Micro;
 using Viticulture.Logic.Pieces;
 using Viticulture.Logic.State;
+using Viticulture.Services;
 
 namespace Viticulture.Logic.Actions
 {
@@ -18,6 +19,9 @@ namespace Viticulture.Logic.Actions
             _eventAggregator = eventAggregator;
             _eventAggregator.Subscribe(this);
         }
+
+        [Import]
+        public IPlayerSelection PlayerSelection { get; set; }
 
         [Import]
         private Lazy<IGameState> LazyState { get; set; }

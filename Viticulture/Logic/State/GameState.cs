@@ -8,7 +8,7 @@ using Viticulture.Logic.Cards.Vines;
 using Viticulture.Logic.Cards.Visitors;
 using Viticulture.Logic.Cards.Visitors.Summer;
 using Viticulture.Logic.Pieces;
-using Viticulture.Logic.Pieces.Buildings;
+using Viticulture.Logic.Pieces.Structures;
 
 namespace Viticulture.Logic.State
 {
@@ -98,9 +98,9 @@ namespace Viticulture.Logic.State
         public int ResidualMoney { get; set; }
 
         public IEnumerable<GamePiece> Pieces
-            => _workers.Concat(Buildings.OfType<GamePiece>()).Concat(new List<GamePiece> { Grande });
+            => _workers.Concat(Structures.OfType<GamePiece>()).Concat(new List<GamePiece> { Grande });
 
-        public IEnumerable<Building> Buildings => new List<Building>
+        public IEnumerable<Structure> Structures => new List<Structure>
         {
             Trellis,
             Irigation,
@@ -326,7 +326,7 @@ namespace Viticulture.Logic.State
                     .Concat(_visitorCards)
                     .Concat(_workers)
                     .Concat(Fields)
-                    .Concat(Buildings);
+                    .Concat(Structures);
 
         public static int MinimumVictoryPoints => -5;
 

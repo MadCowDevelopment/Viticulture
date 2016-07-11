@@ -1,8 +1,8 @@
 using Caliburn.Micro;
 
-namespace Viticulture.Logic.Pieces.Buildings
+namespace Viticulture.Logic.Pieces.Structures
 {
-    public class Windmill : Building
+    public class Windmill : Structure
     {
         public Windmill(IEventAggregator aggregator) : base(aggregator)
         {

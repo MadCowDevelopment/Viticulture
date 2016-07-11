@@ -14,7 +14,7 @@ namespace Viticulture.Logic.Actions.Summer
         private readonly IMetroDialog _metroDialog;
         private readonly IMefContainer _mefContainer;
         public override string Text => "Build 1 structure";
-        public override bool CanExecuteSpecial => GameState.Buildings.Any(p => p.IsBought == false);
+        public override bool CanExecuteSpecial => GameState.Structures.Any(p => p.IsBought == false);
 
         public override string BonusText => "+1 lira";
 
@@ -29,17 +29,17 @@ namespace Viticulture.Logic.Actions.Summer
 
         public override async Task<bool> OnExecute()
         {
-            return await SelectBuilding();
+            return await SelectStructure();
         }
 
-        private async Task<bool> SelectBuilding()
+        private async Task<bool> SelectStructure()
         {
             var dialogViewModel = _mefContainer.GetExportedValue<IBuildStructureViewModel>();
             dialogViewModel.BuildingBonus = BuildingBonus;
-            var selectedBuilding =  await _metroDialog.ShowDialog(dialogViewModel);
-            if (selectedBuilding == null) return false;
-            selectedBuilding.IsBought = true;
-            GameState.Money -= Math.Max(selectedBuilding.Cost - BuildingBonus, 0);
+            var selectedStructure =  await _metroDialog.ShowDialog(dialogViewModel);
+            if (selectedStructure == null) return false;
+            selectedStructure.IsBought = true;
+            GameState.Money -= Math.Max(selectedStructure.Cost - BuildingBonus, 0);
             BuildingBonus = 0;
             return true;
         }

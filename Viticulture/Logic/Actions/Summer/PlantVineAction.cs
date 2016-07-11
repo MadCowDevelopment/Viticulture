@@ -24,16 +24,26 @@ namespace Viticulture.Logic.Actions.Summer
             _mefContainer = mefContainer;
         }
 
+        public bool IgnoreRequirements { get; set; }
+
         public override async Task<bool> OnExecute()
         {
             var vineSelectionViewModel = _mefContainer.GetExportedValue<IVineSelectionViewModel>();
             var selectedVine = await _metroDialog.ShowDialog(vineSelectionViewModel);
-            if (selectedVine == null) return false;
+            if (selectedVine == null)
+            {
+                IgnoreRequirements = false;
+                return false;
+            }
 
             var fieldSelectionViewModel = _mefContainer.GetExportedValue<IFieldSelectionViewModel>();
             fieldSelectionViewModel.VineToPlant = selectedVine;
             var selectedField = await _metroDialog.ShowDialog(fieldSelectionViewModel);
-            if (selectedField == null) return false;
+            if (selectedField == null)
+            {
+                IgnoreRequirements = false;
+                return false;
+            }
 
             selectedField.PlantVine(selectedVine);
             GameState.Hand.RemoveCard(selectedVine);
@@ -43,6 +53,7 @@ namespace Viticulture.Logic.Actions.Summer
                 GameState.VictoryPoints++;
             }
 
+            IgnoreRequirements = false;
             return true;
         }
 

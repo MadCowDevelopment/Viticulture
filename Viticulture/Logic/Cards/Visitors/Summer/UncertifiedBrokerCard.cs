@@ -1,37 +1,37 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Viticulture.Logic.State;
 
 namespace Viticulture.Logic.Cards.Visitors.Summer
 {
-    public class SurveyorCard : TwoChoicesVisitorCard
+    public class UncertifiedBrokerCard : TwoChoicesVisitorCard
     {
-        public override string Name => "Surveyor";
+        public override string Name => "Uncertified Broker";
         public override Season Season => Season.Summer;
-
         protected override Task<bool> ApplyOption1(IGameState gameState)
         {
-            gameState.Money += gameState.Fields.Count(p => !p.IsSold && !p.Vines.Any());
+            gameState.VictoryPoints -= 3;
+            gameState.Money += 9;
             return Task.FromResult(true);
         }
 
         protected override Task<bool> ApplyOption2(IGameState gameState)
         {
-            gameState.VictoryPoints += gameState.Fields.Count(p => !p.IsSold && p.Vines.Any());
+            gameState.Money -= 6;
+            gameState.VictoryPoints += 2;
             return Task.FromResult(true);
         }
 
         protected override bool CanApplyOption1(IGameState gameState)
         {
-            return true;
+            return gameState.VictoryPoints >= GameState.MinimumVictoryPoints + 3;
         }
 
         protected override bool CanApplyOption2(IGameState gameState)
         {
-            return true;
+            return gameState.Money >= 6;
         }
 
-        protected override string Option1 => "gain 2 lira for each empty field";
-        protected override string Option2 => "gain 1 VP for each planted field";
+        protected override string Option1 => "lose 3 VP to gain 9 lira";
+        protected override string Option2 => "pay 6 lira to gain 2 VP";
     }
 }

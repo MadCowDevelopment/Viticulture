@@ -1,8 +1,8 @@
 using Caliburn.Micro;
 
-namespace Viticulture.Logic.Pieces.Buildings
+namespace Viticulture.Logic.Pieces.Structures
 {
-    public class LargeCellar : Building
+    public class LargeCellar : Structure
     {
         public LargeCellar(IEventAggregator aggregator) : base(aggregator)
         {

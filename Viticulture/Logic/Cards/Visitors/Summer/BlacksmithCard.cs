@@ -14,13 +14,13 @@ namespace Viticulture.Logic.Cards.Visitors.Summer
         public override Season Season => Season.Summer;
         public override bool CanPlay(IGameState gameState)
         {
-            return gameState.Buildings.Any(p => !p.IsBought && p.Cost - 2 <= gameState.Money);
+            return gameState.Structures.Any(p => !p.IsBought && p.Cost - 2 <= gameState.Money);
         }
 
         protected override async Task<bool> OnApply(IGameState gameState)
         {
             var building = await PlayerSelection.Select("Select structure", "Choose a structure you want to build",
-                gameState.Buildings.Where(p => !p.IsBought && p.Cost - 2 <= gameState.Money));
+                gameState.Structures.Where(p => !p.IsBought && p.Cost - 2 <= gameState.Money));
             if (building == null) return false;
 
             building.IsBought = true;

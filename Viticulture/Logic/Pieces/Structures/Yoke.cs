@@ -1,8 +1,8 @@
 using Caliburn.Micro;
 
-namespace Viticulture.Logic.Pieces.Buildings
+namespace Viticulture.Logic.Pieces.Structures
 {
-    public class Yoke : Building
+    public class Yoke : Structure
     {
         public Yoke(IEventAggregator aggregator) : base(aggregator)
         {

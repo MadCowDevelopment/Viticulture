@@ -20,6 +20,8 @@ namespace Viticulture.Screens.Game.Actions.Summer.PlantVine
 
         public IEnumerable<VineCard> Vines => _gameState.Hand.Vines;
 
+        public bool IgnoreRequirements { get; set; }
+
         public void Select(VineCard vine)
         {
             Close(vine);
@@ -27,7 +29,7 @@ namespace Viticulture.Screens.Game.Actions.Summer.PlantVine
 
         public bool CanSelect(VineCard vine)
         {
-            return (!vine.RequiresIrigation || _gameState.Irigation.IsBought) &&
+            return IgnoreRequirements || (!vine.RequiresIrigation || _gameState.Irigation.IsBought) &&
                    (!vine.RequiresTrellis || _gameState.Trellis.IsBought);
         }
 

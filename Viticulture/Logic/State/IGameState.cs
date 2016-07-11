@@ -6,7 +6,7 @@ using Viticulture.Logic.Cards.Orders;
 using Viticulture.Logic.Cards.Vines;
 using Viticulture.Logic.Cards.Visitors;
 using Viticulture.Logic.Pieces;
-using Viticulture.Logic.Pieces.Buildings;
+using Viticulture.Logic.Pieces.Structures;
 
 namespace Viticulture.Logic.State
 {
@@ -56,7 +56,7 @@ namespace Viticulture.Logic.State
         int NumberOfRounds { get; set; }
         int ResidualMoney { get; set; }
         IEnumerable<GamePiece> Pieces { get; }
-        IEnumerable<Building> Buildings { get; }
+        IEnumerable<Structure> Structures { get; }
         IEnumerable<Wine> Wines { get; }
         IEnumerable<Grape> Grapes { get; }
         void Reset();

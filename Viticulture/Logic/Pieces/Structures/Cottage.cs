@@ -1,8 +1,8 @@
 using Caliburn.Micro;
 
-namespace Viticulture.Logic.Pieces.Buildings
+namespace Viticulture.Logic.Pieces.Structures
 {
-    public class Cottage : Building
+    public class Cottage : Structure
     {
         public Cottage(IEventAggregator aggregator) : base(aggregator)
         {
