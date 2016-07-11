@@ -6,6 +6,7 @@ using Viticulture.Logic.Cards.Automa;
 using Viticulture.Logic.Cards.Orders;
 using Viticulture.Logic.Cards.Vines;
 using Viticulture.Logic.Cards.Visitors;
+using Viticulture.Logic.Cards.Visitors.Summer;
 using Viticulture.Logic.Pieces;
 using Viticulture.Logic.Pieces.Buildings;
 
@@ -112,6 +113,7 @@ namespace Viticulture.Logic.State
         };
 
         public IEnumerable<Wine> Wines => RedWines.Union(WhiteWines).Union(BlushWines).Union(SparklingWines);
+        public IEnumerable<Grape> Grapes => RedGrapes.Union(WhiteGrapes);
 
         public void Reset()
         {
@@ -325,6 +327,8 @@ namespace Viticulture.Logic.State
                     .Concat(_workers)
                     .Concat(Fields)
                     .Concat(Buildings);
+
+        public static int MinimumVictoryPoints => -5;
 
         private void InitializeGrapes(out List<Grape> grapes, GrapeColor color)
         {

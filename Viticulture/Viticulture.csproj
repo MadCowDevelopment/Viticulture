@@ -97,6 +97,7 @@
     <Compile Include="Logic\Actions\Summer\PlantVineAction.cs" />
     <Compile Include="Logic\Actions\Summer\PlaySummerVisitorAction.cs" />
     <Compile Include="Logic\Actions\Summer\SellGrapeOrFieldAction.cs" />
+    <Compile Include="Logic\Actions\PlayVisitorAction.cs" />
     <Compile Include="Logic\Actions\Winter\DrawOrderAction.cs" />
     <Compile Include="Logic\Actions\Winter\FillOrderAction.cs" />
     <Compile Include="Logic\Actions\Winter\HarvestFieldAction.cs" />
@@ -105,6 +106,14 @@
     <Compile Include="Logic\Actions\Winter\TrainWorkerAction.cs" />
     <Compile Include="Logic\Cards\Automa\AutomaCard.cs" />
     <Compile Include="Logic\Cards\Automa\SampleAutomaCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Summer\BlacksmithCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Summer\BrokerCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Summer\ContractorCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Summer\Option.cs" />
+    <Compile Include="Logic\Cards\Visitors\SelectManyVisitorCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Summer\SurveyorCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Summer\WineCriticCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\TwoChoicesVisitorCard.cs" />
     <Compile Include="Logic\Entity.cs" />
     <Compile Include="Logic\Cards\Vines\CabernetSauvignonCard.cs" />
     <Compile Include="Logic\Pieces\Buildings\Cottage.cs" />
@@ -162,6 +171,16 @@
     <Compile Include="Screens\Game\Actions\Summer\SellGrapeOrField\GrapeViewModel.cs" />
     <Compile Include="Screens\Game\Actions\Summer\SellGrapeOrField\ISellFieldSelectionViewModel.cs" />
     <Compile Include="Screens\Game\Actions\Summer\SellGrapeOrField\IGrapesSelectionViewModel.cs" />
+    <Compile Include="Screens\Game\Actions\Visitors\CardSelectionView.xaml.cs">
+      <DependentUpon>CardSelectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\Game\Actions\Visitors\CardSelectionViewModel.cs" />
+    <Compile Include="Screens\Game\Actions\Visitors\ICardSelectionViewModel.cs" />
+    <Compile Include="Screens\Game\Actions\Visitors\ITwoChoicesViewModel.cs" />
+    <Compile Include="Screens\Game\Actions\Visitors\TwoChoicesView.xaml.cs">
+      <DependentUpon>TwoChoicesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\Game\Actions\Visitors\TwoChoicesViewModel.cs" />
     <Compile Include="Screens\Game\Actions\Winter\FillOrder\IWineSelectionViewModel.cs" />
     <Compile Include="Screens\Game\Actions\Winter\FillOrder\OrderSelectionView.xaml.cs">
       <DependentUpon>OrderSelectionView.xaml</DependentUpon>
@@ -172,6 +191,7 @@
       <DependentUpon>WineSelectionView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Screens\Game\Actions\Winter\FillOrder\WineSelectionViewModel.cs" />
+    <Compile Include="Screens\Game\Actions\Winter\FillOrder\WineViewModel.cs" />
     <Compile Include="Screens\Game\Actions\Winter\HarvestField\FieldSelectionView.xaml.cs">
       <DependentUpon>FieldSelectionView.xaml</DependentUpon>
     </Compile>
@@ -272,13 +292,24 @@
     </Compile>
     <Compile Include="Services\DialogViewModel.cs" />
     <Compile Include="Services\IMefContainer.cs" />
+    <Compile Include="Services\IMultipleSelectionDialogViewModel.cs" />
     <Compile Include="Services\INavigationService.cs" />
     <Compile Include="Screens\IViewModel.cs" />
     <Compile Include="Services\IPlayerSelection.cs" />
+    <Compile Include="Services\ISelectionDialogViewModel.cs" />
     <Compile Include="Services\MefContainer.cs" />
+    <Compile Include="Services\MultipleSelectionDialogView.xaml.cs">
+      <DependentUpon>MultipleSelectionDialogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Services\MultipleSelectionDialogViewModel.cs" />
     <Compile Include="Services\NavigationService.cs" />
+    <Compile Include="Services\OptionViewModel.cs" />
     <Compile Include="Services\PlayerSelection.cs" />
     <Compile Include="Services\Selection.cs" />
+    <Compile Include="Services\SelectionDialogView.xaml.cs">
+      <DependentUpon>SelectionDialogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Services\SelectionDialogViewModel.cs" />
     <Compile Include="Utils\ListExtensions.cs" />
     <Compile Include="Utils\MemberNameHelper.cs" />
     <Compile Include="Utils\RNG.cs" />
@@ -331,6 +362,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Screens\Game\Actions\Summer\SellGrapeOrField\GrapesSelectionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Screens\Game\Actions\Visitors\CardSelectionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Screens\Game\Actions\Visitors\TwoChoicesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -406,6 +445,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Services\MultipleSelectionDialogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Services\SelectionDialogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Screens\MainMenu\IMainMenuViewModel.cs" />
@@ -449,7 +496,6 @@
     <Resource Include="FodyWeavers.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Logic\Cards\Visitors\Summer\" />
     <Folder Include="Logic\Cards\Visitors\Winter\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

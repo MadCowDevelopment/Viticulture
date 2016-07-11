@@ -67,7 +67,7 @@
               <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <TextBlock Text="{Binding Name}" FontSize="16" HorizontalAlignment="Center"/>
-            <TextBlock Grid.Row="1" Text="{Binding Text}" TextWrapping="Wrap" FontSize="15" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Text="{Binding Description}" TextWrapping="Wrap" FontSize="15" HorizontalAlignment="Center"/>
           </Grid>
         </Border>
       </Border>

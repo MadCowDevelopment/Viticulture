@@ -30,6 +30,8 @@ namespace Viticulture.Logic.Pieces
             HasBeenUsed = false;
         }
 
+        public override string Description => string.Empty;
+
         protected override void OnClone(Entity entity)
         {
             base.OnClone(entity);

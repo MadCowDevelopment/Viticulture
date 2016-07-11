@@ -9,7 +9,7 @@ namespace Viticulture.Logic.Cards.Automa
     public abstract class AutomaCard : Card
     {
         public override string Name => string.Empty;
-        public override string Text => string.Empty;
+        public override string Description => string.Empty;
 
         public abstract List<BonusAction> BlockedSummerActions { get; }
 

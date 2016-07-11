@@ -16,6 +16,9 @@ namespace Viticulture.Logic.Actions.Summer
         private readonly IMetroDialog _metroDialog;
         private readonly IMefContainer _mefContainer;
         public override string Text => "Sell grape(s) or buy/sell 1 field";
+
+        public override bool CanExecuteSpecial
+            => GameState.Fields.Any(p => p.IsBought) || GameState.Grapes.Any(p => p.IsBought);
         public override string BonusText => "+1 VP";
 
         [ImportingConstructor]

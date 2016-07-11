@@ -8,6 +8,7 @@ namespace Viticulture.Logic.Actions.Summer
     public class DrawVineAction : BonusAction, ISummerAction
     {
         public override string Text => "Draw a vine card";
+        public override bool CanExecuteSpecial => GameState.VineDeck.CanDraw(1);
         public override string BonusText => "+1 vine";
 
         [ImportingConstructor]

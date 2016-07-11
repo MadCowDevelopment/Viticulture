@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Viticulture.Logic.Cards;
 using Viticulture.Logic.Cards.Vines;
+using Viticulture.Logic.Cards.Visitors;
 using Viticulture.Utils;
 
 namespace Viticulture.Logic.State
@@ -9,6 +10,10 @@ namespace Viticulture.Logic.State
     public sealed class Hand : Entity
     {
         private List<Card> _cards = new List<Card>();
+
+        public Hand()
+        {
+        }
 
         public IEnumerable<Card> Cards => _cards;
         public IEnumerable<VineCard> Vines => Cards.OfType<VineCard>();
@@ -29,6 +34,16 @@ namespace Viticulture.Logic.State
             var hand = instance as Hand;
             hand._cards = _cards.Select(c => c.Clone()).OfType<Card>().ToList();
         }
+
+        public override string DisplayText => "Hand of cards";
+
+        public override string Description => string.Empty;
+
+        public IEnumerable<VisitorCard> WinterVisitors
+            => Cards.OfType<VisitorCard>().Where(p => p.Season == Season.Winter);
+
+        public IEnumerable<VisitorCard> SummerVisitors
+            => Cards.OfType<VisitorCard>().Where(p => p.Season == Season.Summer);
 
         protected override void OnSetFromClone(Entity entity, IEnumerable<Entity> references)
         {

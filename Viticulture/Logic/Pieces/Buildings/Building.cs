@@ -13,5 +13,7 @@ namespace Viticulture.Logic.Pieces.Buildings
         public abstract int Cost { get; }
 
         public abstract string Name { get; }
+
+        public override string DisplayText => Name;
     }
 }

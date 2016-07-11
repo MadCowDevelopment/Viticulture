@@ -9,5 +9,7 @@ namespace Viticulture.Logic.Pieces
         }
 
         public Worker() { }
+        public override string DisplayText => "Worker";
+        public override string Description { get; }
     }
 }

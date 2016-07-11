@@ -16,6 +16,7 @@ namespace Viticulture.Logic.State
             _hand = hand;
             _cards = new List<T>(cards);
             _cards.ForEach(p => p.Deck = this);
+            _cards.ForEach(p => p.Hand = _hand);
             _discard = new List<T>();
 
             _cards.Shuffle();
@@ -24,6 +25,11 @@ namespace Viticulture.Logic.State
         private Deck() { }
 
         public IEnumerable<T> Cards => _cards;
+
+        public bool CanDraw(int number)
+        {
+            return _cards.Count + _discard.Count >= number;
+        }
 
         public void DrawToHand()
         {

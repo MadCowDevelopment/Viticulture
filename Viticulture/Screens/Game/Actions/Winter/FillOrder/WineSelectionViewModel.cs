@@ -50,18 +50,4 @@ namespace Viticulture.Screens.Game.Actions.Winter.FillOrder
             Close(null);
         }
     }
-
-    public class WineViewModel
-    {
-        public WineViewModel(Wine wine)
-        {
-            Wine = wine;
-        }
-
-        public Wine Wine { get; }
-
-        public bool IsSelected { get; set; }
-
-        public string DisplayText => $"{Wine.Type} - {Wine.Value}";
-    }
 }

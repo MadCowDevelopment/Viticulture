@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Caliburn.Micro;
 using Viticulture.Logic.Cards.Vines;
@@ -44,6 +45,10 @@ namespace Viticulture.Logic.Pieces
             var clone = entity as Field;
             clone._vines = _vines.Select(v => v.Clone()).OfType<VineCard>().ToList();
         }
+
+        public override string DisplayText => Value.ToString();
+
+        public override string Description => String.Empty;
 
         protected override void OnSetFromClone(Entity entity, IEnumerable<Entity> references)
         {

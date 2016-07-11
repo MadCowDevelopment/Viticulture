@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.Composition;
+using System.Linq;
 using System.Threading.Tasks;
 using Caliburn.Micro;
 using Viticulture.Screens.Game.Actions.Summer.BuildStructure;
@@ -13,6 +14,8 @@ namespace Viticulture.Logic.Actions.Summer
         private readonly IMetroDialog _metroDialog;
         private readonly IMefContainer _mefContainer;
         public override string Text => "Build 1 structure";
+        public override bool CanExecuteSpecial => GameState.Buildings.Any(p => p.IsBought == false);
+
         public override string BonusText => "+1 lira";
 
         [ImportingConstructor]
@@ -37,6 +40,7 @@ namespace Viticulture.Logic.Actions.Summer
             if (selectedBuilding == null) return false;
             selectedBuilding.IsBought = true;
             GameState.Money -= Math.Max(selectedBuilding.Cost - BuildingBonus, 0);
+            BuildingBonus = 0;
             return true;
         }
 

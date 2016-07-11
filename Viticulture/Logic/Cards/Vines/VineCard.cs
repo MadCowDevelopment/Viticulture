@@ -5,7 +5,7 @@ namespace Viticulture.Logic.Cards.Vines
     [InheritedExport(typeof(VineCard))]
     public abstract class VineCard : Card
     {
-        public override string Text => string.Empty;
+        public override string Description => string.Empty;
 
         public abstract bool RequiresIrigation { get; }
 
@@ -15,6 +15,6 @@ namespace Viticulture.Logic.Cards.Vines
 
         public abstract int WhiteValue { get; }
 
-        public string DisplayText => $"{Name} {RedValue}/{WhiteValue}";
+        public override string DisplayText => $"{Name} {RedValue}/{WhiteValue}";
     }
 }

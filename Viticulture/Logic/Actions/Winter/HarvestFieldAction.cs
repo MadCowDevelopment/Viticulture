@@ -15,6 +15,7 @@ namespace Viticulture.Logic.Actions.Winter
         private readonly IMetroDialog _metroDialog;
         private readonly IMefContainer _mefContainer;
         public override string Text => "Harvest 1 field";
+        public override bool CanExecuteSpecial => GameState.Fields.Any(p => p.IsBought && p.Vines.Any());
         public override string BonusText => "+1 field";
 
         [ImportingConstructor]

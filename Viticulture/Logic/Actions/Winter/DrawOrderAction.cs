@@ -8,6 +8,7 @@ namespace Viticulture.Logic.Actions.Winter
     public class DrawOrderAction : BonusAction, IWinterAction
     {
         public override string Text => "Draw 1 order";
+        public override bool CanExecuteSpecial => GameState.OrderDeck.CanDraw(1);
         public override string BonusText => "+1 order";
 
         [ImportingConstructor]

@@ -12,6 +12,7 @@ namespace Viticulture.Logic.Actions.Winter
         private readonly IMetroDialog _metroDialog;
         private readonly IMefContainer _mefContainer;
         public override string Text => "Fill 1 order";
+        public override bool CanExecuteSpecial => true;
         public override string BonusText => "+1 VP";
 
         [ImportingConstructor]

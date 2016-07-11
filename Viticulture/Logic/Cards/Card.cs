@@ -6,12 +6,15 @@ namespace Viticulture.Logic.Cards
     {
         public abstract string Name { get; }
 
-        public abstract string Text { get; }
+        public override string DisplayText => Name;
 
         public IDeck Deck { get; set; }
 
+        public Hand Hand { get; set; }
+
         public void Discard()
         {
+            Hand.RemoveCard(this);
             Deck.Discard(this);
         }
     }

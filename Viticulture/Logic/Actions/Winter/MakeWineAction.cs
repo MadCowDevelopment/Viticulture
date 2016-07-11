@@ -15,6 +15,7 @@ namespace Viticulture.Logic.Actions.Winter
         private readonly IMetroDialog _metroDialog;
         private readonly IMefContainer _mefContainer;
         public override string Text => "Make up to 2 wine tokens";
+        public override bool CanExecuteSpecial => GameState.Grapes.Any();
         public override string BonusText => "+1 wine";
 
         [ImportingConstructor]

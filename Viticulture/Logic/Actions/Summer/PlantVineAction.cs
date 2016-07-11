@@ -1,4 +1,5 @@
 using System.ComponentModel.Composition;
+using System.Linq;
 using System.Threading.Tasks;
 using Caliburn.Micro;
 
@@ -13,6 +14,7 @@ namespace Viticulture.Logic.Actions.Summer
         private readonly IMetroDialog _metroDialog;
         private readonly IMefContainer _mefContainer;
         public override string Text => "Plant 1 vine";
+        public override bool CanExecuteSpecial => GameState.Hand.Vines.Any();
         public override string BonusText => "+1 vine";
 
         [ImportingConstructor]

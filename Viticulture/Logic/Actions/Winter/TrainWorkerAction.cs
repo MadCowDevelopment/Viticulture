@@ -9,6 +9,7 @@ namespace Viticulture.Logic.Actions.Winter
     public class TrainWorkerAction : BonusAction, IWinterAction
     {
         public override string Text => "Train 1 worker";
+        public override bool CanExecuteSpecial => GameState.Money >= 4;
 
         public override string BonusText => "+1 lira";
 

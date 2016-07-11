@@ -1,0 +1,52 @@
+﻿<UserControl 
+  x:Class="Viticulture.Services.MultipleSelectionDialogView"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+  xmlns:cal="http://www.caliburnproject.org"
+  mc:Ignorable="d" 
+  d:DesignHeight="300" d:DesignWidth="300">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    <TextBlock FontSize="20" Grid.Row="0" Text="{Binding Title}"/>
+    <TextBlock FontSize="16" Grid.Row="1" Text="{Binding Message}"/>
+    <Grid Grid.Row="2">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+      </Grid.RowDefinitions>
+      <ItemsControl Grid.Column="1" x:Name="Options">
+        <ItemsControl.ItemsPanel>
+          <ItemsPanelTemplate>
+            <StackPanel Orientation="Horizontal"/>
+          </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <ToggleButton IsChecked="{Binding IsChecked}" Margin="4" FontSize="16" MinWidth="80" Content="{Binding Text}"/>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+      <Grid Grid.Column="1" Grid.Row="1">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="Auto"/>
+          <ColumnDefinition Width="Auto"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Button Grid.Column="1" Margin="4" FontSize="16" cal:Message.Attach="Finish()" Content="Finish" MinWidth="80"/>
+        <Button Grid.Column="2" Margin="4" FontSize="16" cal:Message.Attach="Cancel()" Content="Cancel" MinWidth="80"/>
+      </Grid>
+    </Grid>
+  </Grid>
+</UserControl>

@@ -26,6 +26,9 @@ namespace Viticulture.Logic.Pieces
             clone.Value = Value;
         }
 
+        public override string DisplayText => $"{GrapeColor}:{Value}";
+        public override string Description => string.Empty;
+
         protected override void OnSetFromClone(Entity entity, IEnumerable<Entity> references)
         {
             base.OnSetFromClone(entity, references);

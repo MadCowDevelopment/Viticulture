@@ -13,6 +13,10 @@ namespace Viticulture.Logic
 
         public Guid Id { get; private set; }
 
+        public abstract string DisplayText { get; }
+
+        public abstract string Description { get; }
+
         public Entity Clone()
         {
             var instance = CreateInstance();

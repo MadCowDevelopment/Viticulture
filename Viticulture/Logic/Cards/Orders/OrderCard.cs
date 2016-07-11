@@ -11,7 +11,7 @@ namespace Viticulture.Logic.Cards.Orders
     {
         public override string Name => string.Empty;
 
-        public override string Text => string.Empty;
+        public override string Description => string.Empty;
 
         public abstract int VictoryPoints { get; }
 
@@ -33,5 +33,7 @@ namespace Viticulture.Logic.Cards.Orders
 
             return true;
         }
+
+        public override string DisplayText => string.Join(" ", RequiredWines.Select(p => $"{p.Item1}:{p.Item2}"));
     }
 }

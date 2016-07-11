@@ -26,6 +26,9 @@ namespace Viticulture.Logic.Actions
 
         public abstract string Text { get; }
 
+        public abstract bool CanExecuteSpecial { get; }
+
+
         protected virtual bool IsUnlimited => false;
 
         public void Handle(GameStateChanged message)
@@ -67,6 +70,7 @@ namespace Viticulture.Logic.Actions
             {
                 if (GameState.AutomaCard == null) return false;
                 if (GameState.GetFirstAvailableWorker() == null) return false;
+                if (!CanExecuteSpecial) return false;
                 return IsUnlimited || !HasBeenUsed || !GameState.Grande.HasBeenUsed;
             }
         }

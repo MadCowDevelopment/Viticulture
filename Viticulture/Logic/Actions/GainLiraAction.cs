@@ -11,6 +11,7 @@ namespace Viticulture.Logic.Actions
         {
         }
 
+        public override bool CanExecuteSpecial => true;
         protected override bool IsUnlimited => true;
 
         public override string Text => "Gain 1 lira";

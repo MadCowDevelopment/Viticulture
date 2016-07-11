@@ -8,6 +8,7 @@ namespace Viticulture.Logic.Actions.Summer
     public class GiveTourAction : BonusAction, ISummerAction
     {
         public override string Text => "Give tour to gain 2 lira";
+        public override bool CanExecuteSpecial => true;
         public override string BonusText => "+1 lira";
 
         [ImportingConstructor]
