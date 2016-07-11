@@ -7,9 +7,9 @@ using Viticulture.Logic.State;
 
 namespace Viticulture.Logic.Cards.Visitors.Summer
 {
-    public class Horticulturist : TwoChoicesVisitorCard
+    public class SharecropperCard : TwoChoicesVisitorCard
     {
-        public override string Name => "Horticulturist";
+        public override string Name => "Sharecropper";
         public override Season Season => Season.Summer;
 
         [Import]
@@ -29,13 +29,9 @@ namespace Viticulture.Logic.Cards.Visitors.Summer
             var vinesBeforeUproot = gameState.Hand.Vines.ToList();
             var success = await UprootVine.OnExecute();
             if (!success) return false;
-            gameState.Hand.Vines.Except(vinesBeforeUproot).Single().Discard();
 
-            vinesBeforeUproot = gameState.Hand.Vines.ToList();
-            success = await UprootVine.OnExecute();
-            if (!success) return false;
             gameState.Hand.Vines.Except(vinesBeforeUproot).Single().Discard();
-            gameState.VictoryPoints += 3;
+            gameState.VictoryPoints += 2;
 
             return true;
         }
@@ -47,10 +43,10 @@ namespace Viticulture.Logic.Cards.Visitors.Summer
 
         protected override bool CanApplyOption2(IGameState gameState)
         {
-            return gameState.Fields.SelectMany(p => p.Vines).Count() >= 2;
+            return gameState.Fields.SelectMany(p => p.Vines).Any();
         }
 
-        protected override string Option1 => "plant any 1 vine (ignore structures)";
-        protected override string Option2 => "uproot and discard 2 vines to gain 3 VP";
+        protected override string Option1 => "plant 1 vine (ignore structures)";
+        protected override string Option2 => "uproot and discard 1 vine to gain 2 VP";
     }
 }

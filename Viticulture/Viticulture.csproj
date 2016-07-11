@@ -116,6 +116,7 @@
     <Compile Include="Logic\Cards\Visitors\Summer\ContractorCard.cs" />
     <Compile Include="Logic\Cards\Visitors\Summer\EntertainerCard.cs" />
     <Compile Include="Logic\Cards\Visitors\Summer\Horticulturist.cs" />
+    <Compile Include="Logic\Cards\Visitors\Summer\ImporterCard.cs" />
     <Compile Include="Logic\Cards\Visitors\Summer\LandscaperCard.cs" />
     <Compile Include="Logic\Cards\Visitors\Summer\NoviceGuideCard.cs" />
     <Compile Include="Logic\Cards\Visitors\Summer\Option.cs" />
@@ -124,6 +125,7 @@
     <Compile Include="Logic\Cards\Visitors\Summer\PatronCard.cs" />
     <Compile Include="Logic\Cards\Visitors\Summer\PeddlerCard.cs" />
     <Compile Include="Logic\Cards\Visitors\Summer\PlanterCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Summer\SharecropperCard.cs" />
     <Compile Include="Logic\Cards\Visitors\Summer\SurveyorCard.cs" />
     <Compile Include="Logic\Cards\Visitors\Summer\TourGuide.cs" />
     <Compile Include="Logic\Cards\Visitors\Summer\UncertifiedArchitectCard.cs" />
