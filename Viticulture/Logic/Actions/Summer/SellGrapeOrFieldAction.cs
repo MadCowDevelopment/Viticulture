@@ -3,7 +3,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Caliburn.Micro;
 using MahApps.Metro.Controls.Dialogs;
-using Viticulture.Logic.State;
 using Viticulture.Screens.Game.Actions.Summer.SellGrapeOrField;
 using Viticulture.Services;
 
@@ -12,7 +11,6 @@ namespace Viticulture.Logic.Actions.Summer
     [Export(typeof(SellGrapeOrFieldAction))]
     public class SellGrapeOrFieldAction : BonusAction, ISummerAction
     {
-        private readonly IGameState _gameState;
         private readonly IMetroDialog _metroDialog;
         private readonly IMefContainer _mefContainer;
         public override string Text => "Sell grape(s) or buy/sell 1 field";
@@ -22,10 +20,9 @@ namespace Viticulture.Logic.Actions.Summer
         public override string BonusText => "+1 VP";
 
         [ImportingConstructor]
-        public SellGrapeOrFieldAction(IEventAggregator eventAggregator, IGameState gameState, IMetroDialog metroDialog,
+        public SellGrapeOrFieldAction(IEventAggregator eventAggregator, IMetroDialog metroDialog,
             IMefContainer mefContainer) : base(eventAggregator)
         {
-            _gameState = gameState;
             _metroDialog = metroDialog;
             _mefContainer = mefContainer;
         }
@@ -46,7 +43,7 @@ namespace Viticulture.Logic.Actions.Summer
             {
                 foreach (var grape in result)
                 {
-                    _gameState.Money += grape.SellValue;
+                    GameState.Money += grape.SellValue;
                     grape.IsBought = false;
                 }
 
@@ -70,7 +67,7 @@ namespace Viticulture.Logic.Actions.Summer
             var selectedField = await _metroDialog.ShowDialog(dialogViewModel);
             if (selectedField == null) return false;
             selectedField.IsBought = true;
-            _gameState.Money -= selectedField.Value;
+            GameState.Money -= selectedField.Value;
             return true;
         }
 
@@ -80,7 +77,7 @@ namespace Viticulture.Logic.Actions.Summer
             var selectedField = await _metroDialog.ShowDialog(dialogViewModel);
             if (selectedField == null) return false;
             selectedField.IsBought = false;
-            _gameState.Money += selectedField.Value;
+            GameState.Money += selectedField.Value;
             return true;
         }
 

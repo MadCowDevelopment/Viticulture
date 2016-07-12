@@ -5,6 +5,7 @@ using Caliburn.Micro;
 
 namespace Viticulture.Logic.Actions
 {
+    [Export(typeof(UprootVineAction))]
     public class UprootVineAction : PlayerAction
     {
         [ImportingConstructor]

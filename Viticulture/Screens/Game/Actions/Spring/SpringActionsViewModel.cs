@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.Composition;
@@ -15,7 +16,7 @@ namespace Viticulture.Screens.Game.Actions.Spring
         private readonly ObservableCollection<Benefit> _benefits;
 
         [ImportingConstructor]
-        public SpringActionsViewModel(IGameLogic gameLogic, IGameState gameState, IEnumerable<Benefit> benefits)
+        public SpringActionsViewModel(IGameLogic gameLogic, IGameState gameState, [ImportMany]IEnumerable<Benefit> benefits)
         {
             _gameLogic = gameLogic;
             _gameState = gameState;

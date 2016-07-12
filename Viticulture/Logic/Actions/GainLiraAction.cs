@@ -4,6 +4,7 @@ using Caliburn.Micro;
 
 namespace Viticulture.Logic.Actions
 {
+    [Export(typeof(GainLiraAction))]
     public class GainLiraAction : PlayerAction, ISummerAction, IWinterAction
     {
         [ImportingConstructor]

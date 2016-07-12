@@ -3,9 +3,145 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:pieces="clr-namespace:Viticulture.Logic.Pieces"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
-    </Grid>
+  <UserControl.Resources>
+    <DataTemplate x:Key="WineTemplate" DataType="pieces:Wine">
+      <Border BorderThickness="2" Width="28" Height="28" CornerRadius="14" Margin="4">
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Value}" FontSize="16"/>
+        <Border.Style>
+          <Style TargetType="Border">
+            <Style.Triggers>
+              <DataTrigger Binding="{Binding Type}" Value="{x:Static pieces:WineType.Red}">
+                <Setter Property="BorderBrush" Value="PaleVioletRed"/>
+              </DataTrigger>
+              <DataTrigger Binding="{Binding Type}" Value="{x:Static pieces:WineType.White}">
+                <Setter Property="BorderBrush" Value="NavajoWhite"/>
+              </DataTrigger>
+              <DataTrigger Binding="{Binding Type}" Value="{x:Static pieces:WineType.Blush}">
+                <Setter Property="BorderBrush" Value="IndianRed"/>
+              </DataTrigger>
+              <DataTrigger Binding="{Binding Type}" Value="{x:Static pieces:WineType.Sparkling}">
+                <Setter Property="BorderBrush" Value="PapayaWhip"/>
+              </DataTrigger>
+              <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                  <Condition Binding="{Binding Type}" Value="{x:Static pieces:WineType.Red}"/>
+                  <Condition Binding="{Binding IsBought}" Value="true"/>
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Background" Value="PaleVioletRed"/>
+              </MultiDataTrigger>
+              <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                  <Condition Binding="{Binding Type}" Value="{x:Static pieces:WineType.White}"/>
+                  <Condition Binding="{Binding IsBought}" Value="true"/>
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Background" Value="NavajoWhite"/>
+              </MultiDataTrigger>
+              <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                  <Condition Binding="{Binding Type}" Value="{x:Static pieces:WineType.Blush}"/>
+                  <Condition Binding="{Binding IsBought}" Value="true"/>
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Background" Value="IndianRed"/>
+              </MultiDataTrigger>
+              <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                  <Condition Binding="{Binding Type}" Value="{x:Static pieces:WineType.Sparkling}"/>
+                  <Condition Binding="{Binding IsBought}" Value="true"/>
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Background" Value="PapayaWhip"/>
+              </MultiDataTrigger>
+            </Style.Triggers>
+          </Style>
+        </Border.Style>
+      </Border>
+    </DataTemplate>
+  </UserControl.Resources>
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*"/>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition Width="Auto"/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+
+    <TextBlock Grid.Column="0" Grid.Row="0" Text="Red:" FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+    <ItemsControl Grid.Column="1" Grid.Row="0" x:Name="RedWines1" ItemTemplate="{StaticResource WineTemplate}">
+      <ItemsControl.ItemsPanel>
+        <ItemsPanelTemplate>
+          <StackPanel Orientation="Horizontal"/>
+        </ItemsPanelTemplate>
+      </ItemsControl.ItemsPanel>
+    </ItemsControl>
+    <ItemsControl Grid.Column="2" Grid.Row="0" x:Name="RedWines2" ItemTemplate="{StaticResource WineTemplate}">
+      <ItemsControl.ItemsPanel>
+        <ItemsPanelTemplate>
+          <StackPanel Orientation="Horizontal"/>
+        </ItemsPanelTemplate>
+      </ItemsControl.ItemsPanel>
+    </ItemsControl>
+    <ItemsControl Grid.Column="3" Grid.Row="0" x:Name="RedWines3" ItemTemplate="{StaticResource WineTemplate}">
+      <ItemsControl.ItemsPanel>
+        <ItemsPanelTemplate>
+          <StackPanel Orientation="Horizontal"/>
+        </ItemsPanelTemplate>
+      </ItemsControl.ItemsPanel>
+    </ItemsControl>
+
+    <TextBlock Grid.Column="0" Grid.Row="1" Text="White:" FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+    <ItemsControl Grid.Column="1" Grid.Row="1" x:Name="WhiteWines1" ItemTemplate="{StaticResource WineTemplate}">
+      <ItemsControl.ItemsPanel>
+        <ItemsPanelTemplate>
+          <StackPanel Orientation="Horizontal"/>
+        </ItemsPanelTemplate>
+      </ItemsControl.ItemsPanel>
+    </ItemsControl>
+    <ItemsControl Grid.Column="2" Grid.Row="1" x:Name="WhiteWines2" ItemTemplate="{StaticResource WineTemplate}">
+      <ItemsControl.ItemsPanel>
+        <ItemsPanelTemplate>
+          <StackPanel Orientation="Horizontal"/>
+        </ItemsPanelTemplate>
+      </ItemsControl.ItemsPanel>
+    </ItemsControl>
+    <ItemsControl Grid.Column="3" Grid.Row="1" x:Name="WhiteWines3" ItemTemplate="{StaticResource WineTemplate}">
+      <ItemsControl.ItemsPanel>
+        <ItemsPanelTemplate>
+          <StackPanel Orientation="Horizontal"/>
+        </ItemsPanelTemplate>
+      </ItemsControl.ItemsPanel>
+    </ItemsControl>
+
+    <TextBlock Grid.Column="0" Grid.Row="2" Text="Blush:" FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+    <ItemsControl Grid.Column="2" Grid.Row="2" x:Name="BlushWines1" ItemTemplate="{StaticResource WineTemplate}">
+      <ItemsControl.ItemsPanel>
+        <ItemsPanelTemplate>
+          <StackPanel Orientation="Horizontal"/>
+        </ItemsPanelTemplate>
+      </ItemsControl.ItemsPanel>
+    </ItemsControl>
+    <ItemsControl Grid.Column="3" Grid.Row="2" x:Name="BlushWines2" ItemTemplate="{StaticResource WineTemplate}">
+      <ItemsControl.ItemsPanel>
+        <ItemsPanelTemplate>
+          <StackPanel Orientation="Horizontal"/>
+        </ItemsPanelTemplate>
+      </ItemsControl.ItemsPanel>
+    </ItemsControl>
+
+    <TextBlock Grid.Column="0" Grid.Row="3" Text="Sparkling:" FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+    <ItemsControl Grid.Column="3" Grid.Row="3" x:Name="SparklingWines" ItemTemplate="{StaticResource WineTemplate}">
+      <ItemsControl.ItemsPanel>
+        <ItemsPanelTemplate>
+          <StackPanel Orientation="Horizontal"/>
+        </ItemsPanelTemplate>
+      </ItemsControl.ItemsPanel>
+    </ItemsControl>
+  </Grid>
 </UserControl>
