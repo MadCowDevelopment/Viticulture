@@ -1,4 +1,5 @@
 using System.ComponentModel.Composition;
+using System.Linq;
 using System.Threading.Tasks;
 using Caliburn.Micro;
 
@@ -19,6 +20,9 @@ namespace Viticulture.Logic.Actions.Summer
         public override Task<bool> OnExecute()
         {
             GameState.Money += 2;
+            if (GameState.TastingRoom.IsBought && !GameState.TastingRoom.HasBeenUsed &&
+                GameState.Wines.Any(p => p.IsBought)) GameState.VictoryPoints++;
+
             return Task.FromResult(true);
         }
 

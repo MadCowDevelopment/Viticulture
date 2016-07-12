@@ -98,7 +98,7 @@ namespace Viticulture.Logic.State
         public int ResidualMoney { get; set; }
 
         public IEnumerable<GamePiece> Pieces
-            => _workers.Concat(Structures.OfType<GamePiece>()).Concat(new List<GamePiece> { Grande });
+            => _workers.Concat(Structures.OfType<GamePiece>()).Concat(new List<GamePiece> { Grande, NeutralWorker }).Concat(Wines).Concat(Grapes).Concat(Fields);
 
         public IEnumerable<Structure> Structures => new List<Structure>
         {

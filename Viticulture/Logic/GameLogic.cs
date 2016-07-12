@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
+using System.Threading.Tasks;
 using Caliburn.Micro;
 using Viticulture.Logic.Actions;
 using Viticulture.Logic.GameModes;
@@ -47,9 +48,7 @@ namespace Viticulture.Logic
             }
             else if (_gameState.Season == Season.Summer)
             {
-                var result = await _playerSelection.Select("Fall", "Choose a visitor card", "summer", "winter");
-                if (result == Selection.Option1) _gameState.SummerVisitorDeck.DrawToHand();
-                else _gameState.WinterVisitorDeck.DrawToHand();
+                await SelectSummerOrWinterVisitor();
 
                 _gameState.Season++;
 
@@ -65,16 +64,28 @@ namespace Viticulture.Logic
             }
             else if (_gameState.Season == Season.Winter)
             {
-                EndRound();
+                if (EndRound())
+                {
+                    return;
+                }
+
+                if (_gameState.Cottage.IsBought) await SelectSummerOrWinterVisitor();
             }
         }
 
-        private void EndRound()
+        private async Task SelectSummerOrWinterVisitor()
+        {
+            var result = await _playerSelection.Select("Fall", "Choose a visitor card", "summer", "winter");
+            if (result == Selection.Option1) _gameState.SummerVisitorDeck.DrawToHand();
+            else _gameState.WinterVisitorDeck.DrawToHand();
+        }
+
+        private bool EndRound()
         {
             if (CheckGameOver())
             {
                 _eventAggregator.PublishOnCurrentThread(new GameOverMessage(_gameState));
-                return;
+                return true;
             }
 
             _actions.ForEach(p => p.Reset());
@@ -85,6 +96,8 @@ namespace Viticulture.Logic
 
             AgeGrapes();
             AgeWines();
+
+            return false;
         }
 
         public void AgeWines()
