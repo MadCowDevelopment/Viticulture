@@ -177,6 +177,39 @@
     <Compile Include="Logic\Cards\Visitors\Summer\WineCriticCard.cs" />
     <Compile Include="Logic\Cards\Visitors\ThreeChoicesVisitorCard.cs" />
     <Compile Include="Logic\Cards\Visitors\TwoChoicesVisitorCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Winter\AssessorCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Winter\BenefactorCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Winter\BottlerCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Winter\CaravanCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Winter\CraftsmanCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Winter\CrusherCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Winter\CrushExpertCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Winter\DesignerCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Winter\ExporterCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Winter\GovernessCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Winter\HarvesterCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Winter\HarvestExpert.cs" />
+    <Compile Include="Logic\Cards\Visitors\Winter\InnkeeperCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Winter\JackOfAllTradesCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Winter\JudgeCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Winter\LaborerCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Winter\ManagerCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Winter\MarketerCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Winter\MasterVintnerCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Winter\MerchantCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Winter\NobleCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Winter\OenologistCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Winter\PoliticianCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Winter\ProfessorCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Winter\PromoterCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Winter\ReaperCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Winter\ScholarCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Winter\SupervisorCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Winter\TasterCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Winter\TeacherCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Winter\UncertifiedOenologistCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Winter\UncertifiedTeacherCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Winter\ZymologistCard.cs" />
     <Compile Include="Logic\Entity.cs" />
     <Compile Include="Logic\Cards\Vines\CabernetSauvignonCard.cs" />
     <Compile Include="Logic\Pieces\Structures\Cottage.cs" />
@@ -260,11 +293,6 @@
     </Compile>
     <Compile Include="Screens\Game\Actions\Winter\FillOrder\WineSelectionViewModel.cs" />
     <Compile Include="Screens\Game\Actions\Winter\FillOrder\WineViewModel.cs" />
-    <Compile Include="Screens\Game\Actions\Winter\HarvestField\FieldSelectionView.xaml.cs">
-      <DependentUpon>FieldSelectionView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Screens\Game\Actions\Winter\HarvestField\FieldSelectionViewModel.cs" />
-    <Compile Include="Screens\Game\Actions\Winter\HarvestField\IFieldSelectionViewModel.cs" />
     <Compile Include="Screens\Game\Actions\Winter\MakeWine\GrapesSelectionView.xaml.cs">
       <DependentUpon>GrapesSelectionView.xaml</DependentUpon>
     </Compile>
@@ -366,6 +394,7 @@
     <Compile Include="Services\IPlayerSelection.cs" />
     <Compile Include="Services\ISelectionDialogViewModel.cs" />
     <Compile Include="Services\MefContainer.cs" />
+    <Compile Include="Services\MetroDialogExtensions.cs" />
     <Compile Include="Services\MultipleSelectionDialogView.xaml.cs">
       <DependentUpon>MultipleSelectionDialogView.xaml</DependentUpon>
     </Compile>
@@ -453,10 +482,6 @@
     <Page Include="Screens\Game\Actions\Winter\FillOrder\WineSelectionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Screens\Game\Actions\Winter\HarvestField\FieldSelectionView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Screens\Game\Actions\Winter\MakeWine\GrapesSelectionView.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -568,9 +593,7 @@
   <ItemGroup>
     <Resource Include="FodyWeavers.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Logic\Cards\Visitors\Winter\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.1.29.2\build\dotnet\Fody.targets" Condition="Exists('..\packages\Fody.1.29.2\build\dotnet\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

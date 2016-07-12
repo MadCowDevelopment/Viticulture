@@ -9,6 +9,12 @@ namespace Viticulture.Logic.Cards.Visitors
     public abstract class VisitorCard : Card
     {
         [Import]
+        public IMetroDialog MetroDialog { get; set; }
+
+        [Import]
+        public IMefContainer MefContainer { get; set; }
+
+        [Import]
         public IPlayerSelection PlayerSelection { get; set; }
 
         public abstract Season Season { get; }

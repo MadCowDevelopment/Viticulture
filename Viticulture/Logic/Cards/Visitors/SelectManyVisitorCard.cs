@@ -22,12 +22,10 @@ namespace Viticulture.Logic.Cards.Visitors
             var selections = (await PlayerSelection.SelectMany(Options, RequiredSelections)).ToList();
             if (selections.Count != RequiredSelections) return false;
 
-            var gameStateClone = gameState.Clone();
             foreach (var selection in selections)
             {
                 if (!await selection.Apply(gameState))
                 {
-                    gameState.SetFromClone(gameStateClone);
                     return false;
                 }
             }

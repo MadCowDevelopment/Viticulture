@@ -7,5 +7,7 @@ namespace Viticulture.Logic
         void Initialize(IGameMode gameMode);
 
         void EndSeason();
+        void AgeGrapes();
+        void AgeWines();
     }
 }

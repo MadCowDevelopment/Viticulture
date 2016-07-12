@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Viticulture.Logic.Cards;
+using Viticulture.Logic.Cards.Orders;
 using Viticulture.Logic.Cards.Vines;
 using Viticulture.Logic.Cards.Visitors;
 using Viticulture.Utils;
@@ -46,6 +47,7 @@ namespace Viticulture.Logic.State
             => VisitorCards.Where(p => p.Season == Season.Summer);
 
         public IEnumerable<VisitorCard> VisitorCards => Cards.OfType<VisitorCard>();
+        public IEnumerable<OrderCard> Orders => Cards.OfType<OrderCard>();
 
         protected override void OnSetFromClone(Entity entity, IEnumerable<Entity> references)
         {

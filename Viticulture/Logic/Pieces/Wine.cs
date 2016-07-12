@@ -5,6 +5,8 @@ namespace Viticulture.Logic.Pieces
 {
     public class Wine : GamePiece
     {
+        public static int MaxValue = 9;
+
         public int Value { get; private set; }
         public WineType Type { get; private set; }
 

@@ -62,7 +62,7 @@ namespace Viticulture.Logic.Actions.Summer
             return true;
         }
 
-        protected override async Task<bool> OnExecuteBonus()
+        public override async Task<bool> OnExecuteBonus()
         {
             var vineSelectionViewModel = _mefContainer.GetExportedValue<IVineSelectionViewModel>();
             var selectedVine = await _metroDialog.ShowDialog(vineSelectionViewModel);

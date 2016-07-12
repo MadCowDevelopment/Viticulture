@@ -60,8 +60,10 @@ namespace Viticulture.Logic.State
         IEnumerable<Wine> Wines { get; }
         IEnumerable<Grape> Grapes { get; }
         IEnumerable<Worker> AllWorkers { get; }
+        IEnumerable<IDeck> Decks { get; }
         void Reset();
         GameState Clone();
         void SetFromClone(GameState clone);
+        Worker BuyWorker(int cost = 4);
     }
 }

@@ -84,7 +84,7 @@ namespace Viticulture.Logic.Actions.Summer
             return true;
         }
 
-        protected override Task<bool> OnExecuteBonus()
+        public override Task<bool> OnExecuteBonus()
         {
             GameState.VictoryPoints++;
             return Task.FromResult(true);

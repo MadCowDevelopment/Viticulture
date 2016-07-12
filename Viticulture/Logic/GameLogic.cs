@@ -82,11 +82,26 @@ namespace Viticulture.Logic
             _gameState.Round++;
             _gameState.Money += _gameState.ResidualMoney;
             _gameState.Pieces.ForEach(p => p.Reset());
-            AgeGrapes(_gameState.RedGrapes.ToList());
-            AgeGrapes(_gameState.WhiteGrapes.ToList());
+
+            AgeGrapes();
+            AgeWines();
         }
 
-        private void AgeGrapes(List<Grape> grapes)
+        public void AgeWines()
+        {
+            AgeGamePiece(_gameState.RedWines.OfType<GamePiece>().ToList());
+            AgeGamePiece(_gameState.WhiteWines.OfType<GamePiece>().ToList());
+            AgeGamePiece(_gameState.BlushWines.OfType<GamePiece>().ToList());
+            AgeGamePiece(_gameState.SparklingWines.OfType<GamePiece>().ToList());
+        }
+
+        public void AgeGrapes()
+        {
+            AgeGamePiece(_gameState.RedGrapes.OfType<GamePiece>().ToList());
+            AgeGamePiece(_gameState.WhiteGrapes.OfType<GamePiece>().ToList());
+        }
+
+        private void AgeGamePiece(List<GamePiece> grapes)
         {
             for (var i = grapes.Count - 1; i >= 0; i--)
             {

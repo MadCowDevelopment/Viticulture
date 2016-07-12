@@ -17,5 +17,11 @@ namespace Viticulture.Logic.Cards
             Hand.RemoveCard(this);
             Deck.Discard(this);
         }
+
+        public void TakeToHand()
+        {
+            Hand.AddCard(this);
+            Deck.RemoveCard(this);
+        }
     }
 }

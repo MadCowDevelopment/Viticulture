@@ -14,7 +14,9 @@ namespace Viticulture.Logic.Actions.Summer
         private readonly IMetroDialog _metroDialog;
         private readonly IMefContainer _mefContainer;
         public override string Text => "Build 1 structure";
-        public override bool CanExecuteSpecial => GameState.Structures.Any(p => p.IsBought == false);
+
+        public override bool CanExecuteSpecial
+            => GameState.Structures.Any(p => !p.IsBought && p.Cost <= GameState.Money);
 
         public override string BonusText => "+1 lira";
 
@@ -44,7 +46,7 @@ namespace Viticulture.Logic.Actions.Summer
             return true;
         }
 
-        protected override Task<bool> OnExecuteBonus()
+        public override Task<bool> OnExecuteBonus()
         {
             GameState.Money++;
             return Task.FromResult(true);

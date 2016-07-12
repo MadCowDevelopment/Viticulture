@@ -22,7 +22,7 @@ namespace Viticulture.Logic.Actions.Winter
             return Task.FromResult(true);
         }
 
-        protected override Task<bool> OnExecuteBonus()
+        public override Task<bool> OnExecuteBonus()
         {
             GameState.OrderDeck.DrawToHand();
             return Task.FromResult(true);

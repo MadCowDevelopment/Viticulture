@@ -115,6 +115,8 @@ namespace Viticulture.Logic.State
         public IEnumerable<Wine> Wines => RedWines.Union(WhiteWines).Union(BlushWines).Union(SparklingWines);
         public IEnumerable<Grape> Grapes => RedGrapes.Union(WhiteGrapes);
         public IEnumerable<Worker> AllWorkers => Workers.Union(new List<Worker> {NeutralWorker, Grande});
+        public IEnumerable<IDeck> Decks => new List<IDeck> {VineDeck, SummerVisitorDeck, OrderDeck, WinterVisitorDeck};
+
 
         public void Reset()
         {
@@ -317,6 +319,17 @@ namespace Viticulture.Logic.State
             {
                 _sparklingWines[i].SetFromClone(clone._sparklingWines[i], Entities);
             }
+        }
+
+        public Worker BuyWorker(int cost = 4)
+        {
+            if (Money < cost) return null;
+            var availableWorker = Workers.FirstOrDefault(p => !p.IsBought);
+            if (availableWorker == null) return null;
+            availableWorker.IsBought = true;
+            availableWorker.HasBeenUsed = true;
+            Money -= cost;
+            return availableWorker;
         }
 
         private IEnumerable<Entity> Entities

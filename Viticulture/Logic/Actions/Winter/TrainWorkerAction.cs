@@ -20,12 +20,11 @@ namespace Viticulture.Logic.Actions.Winter
 
         public override Task<bool> OnExecute()
         {
-            GameState.Workers.First(p => !p.IsBought).IsBought = true;
-            GameState.Money -= 4;
+            GameState.BuyWorker();
             return Task.FromResult(true);
         }
 
-        protected override Task<bool> OnExecuteBonus()
+        public override Task<bool> OnExecuteBonus()
         {
             GameState.Money++;
             return Task.FromResult(true);

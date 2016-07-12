@@ -9,12 +9,6 @@ namespace Viticulture.Logic.Cards.Visitors
 {
     public abstract class TwoChoicesVisitorCard : VisitorCard
     {
-        [Import]
-        public IMetroDialog MetroDialog { get; set; }
-
-        [Import]
-        public IMefContainer MefContainer { get; set; }
-
         public override string Description => $"{Option1} OR {Option2}";
 
         protected virtual bool CanDoBoth(IGameState gameState)

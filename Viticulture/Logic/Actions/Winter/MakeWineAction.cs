@@ -17,6 +17,8 @@ namespace Viticulture.Logic.Actions.Winter
         public override string Text => "Make up to 2 wine tokens";
         public override bool CanExecuteSpecial => GameState.Grapes.Any();
         public override string BonusText => "+1 wine";
+        public bool IgnoreCellarRestriction { get; set; }
+        public int MinimumValue { get; set; }
 
         [ImportingConstructor]
         public MakeWineAction(IEventAggregator eventAggregator, IMetroDialog metroDialog, IMefContainer mefContainer) : base(eventAggregator)
@@ -27,15 +29,35 @@ namespace Viticulture.Logic.Actions.Winter
 
         public override async Task<bool> OnExecute()
         {
-            return await MakeWine();
+            var success = await MakeWine();
+            if (!success)
+            {
+                MinimumValue = 1;
+                IgnoreCellarRestriction = false;
+                return false;
+            }
+            success = await MakeWine();
+            if (!success)
+            {
+                MinimumValue = 1;
+                IgnoreCellarRestriction = false;
+                return await _metroDialog.DoneOrCancelVisitor("making wine");
+            }
+
+            MinimumValue = 1;
+            IgnoreCellarRestriction = false;
+            return true;
         }
 
-        protected override async Task<bool> OnExecuteBonus()
+        public override async Task<bool> OnExecuteBonus()
         {
-            return await MakeWine();
+            var success = await MakeWine();
+            if (!success) return await _metroDialog.DoneOrCancelVisitor("making wine");
+
+            return true;
         }
 
-        private async Task<bool> MakeWine()
+        public async Task<bool> MakeWine()
         {
             var dialogViewModel = _mefContainer.GetExportedValue<IGrapesSelectionViewModel>();
             var selectedGrapes = (await _metroDialog.ShowDialog(dialogViewModel)).ToList();
@@ -50,7 +72,7 @@ namespace Viticulture.Logic.Actions.Winter
             var firstAvailableSpotInCellar = GetFirstAvailableSpotInCellar(value, type);
             if (firstAvailableSpotInCellar == null)
             {
-                await _metroDialog.ShowMessage("Make wine", "No room in cellar for selected wine");
+                await _metroDialog.ShowMessage("Make wine", "No room in cellar for selected wine or two low value");
                 return false;
             }
 
@@ -65,8 +87,13 @@ namespace Viticulture.Logic.Actions.Winter
             if (type == WineType.Blush && !GameState.MediumCellar.IsBought) return null;
             if (type == WineType.Sparkling && !GameState.LargeCellar.IsBought) return null;
 
-            if (value > 3 && !GameState.MediumCellar.IsBought) value = 3;
-            if (value > 6 && !GameState.LargeCellar.IsBought) value = 6;
+            if (!IgnoreCellarRestriction)
+            {
+                if (value > 3 && !GameState.MediumCellar.IsBought) value = 3;
+                if (value > 6 && !GameState.LargeCellar.IsBought) value = 6;
+            }
+
+            if (value < MinimumValue) return null;
 
             return
                 GameState.GetCellarByWineType(type)

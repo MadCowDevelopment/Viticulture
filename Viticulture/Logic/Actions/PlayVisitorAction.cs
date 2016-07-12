@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
 using Viticulture.Logic.Cards.Visitors;
@@ -42,7 +40,7 @@ namespace Viticulture.Logic.Actions
             return true;
         }
 
-        protected override async Task<bool> OnExecuteBonus()
+        public override async Task<bool> OnExecuteBonus()
         {
             return await ChooseAndPlayCard();
         }

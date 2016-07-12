@@ -8,12 +8,6 @@ namespace Viticulture.Logic.Cards.Visitors
 {
     public abstract class ThreeChoicesVisitorCard : VisitorCard
     {
-        [Import]
-        public IMetroDialog MetroDialog { get; set; }
-
-        [Import]
-        public IMefContainer MefContainer { get; set; }
-
         public override string Description => $"{Option1} OR {Option2} OR {Option3}";
 
         protected override async Task<bool> OnApply(IGameState gameState)

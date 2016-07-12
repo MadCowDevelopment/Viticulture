@@ -55,6 +55,14 @@ namespace Viticulture.Logic.State
             _discard.Add(card as T);
         }
 
+        public Card TopCardOnDiscardPile => _discard.LastOrDefault();
+
+        public void RemoveCard(Card card)
+        {
+            _cards.Remove(card as T);
+            _discard.Remove(card as T);
+        }
+
         public Deck<T> Clone()
         {
             var clone = new Deck<T>();
@@ -82,5 +90,8 @@ namespace Viticulture.Logic.State
     public interface IDeck
     {
         void Discard(Card card);
+
+        Card TopCardOnDiscardPile { get; }
+        void RemoveCard(Card card);
     }
 }

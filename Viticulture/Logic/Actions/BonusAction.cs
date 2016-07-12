@@ -38,7 +38,7 @@ namespace Viticulture.Logic.Actions
             GameState.RemainingBonusActions--;
         }
 
-        protected abstract Task<bool> OnExecuteBonus();
+        public abstract Task<bool> OnExecuteBonus();
 
         public override void Refresh()
         {
