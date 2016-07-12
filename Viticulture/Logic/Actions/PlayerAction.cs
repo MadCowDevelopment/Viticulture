@@ -31,8 +31,7 @@ namespace Viticulture.Logic.Actions
         public abstract string Text { get; }
 
         public abstract bool CanExecuteSpecial { get; }
-
-
+        
         protected virtual bool IsUnlimited => false;
 
         public void Handle(GameStateChanged message)

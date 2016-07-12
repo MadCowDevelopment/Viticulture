@@ -105,6 +105,7 @@
     <Compile Include="Logic\Actions\Winter\MakeWineAction.cs" />
     <Compile Include="Logic\Actions\Winter\PlayWinterVisitorAction.cs" />
     <Compile Include="Logic\Actions\Winter\TrainWorkerAction.cs" />
+    <Compile Include="Logic\Actions\YokeAction.cs" />
     <Compile Include="Logic\Benefits\Benefit.cs" />
     <Compile Include="Logic\Benefits\LiraBenefit.cs" />
     <Compile Include="Logic\Benefits\NoneBenefit.cs" />
