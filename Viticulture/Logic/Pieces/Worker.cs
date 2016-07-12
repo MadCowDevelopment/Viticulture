@@ -1,4 +1,5 @@
 using Caliburn.Micro;
+using Viticulture.Logic.Actions;
 
 namespace Viticulture.Logic.Pieces
 {
@@ -10,6 +11,14 @@ namespace Viticulture.Logic.Pieces
 
         public Worker() { }
         public override string DisplayText => "Worker";
-        public override string Description { get; }
+        public PlayerAction PlannedAction { get; set; }
+        public PlayerAction UsedAction { get; set; }
+
+        public override void Reset()
+        {
+            base.Reset();
+            PlannedAction = null;
+            UsedAction = null;
+        }
     }
 }

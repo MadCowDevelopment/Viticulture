@@ -5,6 +5,6 @@ namespace Viticulture.Services
 {
     public interface IMultipleSelectionDialogViewModel : IDialogViewModel<IEnumerable<Option>>
     {
-        void Initialize(IEnumerable<Option> options, int requiredSelections);
+        void Initialize(IEnumerable<Option> options, int requiredSelections, SelectionRequirement selectionRequirement);
     }
 }

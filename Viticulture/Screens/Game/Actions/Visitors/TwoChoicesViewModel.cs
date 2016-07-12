@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.Composition;
+﻿using System.ComponentModel.Composition;
 using Viticulture.Services;
 
 namespace Viticulture.Screens.Game.Actions.Visitors

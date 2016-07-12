@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using Caliburn.Micro;
+using Viticulture.Services;
 
 namespace Viticulture.Logic
 {
-    public abstract class Entity : PropertyChangedBase
+    public abstract class Entity : PropertyChangedBase, IHasDescription
     {
         protected Entity()
         {

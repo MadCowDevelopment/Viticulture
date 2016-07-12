@@ -30,7 +30,7 @@ namespace Viticulture.Services
             return result == MessageDialogResult.Affirmative ? Selection.Option1 : Selection.Option2;
         }
 
-        public async Task<T> Select<T>(string title, string message, IEnumerable<T> selections) where T : Entity
+        public async Task<T> Select<T>(string title, string message, IEnumerable<T> selections) where T : class, IHasDescription
         {
             var selectionDialogViewModel = _mefContainer.GetExportedValue<ISelectionDialogViewModel<T>>();
             selectionDialogViewModel.Title = title;
@@ -40,10 +40,10 @@ namespace Viticulture.Services
             return selection;
         }
 
-        public async Task<IEnumerable<Option>> SelectMany(IEnumerable<Option> options, int requiredSelections)
+        public async Task<IEnumerable<Option>> SelectMany(IEnumerable<Option> options, int requiredSelections, SelectionRequirement selectionRequirement = SelectionRequirement.ExactMatch)
         {
             var multipleSelectionDialogViewModel = _mefContainer.GetExportedValue<IMultipleSelectionDialogViewModel>();
-            multipleSelectionDialogViewModel.Initialize(options, requiredSelections);
+            multipleSelectionDialogViewModel.Initialize(options, requiredSelections, selectionRequirement);
             return await _metroDialog.ShowDialog(multipleSelectionDialogViewModel);
         }
     }

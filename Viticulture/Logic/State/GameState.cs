@@ -114,6 +114,7 @@ namespace Viticulture.Logic.State
 
         public IEnumerable<Wine> Wines => RedWines.Union(WhiteWines).Union(BlushWines).Union(SparklingWines);
         public IEnumerable<Grape> Grapes => RedGrapes.Union(WhiteGrapes);
+        public IEnumerable<Worker> AllWorkers => Workers.Union(new List<Worker> {NeutralWorker, Grande});
 
         public void Reset()
         {

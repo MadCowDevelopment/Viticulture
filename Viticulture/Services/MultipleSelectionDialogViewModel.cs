@@ -13,13 +13,31 @@ namespace Viticulture.Services
     {
         private int _requiredSelections;
 
+        private SelectionRequirement _selectionRequirement;
+
         public string Title => "Select options";
 
         public string Message => $"Choose {_requiredSelections} of the following options";
 
         public IEnumerable<OptionViewModel> Options { get; private set; }
 
-        public bool CanFinish => Options.Count(p => p.IsChecked) == _requiredSelections;
+        public bool CanFinish
+        {
+            get
+            {
+                if (_selectionRequirement == SelectionRequirement.ExactMatch)
+                {
+                    return Options.Count(p => p.IsChecked) == _requiredSelections;
+                }
+
+                if (_selectionRequirement == SelectionRequirement.AtLeastOne)
+                {
+                    return Options.Any(p => p.IsChecked);
+                }
+
+                return false;
+            }
+        } 
         
         public void Finish()
         {
@@ -33,9 +51,10 @@ namespace Viticulture.Services
             Close(Enumerable.Empty<Option>());
         }
 
-        public void Initialize(IEnumerable<Option> options, int requiredSelections)
+        public void Initialize(IEnumerable<Option> options, int requiredSelections, SelectionRequirement selectionRequirement)
         {
             _requiredSelections = requiredSelections;
+            _selectionRequirement = selectionRequirement;
             Options = options.Select(p => new OptionViewModel(p)).ToList();
             Options.ForEach(p => p.PropertyChanged += OptionPropertyChanged);
         }

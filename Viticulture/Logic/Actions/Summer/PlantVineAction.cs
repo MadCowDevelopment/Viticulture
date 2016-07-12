@@ -25,6 +25,7 @@ namespace Viticulture.Logic.Actions.Summer
         }
 
         public bool IgnoreRequirements { get; set; }
+        public bool IgnoreMaxValue { get; set; }
 
         public override async Task<bool> OnExecute()
         {
@@ -32,15 +33,18 @@ namespace Viticulture.Logic.Actions.Summer
             var selectedVine = await _metroDialog.ShowDialog(vineSelectionViewModel);
             if (selectedVine == null)
             {
+                IgnoreMaxValue = false;
                 IgnoreRequirements = false;
                 return false;
             }
 
             var fieldSelectionViewModel = _mefContainer.GetExportedValue<IFieldSelectionViewModel>();
+            fieldSelectionViewModel.IgnoreMaxValue = IgnoreMaxValue;
             fieldSelectionViewModel.VineToPlant = selectedVine;
             var selectedField = await _metroDialog.ShowDialog(fieldSelectionViewModel);
             if (selectedField == null)
             {
+                IgnoreMaxValue = false;
                 IgnoreRequirements = false;
                 return false;
             }
@@ -53,6 +57,7 @@ namespace Viticulture.Logic.Actions.Summer
                 GameState.VictoryPoints++;
             }
 
+            IgnoreMaxValue = false;
             IgnoreRequirements = false;
             return true;
         }

@@ -105,6 +105,14 @@
     <Compile Include="Logic\Actions\Winter\MakeWineAction.cs" />
     <Compile Include="Logic\Actions\Winter\PlayWinterVisitorAction.cs" />
     <Compile Include="Logic\Actions\Winter\TrainWorkerAction.cs" />
+    <Compile Include="Logic\Benefits\Benefit.cs" />
+    <Compile Include="Logic\Benefits\LiraBenefit.cs" />
+    <Compile Include="Logic\Benefits\NoneBenefit.cs" />
+    <Compile Include="Logic\Benefits\OrderBenefit.cs" />
+    <Compile Include="Logic\Benefits\VictoryPointBenefit.cs" />
+    <Compile Include="Logic\Benefits\VineBenefit.cs" />
+    <Compile Include="Logic\Benefits\VisitorBenefit.cs" />
+    <Compile Include="Logic\Benefits\WorkerBenefit.cs" />
     <Compile Include="Logic\Cards\Automa\AutomaCard.cs" />
     <Compile Include="Logic\Cards\Automa\AutomaCard01.cs" />
     <Compile Include="Logic\Cards\Automa\AutomaCard10.cs" />
@@ -130,25 +138,36 @@
     <Compile Include="Logic\Cards\Automa\AutomaCard07.cs" />
     <Compile Include="Logic\Cards\Automa\AutomaCard08.cs" />
     <Compile Include="Logic\Cards\Automa\AutomaCard09.cs" />
+    <Compile Include="Logic\Cards\Visitors\Summer\AgriculturistCard.cs" />
     <Compile Include="Logic\Cards\Visitors\Summer\ArchitectCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Summer\ArtisanCard.cs" />
     <Compile Include="Logic\Cards\Visitors\Summer\AuctioneerCard.cs" />
     <Compile Include="Logic\Cards\Visitors\Summer\BankerCard.cs" />
     <Compile Include="Logic\Cards\Visitors\Summer\BlacksmithCard.cs" />
     <Compile Include="Logic\Cards\Visitors\Summer\BrokerCard.cs" />
     <Compile Include="Logic\Cards\Visitors\Summer\BuyerCard.cs" />
     <Compile Include="Logic\Cards\Visitors\Summer\ContractorCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Summer\CultivatorCard.cs" />
     <Compile Include="Logic\Cards\Visitors\Summer\EntertainerCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Summer\GrowerCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Summer\HomesteaderCard.cs" />
     <Compile Include="Logic\Cards\Visitors\Summer\Horticulturist.cs" />
     <Compile Include="Logic\Cards\Visitors\Summer\ImporterCard.cs" />
     <Compile Include="Logic\Cards\Visitors\Summer\LandscaperCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Summer\NegotiatorCard.cs" />
     <Compile Include="Logic\Cards\Visitors\Summer\NoviceGuideCard.cs" />
     <Compile Include="Logic\Cards\Visitors\Summer\Option.cs" />
     <Compile Include="Logic\Cards\Visitors\SelectManyVisitorCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Summer\OrganizerCard.cs" />
     <Compile Include="Logic\Cards\Visitors\Summer\OverseerCard.cs" />
     <Compile Include="Logic\Cards\Visitors\Summer\PatronCard.cs" />
     <Compile Include="Logic\Cards\Visitors\Summer\PeddlerCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Summer\PlannerCard.cs" />
     <Compile Include="Logic\Cards\Visitors\Summer\PlanterCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Summer\ProducerCard.cs" />
     <Compile Include="Logic\Cards\Visitors\Summer\SharecropperCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Summer\SponsorCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\Summer\StonemasonCard.cs" />
     <Compile Include="Logic\Cards\Visitors\Summer\SurveyorCard.cs" />
     <Compile Include="Logic\Cards\Visitors\Summer\TourGuide.cs" />
     <Compile Include="Logic\Cards\Visitors\Summer\UncertifiedArchitectCard.cs" />
@@ -156,6 +175,7 @@
     <Compile Include="Logic\Cards\Visitors\Summer\VendorCard.cs" />
     <Compile Include="Logic\Cards\Visitors\Summer\VineCardOption.cs" />
     <Compile Include="Logic\Cards\Visitors\Summer\WineCriticCard.cs" />
+    <Compile Include="Logic\Cards\Visitors\ThreeChoicesVisitorCard.cs" />
     <Compile Include="Logic\Cards\Visitors\TwoChoicesVisitorCard.cs" />
     <Compile Include="Logic\Entity.cs" />
     <Compile Include="Logic\Cards\Vines\CabernetSauvignonCard.cs" />
@@ -219,7 +239,12 @@
     </Compile>
     <Compile Include="Screens\Game\Actions\Visitors\CardSelectionViewModel.cs" />
     <Compile Include="Screens\Game\Actions\Visitors\ICardSelectionViewModel.cs" />
+    <Compile Include="Screens\Game\Actions\Visitors\IThreeChoicesViewModel.cs" />
     <Compile Include="Screens\Game\Actions\Visitors\ITwoChoicesViewModel.cs" />
+    <Compile Include="Screens\Game\Actions\Visitors\ThreeChoicesView.xaml.cs">
+      <DependentUpon>ThreeChoicesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\Game\Actions\Visitors\ThreeChoicesViewModel.cs" />
     <Compile Include="Screens\Game\Actions\Visitors\TwoChoicesView.xaml.cs">
       <DependentUpon>TwoChoicesView.xaml</DependentUpon>
     </Compile>
@@ -353,6 +378,7 @@
       <DependentUpon>SelectionDialogView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\SelectionDialogViewModel.cs" />
+    <Compile Include="Services\SelectionRequirement.cs" />
     <Compile Include="Utils\ListExtensions.cs" />
     <Compile Include="Utils\MemberNameHelper.cs" />
     <Compile Include="Utils\RNG.cs" />
@@ -409,6 +435,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Screens\Game\Actions\Visitors\CardSelectionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Screens\Game\Actions\Visitors\ThreeChoicesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

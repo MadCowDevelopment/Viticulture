@@ -59,6 +59,7 @@ namespace Viticulture.Logic.State
         IEnumerable<Structure> Structures { get; }
         IEnumerable<Wine> Wines { get; }
         IEnumerable<Grape> Grapes { get; }
+        IEnumerable<Worker> AllWorkers { get; }
         void Reset();
         GameState Clone();
         void SetFromClone(GameState clone);

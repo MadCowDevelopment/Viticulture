@@ -5,7 +5,7 @@ using Viticulture.Logic;
 namespace Viticulture.Services
 {
     [Export(typeof(ISelectionDialogViewModel<>))]
-    public class SelectionDialogViewModel<T> : DialogViewModel<T>, ISelectionDialogViewModel<T> where T : Entity
+    public class SelectionDialogViewModel<T> : DialogViewModel<T>, ISelectionDialogViewModel<T> where T : class, IHasDescription
     {
         public string Title { get; set; }
         public string Message { get; set; }
@@ -20,5 +20,11 @@ namespace Viticulture.Services
         {
             Close(null);
         }
+    }
+
+    public interface IHasDescription
+    {
+        string DisplayText { get; }
+        string Description { get; }
     }
 }

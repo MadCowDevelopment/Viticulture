@@ -9,6 +9,7 @@ namespace Viticulture.Screens.Game.Actions.Summer.PlantVine
     {
         IEnumerable<Field> Fields { get; }
         VineCard VineToPlant { get; set; }
+        bool IgnoreMaxValue { get; set; }
         void Select(Field field);
         bool CanSelect(Field field);
         void Cancel();

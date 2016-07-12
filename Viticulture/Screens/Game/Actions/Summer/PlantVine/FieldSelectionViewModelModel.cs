@@ -23,18 +23,22 @@ namespace Viticulture.Screens.Game.Actions.Summer.PlantVine
 
         public VineCard VineToPlant { get; set; }
 
+        public bool IgnoreMaxValue { get; set; }
+
         public void Select(Field field)
         {
+            IgnoreMaxValue = false;
             Close(field);
         }
 
         public bool CanSelect(Field field)
         {
-            return field.CanPlant(VineToPlant);
+            return IgnoreMaxValue || field.CanPlant(VineToPlant);
         }
 
         public void Cancel()
         {
+            IgnoreMaxValue = false;
             Close(null);
         }
     }

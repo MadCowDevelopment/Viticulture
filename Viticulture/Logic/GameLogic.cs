@@ -53,6 +53,11 @@ namespace Viticulture.Logic
 
                 _gameState.Season++;
 
+                foreach (var worker in _gameState.AllWorkers.Where(p => p.PlannedAction != null))
+                {
+                    await worker.PlannedAction.OnExecute();
+                }
+
                 _gameState.AutomaCard?.Discard();
                 _gameState.AutomaCard = _gameState.AutomaDeck.Draw();
                 _gameState.AutomaCard.BlockedWinterActions.ForEach(p => p.HasBeenUsed = true);

@@ -3,7 +3,7 @@ using Viticulture.Logic;
 
 namespace Viticulture.Services
 {
-    public interface ISelectionDialogViewModel<T> : IDialogViewModel<T> where T : Entity
+    public interface ISelectionDialogViewModel<T> : IDialogViewModel<T> where T : class, IHasDescription
     {
         string Title { get; set; }
 

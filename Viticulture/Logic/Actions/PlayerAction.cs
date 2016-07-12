@@ -9,7 +9,7 @@ using Viticulture.Services;
 namespace Viticulture.Logic.Actions
 {
     [InheritedExport(typeof(PlayerAction))]
-    public abstract class PlayerAction : PropertyChangedBase, IHandle<GameStateChanged>, IHandle<GamePieceChanged>
+    public abstract class PlayerAction : PropertyChangedBase, IHandle<GameStateChanged>, IHandle<GamePieceChanged>, IHasDescription
     {
         private readonly IEventAggregator _eventAggregator;
 
@@ -50,17 +50,18 @@ namespace Viticulture.Logic.Actions
 
         protected void AfterExecute()
         {
+            Worker worker;
             if (IsUnlimited)
             {
-                var worker = GameState.GetFirstAvailableWorker();
-                worker.HasBeenUsed = true;
+                worker = GameState.GetFirstAvailableWorker();
             }
             else
             {
-                if (HasBeenUsed) GameState.Grande.HasBeenUsed = true;
-                else GameState.GetFirstAvailableWorker().HasBeenUsed = true;
+                worker = HasBeenUsed ? GameState.Grande : GameState.GetFirstAvailableWorker();
             }
 
+            worker.HasBeenUsed = true;
+            worker.UsedAction = this;
             HasBeenUsed = true;
 
             NotifyOfPropertyChange(() => CanExecute);
@@ -96,5 +97,9 @@ namespace Viticulture.Logic.Actions
         {
             HasBeenUsed = false;
         }
+
+        public string DisplayText => Text;
+
+        public string Description => string.Empty;
     }
 }
