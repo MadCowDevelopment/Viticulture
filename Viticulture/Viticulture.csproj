@@ -138,6 +138,13 @@
     <Compile Include="Logic\Cards\Automa\AutomaCard07.cs" />
     <Compile Include="Logic\Cards\Automa\AutomaCard08.cs" />
     <Compile Include="Logic\Cards\Automa\AutomaCard09.cs" />
+    <Compile Include="Logic\Cards\Vines\ChardonnayCard.cs" />
+    <Compile Include="Logic\Cards\Vines\MalvasiaCard.cs" />
+    <Compile Include="Logic\Cards\Vines\MerlotCard.cs" />
+    <Compile Include="Logic\Cards\Vines\SangioveseCard.cs" />
+    <Compile Include="Logic\Cards\Vines\SauvignonBlancCard.cs" />
+    <Compile Include="Logic\Cards\Vines\SyrahCard.cs" />
+    <Compile Include="Logic\Cards\Vines\TrebbianoCard.cs" />
     <Compile Include="Logic\Cards\Visitors\Summer\AgriculturistCard.cs" />
     <Compile Include="Logic\Cards\Visitors\Summer\ArchitectCard.cs" />
     <Compile Include="Logic\Cards\Visitors\Summer\ArtisanCard.cs" />
@@ -352,7 +359,7 @@
     <Compile Include="Screens\ViewModel.cs" />
     <Compile Include="Logic\Cards\Orders\OrderCard.cs" />
     <Compile Include="Logic\Cards\Orders\SampleOrderCard.cs" />
-    <Compile Include="Logic\Cards\Vines\PinotVineCard.cs" />
+    <Compile Include="Logic\Cards\Vines\PinotCard.cs" />
     <Compile Include="Logic\Cards\Visitors\VisitorCard.cs" />
     <Compile Include="Logic\GameLogic.cs" />
     <Compile Include="Logic\GameModes\GameModeInitializer.cs" />
