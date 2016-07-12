@@ -1,11 +1,11 @@
-﻿namespace Viticulture.Screens.Game.Buildings
+﻿namespace Viticulture.Screens.Game.Structures
 {
     /// <summary>
     /// Interaction logic for BuildingsView.xaml
     /// </summary>
-    public partial class BuildingsView
+    public partial class StructuresView
     {
-        public BuildingsView()
+        public StructuresView()
         {
             InitializeComponent();
         }

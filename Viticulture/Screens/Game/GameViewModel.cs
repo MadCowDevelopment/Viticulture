@@ -3,12 +3,12 @@ using System.ComponentModel.Composition;
 using Viticulture.Logic;
 using Viticulture.Logic.GameModes;
 using Viticulture.Screens.Game.Actions;
-using Viticulture.Screens.Game.Buildings;
 using Viticulture.Screens.Game.Cellar;
 using Viticulture.Screens.Game.Crushpad;
 using Viticulture.Screens.Game.Fields;
 using Viticulture.Screens.Game.Hand;
 using Viticulture.Screens.Game.PlayerStatus;
+using Viticulture.Screens.Game.Structures;
 
 namespace Viticulture.Screens.Game
 {
@@ -45,7 +45,7 @@ namespace Viticulture.Screens.Game
         public IHandViewModel Visitors { get; private set; }
 
         [Import]
-        public IBuildingsViewModel Buildings { get; private set; }
+        public IStructuresViewModel Structures { get; private set; }
 
         [Import]
         public ICrushpadViewModel Crushpad { get; private set; }
