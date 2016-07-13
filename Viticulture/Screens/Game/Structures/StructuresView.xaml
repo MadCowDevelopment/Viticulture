@@ -11,7 +11,7 @@
       <RowDefinition Height="Auto"/>
       <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
-    <TextBlock Grid.Row="0" FontSize="24" Margin="8" HorizontalAlignment="Center" Text="Structures"/>
+    <TextBlock Grid.Row="0" FontSize="24" Margin="8" HorizontalAlignment="Center" Text="Purchased Structures"/>
     <ItemsControl Grid.Row="1" x:Name="Structures">
       <ItemsControl.ItemTemplate>
         <DataTemplate DataType="structures:Structure">
