@@ -22,7 +22,7 @@
     </Grid.ColumnDefinitions>
 
     <Button Grid.Column="1" Grid.Row="1" Margin="4" FontSize="16" x:Name="StartGame">Start new game</Button>
-    <Button Grid.Column="1" Grid.Row="2" Margin="4" FontSize="16" x:Name="Settings">Settings</Button>
+    <!--<Button Grid.Column="1" Grid.Row="2" Margin="4" FontSize="16" x:Name="Settings">Settings</Button>-->
     <Button Grid.Column="1" Grid.Row="3" Margin="4" FontSize="16" x:Name="Quit">Quit</Button>
 
   </Grid>
