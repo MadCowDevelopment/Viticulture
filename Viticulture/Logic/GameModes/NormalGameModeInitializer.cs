@@ -20,13 +20,13 @@ namespace Viticulture.Logic.GameModes
             _papaCards = papaCards;
         }
 
-        public override void Initialize(IGameState gameState)
+        public override async void Initialize(IGameState gameState)
         {
             var papaCard = _papaCards.RandomOrDefault();
             var mamaCard = _mamaCards.RandomOrDefault();
 
-            papaCard.Setup(gameState);
-            mamaCard.Setup(gameState);
+            await papaCard.Setup(gameState);
+            await mamaCard.Setup(gameState);
 
             gameState.NumberOfRounds = 7;
         }

@@ -14,6 +14,8 @@ namespace Viticulture.Logic.Cards.Automa
             BlockedSummerActions = new List<BonusAction> { giveTour, buildStructure, sellGrapeOrField };
             BlockedWinterActions = new List<BonusAction> { trainWorker };
         }
+        public AutomaCard04() { }
+
         public override List<BonusAction> BlockedSummerActions { get; }
         public override List<BonusAction> BlockedWinterActions { get; }
     }

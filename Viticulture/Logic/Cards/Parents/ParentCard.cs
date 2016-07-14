@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Viticulture.Logic.State;
 
 namespace Viticulture.Logic.Cards.Parents
@@ -7,6 +8,6 @@ namespace Viticulture.Logic.Cards.Parents
     {
         public override string Description => string.Empty;
 
-        public abstract void Setup(IGameState gameState);
+        public abstract Task Setup(IGameState gameState);
     }
 }
