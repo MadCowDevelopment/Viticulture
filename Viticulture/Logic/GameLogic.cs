@@ -31,10 +31,11 @@ namespace Viticulture.Logic
             _actions = actions;
         }
 
-        public void Initialize(IGameMode gameMode)
+        public async void Initialize(IGameMode gameMode)
         {
             _gameState.Reset();
             gameMode.Initialize(_gameState);
+            if (_gameState.Cottage.IsBought) await SelectSummerOrWinterVisitor();
         }
 
         public async void EndSeason()
