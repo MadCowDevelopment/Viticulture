@@ -82,12 +82,15 @@
 
     <DataTemplate x:Key="VisitorTemplate" DataType="visitors:VisitorCard">
       <Border BorderBrush="Black" BorderThickness="4" CornerRadius="10" Height="120" Width="180" Margin="4">
-        <Border BorderBrush="Gold" BorderThickness="4" CornerRadius="6">
+        <Border BorderThickness="4" CornerRadius="6">
           <Border.Style>
             <Style TargetType="Border">
               <Style.Triggers>
                 <DataTrigger Binding="{Binding Season}" Value="{x:Static state:Season.Winter}">
                   <Setter Property="BorderBrush" Value="Blue"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Season}" Value="{x:Static state:Season.Summer}">
+                  <Setter Property="BorderBrush" Value="Gold"/>
                 </DataTrigger>
               </Style.Triggers>
             </Style>

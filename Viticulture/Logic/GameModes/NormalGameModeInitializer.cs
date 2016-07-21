@@ -22,11 +22,11 @@ namespace Viticulture.Logic.GameModes
 
         public override async void Initialize(IGameState gameState)
         {
-            var papaCard = _papaCards.RandomOrDefault();
             var mamaCard = _mamaCards.RandomOrDefault();
+            var papaCard = _papaCards.RandomOrDefault();
 
-            await papaCard.Setup(gameState);
             await mamaCard.Setup(gameState);
+            await papaCard.Setup(gameState);
 
             gameState.NumberOfRounds = 7;
         }
